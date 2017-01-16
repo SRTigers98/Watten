@@ -1,19 +1,26 @@
 package spiel;
 
 import karten.Karte;
+import regelwerk.Regelwerk;
 
 public class SpielRunde {
 
 	private static final int SPIELER_1 = 1;
 	private static final int SPIELER_2 = 2;
 
+	private Regelwerk regeln;
 	private Karte sp1;
 	private Karte sp2;
 	private int sieger;
 
-	public SpielRunde(Karte sp1, Karte sp2) {
+	public SpielRunde(Regelwerk regeln, Karte sp1, Karte sp2) {
+		this.regeln = regeln;
 		this.sp1 = sp1;
 		this.sp2 = sp2;
+	}
+
+	public void werteAus() {
+		// später
 	}
 
 	public Karte getSp1() {
