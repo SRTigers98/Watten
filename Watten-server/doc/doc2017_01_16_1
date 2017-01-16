@@ -1,0 +1,12 @@
+Aufgabenverteilung:
+	- Fabian: ServiceTest & IntegrationTest(*-server)
+	- Benjamin: Service & Integration(*-server)
+	- Marc: GUI(*-gui)
+	- Sven: GUI(*-gui)
+	- Benedikt: Design(*-gui)
+	- Service Desk: Sven
+	
+Vom GUI-Team wird zunächst eine Startseite implementiert. Das Service-Team kümmert sich darum, dass der Service grundlegend funktoniert.
+Das Dateiverwaltung-Team versucht, Images für die Karten bereitzustellen.
+
+Server-Client-Anwendung mit Socket-Prinzip
