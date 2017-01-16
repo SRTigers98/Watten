@@ -23,15 +23,13 @@ public class Verbindung implements Runnable {
 	}
 
 	public void run() {
-		// Erzeuge Ausgabestrom zum Client
 		try {
+			// Erzeuge Ausgabestrom zum Client
 			out = new ObjectOutputStream(socket.getOutputStream());
 			// Erzeuge Eingabestrom zum Client
 			in = new ObjectInputStream(socket.getInputStream());
-
 			while (ok) {
 				// warte auf Input
-
 				try {
 					// es muss Serialisierbar sein
 					Serializable gesendet = (Serializable) in.readObject();
@@ -65,7 +63,6 @@ public class Verbindung implements Runnable {
 	private Serializable verarbeite(Serializable gesendet) {
 
 		Kommando kdo = null;
-		String meldung = null;
 		if (gesendet instanceof Kommando) {
 			kdo = (Kommando) gesendet;
 		} else {
@@ -75,7 +72,6 @@ public class Verbindung implements Runnable {
 		}
 		if (kdo.getKommando().equals("beende")) {
 			ok = false;
-			meldung = "Und tsch��!";
 		}
 		if (kdo.getKommando().equals("text")) {
 			socketServer.sendeAnAlle(kdo);
