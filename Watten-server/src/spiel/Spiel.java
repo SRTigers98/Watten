@@ -18,11 +18,17 @@ public class Spiel {
 
 	public Spiel() {
 		deck = new Kartendeck().getDeck();
+		// TODO Spieler hinzufügen
+		teileAus();
 	}
 
 	public void teileAus() {
 		Collections.shuffle(deck);
 		verteileKarten();
+		// regelwerk init
+		// sp1 Schlag
+		// sp2 farbe
+		// Regelwerk erzeugt
 	}
 
 	private void verteileKarten() {
