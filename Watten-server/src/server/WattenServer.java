@@ -7,6 +7,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import common.Kommando;
+
 public class WattenServer implements Runnable {
 
 	private boolean ok = true;

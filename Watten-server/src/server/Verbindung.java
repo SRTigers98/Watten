@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
 
+import common.Kommando;
+
 public class Verbindung implements Runnable {
 
 	private Socket socket;
@@ -74,7 +76,7 @@ public class Verbindung implements Runnable {
 			ok = false;
 		}
 		if (kdo.getKommando().equals("text")) {
-			socketServer.sendeAnAlle(kdo);
+			// socketServer.sendeAnAlle(kdo);
 		}
 
 		return gesendet;
