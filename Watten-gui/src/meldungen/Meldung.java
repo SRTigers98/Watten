@@ -1,12 +1,10 @@
 package meldungen;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-public class meldung {
+public class Meldung {
 
 	private JFrame frame;
 	private JPanel lower_panel;
@@ -15,7 +13,7 @@ public class meldung {
 	/**
 	 * Create the application.
 	 */
-	public meldung() {
+	public Meldung() {
 		initialize();
 	}
 

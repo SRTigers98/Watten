@@ -1,7 +1,6 @@
 package startfenster;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -33,6 +32,7 @@ public class Hauptmenue {
 	/**
 	 * Create the application.
 	 */
+	@SuppressWarnings("serial")
 	public Hauptmenue() {
 		initialize();
 		JPanel panel;
