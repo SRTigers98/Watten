@@ -3,14 +3,10 @@ package test;
 import static org.junit.Assert.*;
 
 import java.util.List;
-import java.util.Map;
-
-import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import karten.Karte;
-import karten.Kartendeck;
 import spiel.Spiel;
 import spieler.Spieler;
 
@@ -18,7 +14,7 @@ public class SpielTest {
 
 	private static Spieler sp1;
 	private static Spieler sp2;
-	private static int zaehler = 0;
+	
 
 	@BeforeClass
 	public static void zuBeginnAllerTests() {
@@ -32,6 +28,7 @@ public class SpielTest {
 	@Test
 	public void testTeileAus() {
 		// Handkartenzahl sollte 5 sein
+		// Handkarten kommen nicht doppelt vor
 		Spiel spiel = new Spiel();
 		List<Spieler> spieler = spiel.getSpieler();
 
@@ -69,6 +66,8 @@ public class SpielTest {
 
 	@Test
 	public void testDeck() {
+		//Jede Karte nur einmal vorhanden
+		//Deck = 32 Karten
 		Spiel spiel = new Spiel();
 		List<Karte> deck = spiel.getDeck();
 		for (int i = 0; i < deck.size(); i++) {
@@ -81,6 +80,9 @@ public class SpielTest {
 			if (n < 1) {
 				fail("Eine Karte mehrfach im Deck!");
 			}
+		}
+		if (deck.size() != 32){
+			fail("Deckgröße falsch!");
 		}
 	}
 

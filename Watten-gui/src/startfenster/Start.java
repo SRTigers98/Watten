@@ -46,7 +46,7 @@ public class Start {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 500, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Info");
 
@@ -97,7 +97,7 @@ public class Start {
 		JTextPane txtpnMitwirkende = new JTextPane();
 		txtpnMitwirkende.setEditable(false);
 		txtpnMitwirkende.setText(
-				"Mitwirkende:\r\n-Benjamin (Projektleiter : Business/Service)\r\n-Fabian (Test)\r\n-Sven (Gui)\r\n-Benedikt (Integration)\r\n-Marc (Gui)");
+				"Mitwirkende:\r\n-Benjamin (Projektleiter : Business/Service)\r\n-Fabian (Test)\r\n-Sven (Gui)\r\n-Benedikt (Integration/Design)\r\n-Marc (Gui)");
 		GridBagConstraints gbc_txtpnMitwirkende = new GridBagConstraints();
 		gbc_txtpnMitwirkende.gridwidth = 8;
 		gbc_txtpnMitwirkende.insets = new Insets(0, 0, 0, 5);

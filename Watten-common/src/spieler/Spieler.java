@@ -14,7 +14,7 @@ public class Spieler {
 	private int punkte;
 
 	public Spieler() {
-		// default-Konsturktor
+		// default-Konstruktor
 	}
 
 	public Spieler(String id, String name) {

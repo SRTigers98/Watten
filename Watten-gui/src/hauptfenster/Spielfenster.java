@@ -67,8 +67,9 @@ public class Spielfenster {
 	 * Create the application.
 	 */
 	public Spielfenster(String name1) {
-		lblName1 = new JLabel(name1);
+		lblName1 = new JLabel(name1 + ":");
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
