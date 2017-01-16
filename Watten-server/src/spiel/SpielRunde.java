@@ -5,9 +5,6 @@ import regelwerk.Regelwerk;
 
 public class SpielRunde {
 
-	private static final int SPIELER_1 = 1;
-	private static final int SPIELER_2 = 2;
-
 	private Regelwerk regeln;
 	private Karte sp1;
 	private Karte sp2;
@@ -19,8 +16,8 @@ public class SpielRunde {
 		this.sp2 = sp2;
 	}
 
-	public void werteAus() {
-		// später
+	public int werteAus() {
+		return regeln.wertAus(sp1, sp2);
 	}
 
 	public Karte getSp1() {
