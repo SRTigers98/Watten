@@ -1,7 +1,6 @@
 package startfenster;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -33,6 +32,7 @@ public class Hauptmenue {
 	/**
 	 * Create the application.
 	 */
+	@SuppressWarnings("serial")
 	public Hauptmenue() {
 		initialize();
 		JPanel panel;
@@ -91,6 +91,7 @@ public class Hauptmenue {
 		frame.setBounds(100, 100, 1020, 668);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.getRootPane().setDefaultButton(getBtnGo());
 	}
 
 	private JLabel getLblSpielername() {
@@ -118,6 +119,7 @@ public class Hauptmenue {
 	private JButton getBtnGo() {
 		if (btnGo == null) {
 			btnGo = new JButton("Go");
+
 			btnGo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnGo) {
