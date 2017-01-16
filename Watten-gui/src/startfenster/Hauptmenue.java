@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Hauptmenü {
+public class Hauptmenue {
 
 	private JFrame frame;
 	private JLabel lblSpielername;
@@ -33,7 +33,7 @@ public class Hauptmenü {
 	/**
 	 * Create the application.
 	 */
-	public Hauptmenü() {
+	public Hauptmenue() {
 		initialize();
 		JPanel panel;
 		try {
@@ -59,7 +59,7 @@ public class Hauptmenü {
 				Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 		GridBagConstraints gbc_lblSpielername = new GridBagConstraints();
-		gbc_lblSpielername.insets = new Insets(0, 0, 5, 0);
+		gbc_lblSpielername.insets = new Insets(400, 0, 5, 0);
 		gbc_lblSpielername.gridwidth = 12;
 		gbc_lblSpielername.gridx = 0;
 		gbc_lblSpielername.gridy = 10;
@@ -77,7 +77,7 @@ public class Hauptmenü {
 		panel.add(getLblFehlermeldung(), gbc_lblFehlermeldung);
 		GridBagConstraints gbc_btnGo = new GridBagConstraints();
 		gbc_btnGo.gridwidth = 12;
-		gbc_btnGo.insets = new Insets(0, 0, 0, 5);
+		gbc_btnGo.insets = new Insets(50, 0, 0, 5);
 		gbc_btnGo.gridx = 0;
 		gbc_btnGo.gridy = 14;
 		panel.add(getBtnGo(), gbc_btnGo);
@@ -90,6 +90,7 @@ public class Hauptmenü {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1020, 668);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 
 	private JLabel getLblSpielername() {
@@ -123,8 +124,8 @@ public class Hauptmenü {
 						if (txtName.getText().isEmpty() || txtName.getText().equals("")) {
 							lblFehlermeldung.setText("Bitte geben Sie einen Namen an.");
 						} else {
-							// new Spielfenster();
-							// frame.dispose();
+							new Spielfenster(txtName.getText());
+							frame.dispose();
 						}
 					}
 				}

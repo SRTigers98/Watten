@@ -71,7 +71,7 @@ public class Start {
 		btnHauptmen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnHauptmen) {
-					new Hauptmenü();
+					new Hauptmenue();
 					frame.dispose();
 				}
 			}
