@@ -24,13 +24,13 @@ public interface Client {
 	 * 
 	 * @param schlag
 	 */
-	public void sendeSchlag(String schlag);
+	public void sendeSchlag(int id, String schlag);
 
 	/**
 	 * Sendet die angesagte Farbe an den Server
 	 * 
 	 * @param farbe
 	 */
-	public void sendeFarbe(String farbe);
+	public void sendeFarbe(int id, String farbe);
 
 }

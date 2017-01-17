@@ -81,4 +81,8 @@ public class WattenServer implements Runnable {
 		return run;
 	}
 
+	public List<Verbindung> getVerbindungen() {
+		return verbindungen;
+	}
+
 }

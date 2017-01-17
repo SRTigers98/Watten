@@ -7,8 +7,6 @@ public interface WattenManager {
 
 	public void addSpieler(Spieler spieler);
 
-	public void spieleKarte(Spieler spieler, Karte karte);
-
-	public int generateId();
+	public void spieleKarte(int id, Karte karte);
 
 }
