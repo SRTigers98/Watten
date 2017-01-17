@@ -573,9 +573,7 @@ public class Spielfenster implements ClientGUI {
 	}
 	
 	private Icon iconHolen(Karte karte){
-		String schlag = karte.getSchlag();
-		String farbe = karte.getFarbe();
-		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/karten/"+farbe+schlag);
+		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/karten/"+karte.getLink());
 		try {
 			Image imageIcon = ImageIO.read(urlIcon);
 			Icon icon = new ImageIcon(imageIcon);
