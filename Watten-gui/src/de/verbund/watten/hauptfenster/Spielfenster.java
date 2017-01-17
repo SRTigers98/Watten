@@ -12,6 +12,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JPanel;
 
 import de.verbund.watten.client.Client;
@@ -306,12 +308,14 @@ public class Spielfenster implements ClientGUI{
 	private JLabel getLblName2() {
 		if (lblName2 == null) {
 			lblName2 = new JLabel("Name 2:");
+			lblName2.setForeground(Color.WHITE);
 		}
 		return lblName2;
 	}
 	private JLabel getLblWins2() {
 		if (lblWins2 == null) {
 			lblWins2 = new JLabel("AnzWins");
+			lblWins2.setForeground(Color.WHITE);
 		}
 		return lblWins2;
 	}
@@ -319,107 +323,113 @@ public class Spielfenster implements ClientGUI{
 		if (lblName1 == null) {
 			lblName1 = new JLabel("Name 1:");
 		}
+		lblName1.setForeground(Color.WHITE);
 		return lblName1;
 	}
 	private JLabel getLblWins1() {
 		if (lblWins1 == null) {
 			lblWins1 = new JLabel("AnzWins");
+			lblWins1.setForeground(Color.WHITE);
 		}
 		return lblWins1;
 	}
 	private JLabel getLblStich2() {
 		if (lblStich2 == null) {
 			lblStich2 = new JLabel("Stiche:");
+			lblStich2.setForeground(Color.WHITE);
 		}
 		return lblStich2;
 	}
 	private JLabel getLblStich1() {
 		if (lblStich1 == null) {
 			lblStich1 = new JLabel("Stiche:");
+			lblStich1.setForeground(Color.WHITE);
 		}
 		return lblStich1;
 	}
 	private JLabel getLblAnzStiche2() {
 		if (lblAnzStiche2 == null) {
 			lblAnzStiche2 = new JLabel("AnzStiche");
+			lblAnzStiche2.setForeground(Color.WHITE);
 		}
 		return lblAnzStiche2;
 	}
 	private JLabel getLblAnzStiche1() {
 		if (lblAnzStiche1 == null) {
 			lblAnzStiche1 = new JLabel("AnzStiche");
+			lblAnzStiche1.setForeground(Color.WHITE);
 		}
 		return lblAnzStiche1;
 	}
 	private JLabel getLblSP1K1() {
 		if (lblSP1K1 == null) {
-			lblSP1K1 = new JLabel("K1");
+			lblSP1K1 = new JLabel("");
 		}
 		return lblSP1K1;
 	}
 	private JLabel getLblSP1K2() {
 		if (lblSP1K2 == null) {
-			lblSP1K2 = new JLabel("K2");
+			lblSP1K2 = new JLabel("");
 		}
 		return lblSP1K2;
 	}
 	private JLabel getLblSP1K3() {
 		if (lblSP1K3 == null) {
-			lblSP1K3 = new JLabel("K3");
+			lblSP1K3 = new JLabel("");
 		}
 		return lblSP1K3;
 	}
 	private JLabel getLblSP1K4() {
 		if (lblSP1K4 == null) {
-			lblSP1K4 = new JLabel("K4");
+			lblSP1K4 = new JLabel("");
 		}
 		return lblSP1K4;
 	}
 	private JLabel getLblSP1K5() {
 		if (lblSP1K5 == null) {
-			lblSP1K5 = new JLabel("K5");
+			lblSP1K5 = new JLabel("");
 		}
 		return lblSP1K5;
 	}
 	private JLabel getLblSP2K1() {
 		if (lblSP2K1 == null) {
-			lblSP2K1 = new JLabel("K1");
+			lblSP2K1 = new JLabel("");
 		}
 		return lblSP2K1;
 	}
 	private JLabel getLblSP2K2() {
 		if (lblSP2K2 == null) {
-			lblSP2K2 = new JLabel("K2");
+			lblSP2K2 = new JLabel("");
 		}
 		return lblSP2K2;
 	}
 	private JLabel getLblSP2K3() {
 		if (lblSP2K3 == null) {
-			lblSP2K3 = new JLabel("K3");
+			lblSP2K3 = new JLabel("");
 		}
 		return lblSP2K3;
 	}
 	private JLabel getLblSP2K4() {
 		if (lblSP2K4 == null) {
-			lblSP2K4 = new JLabel("K4");
+			lblSP2K4 = new JLabel("");
 		}
 		return lblSP2K4;
 	}
 	private JLabel getLblSP2K5() {
 		if (lblSP2K5 == null) {
-			lblSP2K5 = new JLabel("K5");
+			lblSP2K5 = new JLabel("");
 		}
 		return lblSP2K5;
 	}
 	private JLabel getLblKsp() {
 		if (lblKSP2 == null) {
-			lblKSP2 = new JLabel("KSP2");
+			lblKSP2 = new JLabel("");
 		}
 		return lblKSP2;
 	}
 	private JLabel getLblKsp_1() {
 		if (lblKSP1 == null) {
-			lblKSP1 = new JLabel("KSP1");
+			lblKSP1 = new JLabel("");
 		}
 		return lblKSP1;
 	}
