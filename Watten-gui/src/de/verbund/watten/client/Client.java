@@ -19,4 +19,18 @@ public interface Client {
 	 */
 	public void sendeKarte(Karte karte);
 
+	/**
+	 * Sendet den angesagten Schlag an den Server
+	 * 
+	 * @param schlag
+	 */
+	public void sendeSchlag(String schlag);
+
+	/**
+	 * Sendet die angesagte Farbe an den Server
+	 * 
+	 * @param farbe
+	 */
+	public void sendeFarbe(String farbe);
+
 }
