@@ -545,7 +545,7 @@ public class Spielfenster implements ClientGUI {
 				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
 			} else {
 				meldung.terminate();
-				meldung = new Meldung(2, "HAndkarten können nicht angezeigt werden!");
+				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
 			}
 		}
 
@@ -569,12 +569,6 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setId(int id) {
 		// TODO Auto-generated method stub
 
 	}
