@@ -13,7 +13,7 @@ public interface ClientGUI {
 	 * @param message
 	 *            die empfangene Nachricht
 	 */
-	public void ausgabe(String message);
+	public void ausgabe(int art, String message);
 
 	/**
 	 * Gibt die Handkarten des Spielers in einer Liste aus, wenn der Client
