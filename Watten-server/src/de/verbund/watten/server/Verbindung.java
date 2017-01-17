@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.net.Socket;
 
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.karten.Karte;
 import de.verbund.watten.spieler.Spieler;
 
 public class Verbindung implements Runnable {
@@ -77,7 +78,19 @@ public class Verbindung implements Runnable {
 		}
 		if (kdo.getKommando().equals("setzeName")) {
 			// TODO Spieler erzeugen
-			Spieler spieler = new Spieler(kdo.getParameter().get(0).toString());
+			int id = socketServer.getManager().generateId();
+			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
+			socketServer.getManager().addSpieler(spieler);
+		}
+		if (kdo.getKommando().equals("spieleKarte")) {
+			Karte karte = (Karte) kdo.getParameter().get(0);
+
+		}
+		if (kdo.getKommando().equals("beende")) {
+			ok = false;
+		}
+		if (kdo.getKommando().equals("beende")) {
+			ok = false;
 		}
 
 		return gesendet;

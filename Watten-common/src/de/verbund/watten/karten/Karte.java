@@ -44,14 +44,14 @@ public class Karte implements Serializable {
 
 	public String getLink() {
 		if (link == null) {
-			link = farbe + "_" + schlag + ".png";
+			link = farbe + schlag + ".png";
 		}
 		return link;
 	}
 
 	@Override
 	public String toString() {
-		return new StringBuffer().append(farbe).append(" ").append(schlag).toString();
+		return new StringBuffer().append(farbe).append(schlag).toString();
 	}
 
 }

@@ -23,10 +23,11 @@ public class ClientImpl implements Client {
 		client.sende(kdo);
 	}
 
-	public void sendeKarte(Karte karte) {
+	public void sendeKarte(int id, Karte karte) {
 		Kommando kdo = new Kommando();
 		kdo.setKommando("spieleKarte");
 		kdo.addParameter(karte);
+		kdo.addParameter(id);
 		client.sende(kdo);
 	}
 

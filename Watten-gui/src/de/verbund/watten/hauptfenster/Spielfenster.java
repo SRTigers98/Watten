@@ -1,6 +1,7 @@
 package de.verbund.watten.hauptfenster;
 
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
@@ -55,6 +56,7 @@ public class Spielfenster implements ClientGUI{
 	private JLabel lblSP2K5;
 	private JLabel lblKSP2;
 	private JLabel lblKSP1;
+	private JPanel panelTisch;
 
 	/**
 	 * Launch the application.
@@ -78,10 +80,11 @@ public class Spielfenster implements ClientGUI{
 	public Spielfenster(String name1) {
 		lblName1 = new JLabel(name1 + ":");
 		initialize();
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 		gibHandkarten(null);
 	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -91,9 +94,7 @@ public class Spielfenster implements ClientGUI{
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		frame.getContentPane().add(getPanelSP2(), BorderLayout.NORTH);
-		frame.getContentPane().add(getPanelSP1(), BorderLayout.SOUTH);
-		frame.getContentPane().add(getPanelFeld(), BorderLayout.CENTER);
+		frame.getContentPane().add(getPanelTisch(), BorderLayout.CENTER);
 	}
 
 	private JPanel getPanelSP2() {
@@ -320,22 +321,46 @@ public class Spielfenster implements ClientGUI{
 	}
 
 	@Override
-	public void gibHandkarten(List<Karte> handkarten) {
-		URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
-		Image img;
+	public void gibHandkarten(List<Karte> handkarten){
 		try {
-			img = ImageIO.read(urlLogo);
+			URL urlBack = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
+			Image img = ImageIO.read(urlBack);
 			Icon back = new ImageIcon(img);
 			lblSP2K1.setIcon(back);
+			lblSP2K2.setIcon(back);
+			lblSP2K3.setIcon(back);
+			lblSP2K4.setIcon(back);
+			lblSP2K5.setIcon(back);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			new Meldung(2, "Handkarten können nicht angezeigt werden!");
 		}
-		
+
 	}
 
 	@Override
 	public void setClient(Client client) {
 		this.client = client;
+	}
+	@SuppressWarnings("serial")
+	private JPanel getPanelTisch() {
+		if (panelTisch == null) {
+			try {
+				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				Image imgTisch = ImageIO.read(urlTisch);
+				panelTisch = new JPanel(){
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}		
+			panelTisch.setLayout(new BorderLayout(0, 0));
+			panelTisch.add(getPanelFeld(), BorderLayout.CENTER);
+			panelTisch.add(getPanelSP1(), BorderLayout.SOUTH);
+			panelTisch.add(getPanelSP2(), BorderLayout.NORTH);
+		}
+		return panelTisch;
 	}
 }
