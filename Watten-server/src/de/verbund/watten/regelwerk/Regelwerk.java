@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.verbund.watten.karten.Karte;
-import de.verbund.watten.karten.Kartendeck;
 
 public class Regelwerk {
 
@@ -70,7 +69,7 @@ public class Regelwerk {
 			regelwerk.put(farbe + "_Sau", 67);
 		}
 
-		//restl. Farben
+		// restl. Farben
 		int value = 20;
 		verteileNiedrigePrio("_7", value);
 		verteileNiedrigePrio("_8", value);
@@ -79,17 +78,21 @@ public class Regelwerk {
 		verteileNiedrigePrio("_Unter", value);
 		verteileNiedrigePrio("_Ober", value);
 		verteileNiedrigePrio("_Koenig", value);
-		verteileNiedrigePrio("_Sau", value);		
-		
+		verteileNiedrigePrio("_Sau", value);
+
 		// TODO Fabian Regelwerk
 
 	}
 
 	private int verteileNiedrigePrio(String kartenwert, int value) {
-		if (!regelwerk.containsKey("Herz" + kartenwert))regelwerk.put("Herz" + kartenwert, value);
-		if (!regelwerk.containsKey("Schelln" + kartenwert))regelwerk.put("Schelln" + kartenwert, value);
-		if (!regelwerk.containsKey("Eichel" + kartenwert))regelwerk.put("Eichel" + kartenwert, value);
-		if (!regelwerk.containsKey("Blau" + kartenwert))regelwerk.put("Blau" + kartenwert, value);
+		if (!regelwerk.containsKey("Herz" + kartenwert))
+			regelwerk.put("Herz" + kartenwert, value);
+		if (!regelwerk.containsKey("Schelln" + kartenwert))
+			regelwerk.put("Schelln" + kartenwert, value);
+		if (!regelwerk.containsKey("Eichel" + kartenwert))
+			regelwerk.put("Eichel" + kartenwert, value);
+		if (!regelwerk.containsKey("Blau" + kartenwert))
+			regelwerk.put("Blau" + kartenwert, value);
 		value++;
 		return value;
 	}
@@ -97,27 +100,26 @@ public class Regelwerk {
 	public int wertAus(Karte sp1, Karte sp2) {
 		// TODO Wer hat zuerst gespielt?
 		int gewinner = 0;
-		int valueSp1 = regelwerk.get(sp1.getFarbe()+sp1.getSchlag());
-		int valueSp2 = regelwerk.get(sp2.getFarbe()+sp2.getSchlag());
+		int valueSp1 = regelwerk.get(sp1.getFarbe() + sp1.getSchlag());
+		int valueSp2 = regelwerk.get(sp2.getFarbe() + sp2.getSchlag());
 		gewinner = werteTrumpf(gewinner, valueSp1, valueSp2);
-			
-			
-		//SPIELER_1 = 1;
-		//SPIELER_2 = 2;
-		
+
+		// SPIELER_1 = 1;
+		// SPIELER_2 = 2;
+
 		return gewinner;
 	}
 
 	private int werteTrumpf(int gewinner, int valueSp1, int valueSp2) {
-		if (valueSp1 > 50 || valueSp2 > 50){
-			if (valueSp1 > valueSp2){
+		if (valueSp1 > 50 || valueSp2 > 50) {
+			if (valueSp1 > valueSp2) {
 				gewinner = SPIELER_1;
 			}
-			if (valueSp2 > valueSp2){
+			if (valueSp2 > valueSp1) {
 				gewinner = SPIELER_2;
 			}
 		}
-		
+
 		return gewinner;
 	}
 
