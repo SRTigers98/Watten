@@ -5,13 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JSplitPane;
-
-import de.verbund.watten.client.ClientImpl;
 
 import javax.swing.JLabel;
 
@@ -69,7 +62,7 @@ public class Spielfenster {
 	/**
 	 * Create the application.
 	 */
-	public Spielfenster(String name1, ClientImpl client) {
+	public Spielfenster(String name1) {
 		lblName1 = new JLabel(name1 + ":");
 		initialize();
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
