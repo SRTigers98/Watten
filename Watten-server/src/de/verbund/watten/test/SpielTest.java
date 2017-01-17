@@ -94,6 +94,9 @@ public class SpielTest {
 		
 		spiel.setFarbe("Schelln");
 		spiel.setSchlag("_10");
+		spiel.getRegeln();
+		
+		
 	
 	}
 
