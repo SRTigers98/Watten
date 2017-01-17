@@ -93,15 +93,11 @@ public class Verbindung implements Runnable {
 			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
 			// TODO Fehlermeldung, wenn zu viele Spieler
 			socketServer.getManager().addSpieler(spieler);
-			Kommando kdo2 = new Kommando();
-			kdo2.setKommando("sendeID");
-			kdo2.addParameter(id);
-			sende(kdo2);
 			try {
 				socketServer.getManager().starteSpiel();
 			} catch (WattenException e) {
-				Kommando kdo3 = Hilfe.getMeldungKommando(3, e.getMessage());
-				sende(kdo3);
+				Kommando kdo2 = Hilfe.getMeldungKommando(3, e.getMessage());
+				sende(kdo2);
 			}
 		}
 		if (kdo.getKommando().equals("spieleKarte")) {

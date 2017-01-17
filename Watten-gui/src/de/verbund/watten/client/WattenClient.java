@@ -97,8 +97,6 @@ public class WattenClient implements Runnable {
 			}
 			clientGUI.gibHandkarten(hand);
 		}
-		if (kdo.getKommando().equals("sendeID")) {
-			clientGUI.setId((int) kdo.getParameter().get(0));
-		}
 	}
+
 }
