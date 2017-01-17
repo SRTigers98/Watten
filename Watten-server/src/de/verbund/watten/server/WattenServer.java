@@ -15,14 +15,13 @@ public class WattenServer implements Runnable {
 
 	private WattenManager manager;
 	private boolean ok = true;
-	private boolean run = true;
 
 	// neu 1:n: Die Liste f�r die Verbindungen
 	private List<Verbindung> verbindungen;
 
 	public WattenServer() {
 		// Erzeuge Manager
-		manager = new WattenManagerImpl();
+		manager = new WattenManagerImpl(this);
 
 		// neu 1:n:
 		verbindungen = new ArrayList<>();
@@ -53,7 +52,6 @@ public class WattenServer implements Runnable {
 			Verbindung v = (Verbindung) verbindungen.get(i);
 			v.beende();
 		}
-		run = false;
 	}
 
 	public void sendePingAnAlle() {
@@ -75,10 +73,6 @@ public class WattenServer implements Runnable {
 
 	public WattenManager getManager() {
 		return manager;
-	}
-
-	public boolean isRun() {
-		return run;
 	}
 
 	public List<Verbindung> getVerbindungen() {
