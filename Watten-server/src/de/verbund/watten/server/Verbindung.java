@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.net.Socket;
 
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.spieler.Spieler;
 
 public class Verbindung implements Runnable {
 
@@ -76,6 +77,7 @@ public class Verbindung implements Runnable {
 		}
 		if (kdo.getKommando().equals("setzeName")) {
 			// TODO Spieler erzeugen
+			Spieler spieler = new Spieler(kdo.getParameter().get(0).toString());
 		}
 
 		return gesendet;
