@@ -81,4 +81,15 @@ public class WattenManagerImpl implements WattenManager {
 		spiel.getSpieler().remove(sp);
 	}
 
+	@Override
+	public void setzeSchlag(String schlag) {
+		spiel.setSchlag(schlag);
+	}
+
+	@Override
+	public void setzeFarbe(String farbe) {
+		spiel.setFarbe(farbe);
+		spiel.getRegeln();
+	}
+
 }

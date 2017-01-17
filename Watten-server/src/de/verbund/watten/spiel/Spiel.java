@@ -12,13 +12,14 @@ import de.verbund.watten.spieler.Spieler;
 public class Spiel {
 
 	private Regelwerk regeln;
+	private String schlag;
+	private String farbe;
 	private List<Karte> deck;
 	private List<SpielRunde> runden;
 	private List<Spieler> spieler;
 
 	public Spiel() {
 		deck = new Kartendeck().getDeck();
-		// TODO Spieler hinzufügen
 		spieler = new ArrayList<>();
 	}
 
@@ -52,9 +53,10 @@ public class Spiel {
 	}
 
 	public Regelwerk getRegeln() {
-		if (regeln == null) {
+		if (regeln == null && schlag != null && farbe != null) {
 			// Schlag: _7 , _8 , _9 , _10 , _Unter , _Ober , _Koenig , _Sau
-			// regeln = new Regelwerk(farbe, schlag);
+			regeln = new Regelwerk(farbe, schlag);
+
 		}
 		return regeln;
 	}
@@ -76,6 +78,22 @@ public class Spiel {
 			spieler = new ArrayList<>();
 		}
 		return spieler;
+	}
+
+	public String getSchlag() {
+		return schlag;
+	}
+
+	public void setSchlag(String schlag) {
+		this.schlag = schlag;
+	}
+
+	public String getFarbe() {
+		return farbe;
+	}
+
+	public void setFarbe(String farbe) {
+		this.farbe = farbe;
 	}
 
 }

@@ -9,6 +9,7 @@ public class SpielRunde {
 	private Karte sp1;
 	private Karte sp2;
 	private int sieger;
+	private int amZug;
 
 	public SpielRunde(Regelwerk regeln, Karte sp1, Karte sp2) {
 		this.regeln = regeln;
@@ -42,6 +43,14 @@ public class SpielRunde {
 
 	public void setSieger(int sieger) {
 		this.sieger = sieger;
+	}
+
+	public int getAmZug() {
+		return amZug;
+	}
+
+	public void setAmZug(int amZug) {
+		this.amZug = amZug;
 	}
 
 }

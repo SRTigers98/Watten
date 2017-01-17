@@ -14,6 +14,10 @@ public interface WattenManager {
 
 	public void starteSpiel() throws WattenException;
 
+	public void setzeSchlag(String schlag);
+
+	public void setzeFarbe(String farbe);
+
 	public void entferneSpieler(int id);
 
 }
