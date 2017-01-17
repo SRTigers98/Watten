@@ -7,7 +7,6 @@ import de.verbund.watten.karten.Karte;
 
 public class Spieler {
 
-	private String id;
 	private String name;
 	private List<Karte> hand;
 	private int stiche;
@@ -17,17 +16,10 @@ public class Spieler {
 		// default-Konstruktor
 	}
 
-	public Spieler(String id, String name) {
-		this.id = id;
+	public Spieler(String name) {
 		this.name = name;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+		stiche = 0;
+		punkte = 0;
 	}
 
 	public String getName() {
