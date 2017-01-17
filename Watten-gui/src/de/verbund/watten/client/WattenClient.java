@@ -80,7 +80,6 @@ public class WattenClient implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		// clientGUI.ausgabe("...beendet");
 	}
 
 	private void verarbeite(Serializable gesendet) {

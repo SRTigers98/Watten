@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.verbund.watten.client.Client;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.spieler.Spieler;
 
 public interface ClientGUI {
 
@@ -22,6 +23,13 @@ public interface ClientGUI {
 	 * @return eine Liste mit den Handkarten des Spielers
 	 */
 	public void gibHandkarten(List<Karte> handkarten);
+
+	/**
+	 * Gibt die Spieler der aktuellen Partie in einer Liste
+	 * 
+	 * @return eine Liste mit den Spielern
+	 */
+	public void gibSpieler(List<Spieler> spieler);
 
 	/**
 	 * Setzt die Client-Referenz auf den entsprechenden Client

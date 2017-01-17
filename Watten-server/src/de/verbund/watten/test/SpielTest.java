@@ -32,14 +32,17 @@ public class SpielTest {
 		Spiel spiel = new Spiel();
 		List<Spieler> spieler = spiel.getSpieler();
 
-		System.out.println();
 
 		spieler.add(sp1);
 		spieler.add(sp2);
 
+		
+		
 		spiel.teileAus();
 		assertEquals(5, sp1.getHand().size());
 		assertEquals(5, sp2.getHand().size());
+		
+
 
 		for (int i = 0; i < sp1.getHand().size(); i++) {
 			int n = 0;
