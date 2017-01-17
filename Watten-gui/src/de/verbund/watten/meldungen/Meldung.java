@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -13,10 +16,14 @@ import javax.swing.JTextPane;
 import de.verbund.watten.startfenster.Hauptmenue;
 
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 
 public class Meldung {
 
+	private static final int HINWEIS = 3;
+	private static final int FEHLER = 2;
+	private static final int WARNUNG = 1;
 	private JFrame frame;
 	private JPanel lower_panel_warnung;
 	private JPanel upper_panel;
@@ -30,20 +37,24 @@ public class Meldung {
 
 	/**
 	 * Create the application.
+	 * 
+	 * @param art:
+	 *            1- Es wird eine Warnung ausgegeben 2- Es wird ein Fehler
+	 *            ausgegeben 3- Es wird ein Hinweis ausgegeben
 	 */
 	public Meldung(int art, String meldung) {
 		initialize();
 		switch (art) {
 		// Warnung
-		case 1:
+		case WARNUNG:
 			initWarnung(meldung);
 			break;
 		// Fehler
-		case 2:
+		case FEHLER:
 			initFehler(meldung);
 			break;
 		// Hinweis
-		case 3:
+		case HINWEIS:
 			initHinweis(meldung);
 			break;
 		}
@@ -54,7 +65,14 @@ public class Meldung {
 		frame.getContentPane().add(getLowerPanelHinweis(), BorderLayout.SOUTH);
 		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setTitle("Hinweis");
-		lblMeldung.setText(txt);
+		try {
+			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/hinweis.png");
+			Image img = ImageIO.read(urlLogo);
+			frame.setIconImage(img);
+		} catch (Exception e) {
+		}
+		if (!txt.isEmpty())
+			lblMeldung.setText(txt);
 
 	}
 
@@ -63,6 +81,12 @@ public class Meldung {
 		frame.getContentPane().add(getLowerPanelFehler(), BorderLayout.SOUTH);
 		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setTitle("Fehler");
+		try {
+			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/fehler.png");
+			Image img = ImageIO.read(urlLogo);
+			frame.setIconImage(img);
+		} catch (Exception e) {
+		}
 		lblMeldung.setText(txt);
 
 	}
@@ -72,6 +96,12 @@ public class Meldung {
 		frame.getContentPane().add(getLowerPanelWarnung(), BorderLayout.SOUTH);
 		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setTitle("Warnung");
+		try {
+			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/warnung.png");
+			Image img = ImageIO.read(urlLogo);
+			frame.setIconImage(img);
+		} catch (Exception e) {
+		}
 		lblMeldung.setText(txt);
 
 	}
