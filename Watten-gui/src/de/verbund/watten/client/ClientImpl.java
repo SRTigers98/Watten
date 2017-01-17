@@ -1,5 +1,6 @@
 package de.verbund.watten.client;
 
+import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.karten.Karte;
 
@@ -7,8 +8,8 @@ public class ClientImpl implements Client {
 
 	private WattenClient client;
 
-	public ClientImpl(WattenClient client) {
-		this.client = client;
+	public ClientImpl(ClientGUI gui) {
+		this.client = new WattenClient(gui);
 	}
 
 	@Override
@@ -23,6 +24,22 @@ public class ClientImpl implements Client {
 		Kommando kdo = new Kommando();
 		kdo.setKommando("spieltKarte");
 		kdo.addParameter(karte);
+		client.sende(kdo);
+	}
+
+	@Override
+	public void sendeSchlag(String schlag) {
+		Kommando kdo = new Kommando();
+		kdo.setKommando("ansageSchlag");
+		kdo.addParameter(schlag);
+		client.sende(kdo);
+	}
+
+	@Override
+	public void sendeFarbe(String farbe) {
+		Kommando kdo = new Kommando();
+		kdo.setKommando("ansageFarbe");
+		kdo.addParameter(farbe);
 		client.sende(kdo);
 	}
 
