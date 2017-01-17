@@ -6,9 +6,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.karten.Karte;
 
 public class WattenClient implements Runnable {
 	Socket socket;
@@ -88,7 +91,11 @@ public class WattenClient implements Runnable {
 			clientGUI.ausgabe((int) kdo.getParameter().get(0), kdo.getParameter().get(1).toString());
 		}
 		if (kdo.getKommando().equals("sendeHandkarten")) {
-			// TODO
+			List<Karte> hand = new ArrayList<>();
+			for (Serializable p : kdo.getParameter()) {
+				hand.add((Karte) p);
+			}
+			clientGUI.gibHandkarten(hand);
 		}
 		if (kdo.getKommando().equals("sendeID")) {
 			clientGUI.setId((int) kdo.getParameter().get(0));

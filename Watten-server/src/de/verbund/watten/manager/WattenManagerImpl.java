@@ -6,6 +6,7 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.server.Verbindung;
 import de.verbund.watten.server.WattenServer;
 import de.verbund.watten.spiel.Spiel;
 import de.verbund.watten.spieler.Spieler;
@@ -43,6 +44,17 @@ public class WattenManagerImpl implements WattenManager {
 	public void sendeHandkarten() {
 		for (Spieler s : spiel.getSpieler()) {
 			List<Karte> hand = s.getHand();
+			int id = s.getId();
+			Kommando kdo = new Kommando();
+			kdo.setKommando("sendeHandkarten");
+			for (Karte k : hand) {
+				kdo.addParameter(k);
+			}
+			for (Verbindung v : server.getVerbindungen()) {
+				if (v.getId() == id) {
+					v.sende(kdo);
+				}
+			}
 		}
 	}
 
@@ -51,7 +63,6 @@ public class WattenManagerImpl implements WattenManager {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
 			spiel.teileAus();
-			sendeHandkarten();
 			Kommando kdo = Hilfe.getMeldungKommando(3, "Spieler gefunden. Spiel startet.");
 			server.sendeAnAlle(kdo);
 		} else {

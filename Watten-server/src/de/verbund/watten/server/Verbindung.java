@@ -127,4 +127,9 @@ public class Verbindung implements Runnable {
 			e.printStackTrace();
 		}
 	}
+
+	public int getId() {
+		return id;
+	}
+
 }
