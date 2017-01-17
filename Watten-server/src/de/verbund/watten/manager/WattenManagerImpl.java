@@ -72,11 +72,13 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void entferneSpieler(int id) {
+		Spieler sp = null;
 		for (Spieler s : spiel.getSpieler()) {
 			if (s.getId() == id) {
-				spiel.getSpieler().remove(s);
+				sp = s;
 			}
 		}
+		spiel.getSpieler().remove(sp);
 	}
 
 }
