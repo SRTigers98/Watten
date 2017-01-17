@@ -69,6 +69,7 @@ public class Spielfenster {
 	public Spielfenster(String name1) {
 		lblName1 = new JLabel(name1 + ":");
 		initialize();
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		frame.setVisible(true);
 	}
 
