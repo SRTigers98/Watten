@@ -136,7 +136,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelWins2.add(getLblName2());
 			panelWins2.add(getLblWins2());
@@ -158,7 +163,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 
 			}
 			panelHand2.add(getLblSP2K1());
@@ -184,7 +194,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelStich2.add(getLblStich2());
 			panelStich2.add(getLblAnzStiche2());
@@ -206,7 +221,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelWins1.add(getLblName1());
 			panelWins1.add(getLblWins1());
@@ -228,7 +248,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelHand1.add(getLblSP1K1());
 			panelHand1.add(getLblSP1K2());
@@ -253,7 +278,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelStich1.add(getLblStich1());
 			panelStich1.add(getLblAnzStiche1());
@@ -275,7 +305,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelFeld.setLayout(new BorderLayout(0, 0));
 			panelFeld.add(getPanel_1_3(), BorderLayout.NORTH);
@@ -298,7 +333,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelKarte2.add(getLblKsp());
 		}
@@ -319,7 +359,12 @@ public class Spielfenster implements ClientGUI {
 					}
 				};
 			} catch (IOException e1) {
-				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				if (meldung == null) {
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+				}
 			}
 			panelKarte1.add(getLblKsp_1());
 		}
@@ -476,7 +521,12 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void ausgabe(int art, String message) {
-		meldung = new Meldung(art, message);
+		if (meldung == null) {
+			meldung = new Meldung(art, message);
+		} else {
+			meldung.terminate();
+			meldung = new Meldung(art, message);
+		}
 	}
 
 	@Override
@@ -491,7 +541,12 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
 		} catch (IOException e) {
-			meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+			if (meldung == null) {
+				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(2, "HAndkarten können nicht angezeigt werden!");
+			}
 		}
 
 	}

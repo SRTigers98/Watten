@@ -286,4 +286,8 @@ public class Meldung {
 		}
 		return btnSchließen;
 	}
+
+	public void terminate() {
+		frame.dispose();
+	}
 }
