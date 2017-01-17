@@ -13,8 +13,8 @@ public class WattenManagerImpl implements WattenManager {
 	private Spiel spiel;
 	private List<Integer> ids;
 
-	public WattenManagerImpl() {
-		server = new WattenServer();
+	public WattenManagerImpl(WattenServer server) {
+		this.server = server;
 		spiel = new Spiel();
 	}
 
