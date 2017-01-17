@@ -25,14 +25,14 @@ public class Kartendeck {
 	}
 
 	private void setzeSchlaege() {
-		schlaege[0] = "7";
-		schlaege[1] = "8";
-		schlaege[2] = "9";
-		schlaege[3] = "10";
-		schlaege[4] = "Unter";
-		schlaege[5] = "Ober";
-		schlaege[6] = "Koenig";
-		schlaege[7] = "Sau";
+		schlaege[0] = "_7";
+		schlaege[1] = "_8";
+		schlaege[2] = "_9";
+		schlaege[3] = "_10";
+		schlaege[4] = "_Unter";
+		schlaege[5] = "_Ober";
+		schlaege[6] = "_Koenig";
+		schlaege[7] = "_Sau";
 	}
 
 	private void setzeFarben() {

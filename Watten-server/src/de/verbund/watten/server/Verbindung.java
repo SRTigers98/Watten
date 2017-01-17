@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.net.Socket;
 
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.spieler.Spieler;
 
 public class Verbindung implements Runnable {
 
@@ -63,7 +64,6 @@ public class Verbindung implements Runnable {
 	}
 
 	private Serializable verarbeite(Serializable gesendet) {
-
 		Kommando kdo = null;
 		if (gesendet instanceof Kommando) {
 			kdo = (Kommando) gesendet;
@@ -75,15 +75,15 @@ public class Verbindung implements Runnable {
 		if (kdo.getKommando().equals("beende")) {
 			ok = false;
 		}
-		if (kdo.getKommando().equals("text")) {
-			// socketServer.sendeAnAlle(kdo);
+		if (kdo.getKommando().equals("setzeName")) {
+			// TODO Spieler erzeugen
+			Spieler spieler = new Spieler(kdo.getParameter().get(0).toString());
 		}
 
 		return gesendet;
 	}
 
 	public void beende() {
-		System.out.println("sterbe....");
 		Kommando kdo = new Kommando();
 		kdo.setKommando("beende");
 		try {
