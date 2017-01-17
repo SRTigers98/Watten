@@ -290,4 +290,5 @@ public class Meldung {
 	public void terminate() {
 		frame.dispose();
 	}
+
 }
