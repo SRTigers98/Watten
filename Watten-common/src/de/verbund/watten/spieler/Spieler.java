@@ -12,6 +12,7 @@ public class Spieler {
 	private List<Karte> hand;
 	private int stiche;
 	private int punkte;
+	private Karte gespielt;
 
 	public Spieler() {
 		// default-Konstruktor
@@ -61,6 +62,14 @@ public class Spieler {
 
 	public void setPunkte(int punkte) {
 		this.punkte = punkte;
+	}
+
+	public Karte getGespielt() {
+		return gespielt;
+	}
+
+	public void setGespielt(Karte gespielt) {
+		this.gespielt = gespielt;
 	}
 
 }
