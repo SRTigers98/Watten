@@ -12,6 +12,7 @@ import de.verbund.watten.common.Kommando;
 public class WattenServer implements Runnable {
 
 	private boolean ok = true;
+	private boolean run = true;
 
 	// neu 1:n: Die Liste f�r die Verbindungen
 	private List<Verbindung> verbindungen;
@@ -46,6 +47,7 @@ public class WattenServer implements Runnable {
 			Verbindung v = (Verbindung) verbindungen.get(i);
 			v.beende();
 		}
+		run = false;
 	}
 
 	public void sendePingAnAlle() {
@@ -64,4 +66,9 @@ public class WattenServer implements Runnable {
 		}
 
 	}
+
+	public boolean isRun() {
+		return run;
+	}
+
 }

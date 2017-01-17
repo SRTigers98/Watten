@@ -63,7 +63,6 @@ public class Verbindung implements Runnable {
 	}
 
 	private Serializable verarbeite(Serializable gesendet) {
-
 		Kommando kdo = null;
 		if (gesendet instanceof Kommando) {
 			kdo = (Kommando) gesendet;
@@ -75,15 +74,14 @@ public class Verbindung implements Runnable {
 		if (kdo.getKommando().equals("beende")) {
 			ok = false;
 		}
-		if (kdo.getKommando().equals("text")) {
-			// socketServer.sendeAnAlle(kdo);
+		if (kdo.getKommando().equals("setzeName")) {
+			// TODO Spieler erzeugen
 		}
 
 		return gesendet;
 	}
 
 	public void beende() {
-		System.out.println("sterbe....");
 		Kommando kdo = new Kommando();
 		kdo.setKommando("beende");
 		try {

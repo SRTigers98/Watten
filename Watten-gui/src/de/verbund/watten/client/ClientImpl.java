@@ -25,7 +25,7 @@ public class ClientImpl implements Client {
 
 	public void sendeKarte(Karte karte) {
 		Kommando kdo = new Kommando();
-		kdo.setKommando("spieltKarte");
+		kdo.setKommando("spieleKarte");
 		kdo.addParameter(karte);
 		client.sende(kdo);
 	}
