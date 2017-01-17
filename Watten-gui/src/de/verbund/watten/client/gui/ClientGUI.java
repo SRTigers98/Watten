@@ -38,4 +38,11 @@ public interface ClientGUI {
 	 */
 	public void setClient(Client client);
 
+	/**
+	 * Setzt die Id des Clients fest
+	 * 
+	 * @param id
+	 */
+	public void setId(int id);
+
 }
