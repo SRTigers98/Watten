@@ -1,6 +1,8 @@
 package de.verbund.watten.manager;
 
+import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
+import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.server.WattenServer;
 import de.verbund.watten.spiel.Spiel;
@@ -39,7 +41,8 @@ public class WattenManagerImpl implements WattenManager {
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
-			System.out.println("Start");
+			Kommando kdo = Hilfe.getMeldungKommando(3, "Spieler gefunden. Spiel startet.");
+			server.sendeAnAlle(kdo);
 		} else {
 			throw new WattenException("Noch nicht genügend Spieler vorhanden!");
 		}

@@ -9,6 +9,7 @@ import java.net.SocketException;
 
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
+import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.spieler.Spieler;
 
@@ -94,13 +95,9 @@ public class Verbindung implements Runnable {
 			try {
 				socketServer.getManager().starteSpiel();
 			} catch (WattenException e) {
-				Kommando kdo3 = new Kommando();
-				kdo3.setKommando("txt");
-				kdo3.addParameter(2);
-				kdo3.addParameter(e.getMessage());
+				Kommando kdo3 = Hilfe.getMeldungKommando(3, e.getMessage());
 				sende(kdo3);
 			}
-			System.out.println(spieler.getName());
 		}
 		if (kdo.getKommando().equals("spieleKarte")) {
 			int id = (int) kdo.getParameter().get(0);
