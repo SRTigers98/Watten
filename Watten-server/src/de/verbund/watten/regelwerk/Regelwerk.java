@@ -95,22 +95,28 @@ public class Regelwerk {
 	}
 
 	public int wertAus(Karte sp1, Karte sp2) {
-		// TODO Auto-generated method stub
+		// TODO Wer hat zuerst gespielt?
 		int gewinner = 0;
 		int valueSp1 = regelwerk.get(sp1.getFarbe()+sp1.getSchlag());
 		int valueSp2 = regelwerk.get(sp2.getFarbe()+sp2.getSchlag());
-		if (valueSp1 > 50){
-			if (valueSp1 > valueSp2){
-				gewinner = SPIELER_1;
-			}
-			if (valueSp1 > valueSp2){
-				gewinner = SPIELER_1;
-			}
-		}
+		gewinner = werteTrumpf(gewinner, valueSp1, valueSp2);
 			
 			
 		//SPIELER_1 = 1;
 		//SPIELER_2 = 2;
+		
+		return gewinner;
+	}
+
+	private int werteTrumpf(int gewinner, int valueSp1, int valueSp2) {
+		if (valueSp1 > 50 || valueSp2 > 50){
+			if (valueSp1 > valueSp2){
+				gewinner = SPIELER_1;
+			}
+			if (valueSp2 > valueSp2){
+				gewinner = SPIELER_2;
+			}
+		}
 		
 		return gewinner;
 	}
