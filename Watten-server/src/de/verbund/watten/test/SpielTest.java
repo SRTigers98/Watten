@@ -85,5 +85,19 @@ public class SpielTest {
 			fail("Deckgröße falsch!");
 		}
 	}
+	
+	@Test
+	public void testSchlag(){
+		Spiel spiel = new Spiel();
+		spiel.getSpieler();
+		List<Karte> deck = spiel.getDeck();
+		
+		spiel.setFarbe("Schelln");
+		spiel.setSchlag("_10");
+		spiel.getRegeln();
+		
+		
+	
+	}
 
 }
