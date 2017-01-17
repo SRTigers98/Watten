@@ -6,16 +6,14 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
-
+import de.verbund.watten.client.ClientImpl;
 import de.verbund.watten.hauptfenster.Spielfenster;
-
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -28,6 +26,7 @@ public class Hauptmenue {
 	private JTextField txtName;
 	private JLabel lblFehlermeldung;
 	private JButton btnGo;
+	private ClientImpl server = new ClientImpl();
 
 	/**
 	 * Create the application.
@@ -126,7 +125,8 @@ public class Hauptmenue {
 						if (txtName.getText().isEmpty() || txtName.getText().equals("")) {
 							lblFehlermeldung.setText("Bitte geben Sie einen Namen an.");
 						} else {
-							new Spielfenster(txtName.getText());
+							server.sendeName(txtName.getText());
+							new Spielfenster(txtName.getText(), server);
 							frame.dispose();
 						}
 					}
