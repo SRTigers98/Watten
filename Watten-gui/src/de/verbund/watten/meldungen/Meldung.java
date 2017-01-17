@@ -3,18 +3,16 @@ package de.verbund.watten.meldungen;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
-
 import de.verbund.watten.startfenster.Hauptmenue;
-
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.awt.event.ActionEvent;
@@ -36,11 +34,35 @@ public class Meldung {
 	private JButton btnSchließen;
 
 	/**
-	 * Create the application.
+	 * Test Launch der Fenster Normaler Aufruf über den Kontruktor
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Meldung window = new Meldung(3, "Test");
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Erstellt ein Fenster welches einen Hinweis, eine Warnung oder einen
+	 * Fehler ausgibt.
 	 * 
-	 * @param art:
-	 *            1- Es wird eine Warnung ausgegeben 2- Es wird ein Fehler
-	 *            ausgegeben 3- Es wird ein Hinweis ausgegeben
+	 * @param art
+	 *            <br>
+	 *            1- Es wird eine Warnung ausgegeben <br>
+	 *            2- Es wird ein Fehler ausgegeben <br>
+	 *            3- Es wird ein Hinweis ausgegeben <br>
+	 * 
+	 * @param meldung
+	 *            <br>
+	 *            Die Nachricht die in der Meldung wiedergegeben wird.
+	 * 
 	 */
 	public Meldung(int art, String meldung) {
 		initialize();
@@ -60,19 +82,30 @@ public class Meldung {
 		}
 	}
 
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 300, 200);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+	}
+
 	private void initHinweis(String txt) {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().add(getLowerPanelHinweis(), BorderLayout.SOUTH);
 		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setTitle("Hinweis");
 		try {
-			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/hinweis.png");
+			URL urlLogo = getClass().getClassLoader()
+					.getResource("de/verbund/watten/meldungen/watten_notification.png");
 			Image img = ImageIO.read(urlLogo);
 			frame.setIconImage(img);
 		} catch (Exception e) {
 		}
 		if (!txt.isEmpty())
-			lblMeldung.setText(txt);
+			textPane.setText(txt);
 
 	}
 
@@ -82,12 +115,12 @@ public class Meldung {
 		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setTitle("Fehler");
 		try {
-			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/fehler.png");
+			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/watten_error.png");
 			Image img = ImageIO.read(urlLogo);
 			frame.setIconImage(img);
 		} catch (Exception e) {
 		}
-		lblMeldung.setText(txt);
+		textPane.setText(txt);
 
 	}
 
@@ -97,23 +130,13 @@ public class Meldung {
 		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setTitle("Warnung");
 		try {
-			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/warnung.png");
+			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/meldungen/watten_warning.png");
 			Image img = ImageIO.read(urlLogo);
 			frame.setIconImage(img);
 		} catch (Exception e) {
 		}
-		lblMeldung.setText(txt);
+		textPane.setText(txt);
 
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 300, 300);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
 	}
 
 	private JPanel getUpperPanel() {
@@ -132,6 +155,7 @@ public class Meldung {
 			gbc_lblMeldung.gridy = 0;
 			upper_panel.add(getLblMeldung(), gbc_lblMeldung);
 			GridBagConstraints gbc_textPane = new GridBagConstraints();
+			gbc_textPane.insets = new Insets(10, 10, 10, 10);
 			gbc_textPane.fill = GridBagConstraints.BOTH;
 			gbc_textPane.gridx = 0;
 			gbc_textPane.gridy = 2;
@@ -150,6 +174,7 @@ public class Meldung {
 	private JTextPane getTextPane() {
 		if (textPane == null) {
 			textPane = new JTextPane();
+			textPane.setEditable(false);
 		}
 		return textPane;
 	}
@@ -164,7 +189,7 @@ public class Meldung {
 			gbl_lower_panel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 			lower_panel_warnung.setLayout(gbl_lower_panel);
 			GridBagConstraints gbc_btnOk = new GridBagConstraints();
-			gbc_btnOk.anchor = GridBagConstraints.SOUTH;
+			gbc_btnOk.insets = new Insets(0, 90, 5, 90);
 			gbc_btnOk.gridwidth = 12;
 			gbc_btnOk.gridx = 0;
 			gbc_btnOk.gridy = 0;
@@ -179,7 +204,6 @@ public class Meldung {
 			btnVerstanden.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnVerstanden) {
-						new Hauptmenue();
 						frame.dispose();
 					}
 				}
@@ -199,6 +223,7 @@ public class Meldung {
 			gbl_panel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 			lower_panel_hinweis.setLayout(gbl_panel);
 			GridBagConstraints gbc_btnOk = new GridBagConstraints();
+			gbc_btnOk.insets = new Insets(0, 125, 5, 125);
 			gbc_btnOk.gridwidth = 11;
 			gbc_btnOk.gridx = 0;
 			gbc_btnOk.gridy = 0;
@@ -232,9 +257,8 @@ public class Meldung {
 			gbl_lower_panel_fehler.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 			lower_panel_fehler.setLayout(gbl_lower_panel_fehler);
 			GridBagConstraints gbc_btnSchließen = new GridBagConstraints();
-			gbc_btnSchließen.anchor = GridBagConstraints.SOUTH;
 			gbc_btnSchließen.gridwidth = 11;
-			gbc_btnSchließen.insets = new Insets(0, 0, 0, 5);
+			gbc_btnSchließen.insets = new Insets(0, 125, 5, 125);
 			gbc_btnSchließen.gridx = 0;
 			gbc_btnSchließen.gridy = 0;
 			lower_panel_fehler.add(getBtnSchließen(), gbc_btnSchließen);
