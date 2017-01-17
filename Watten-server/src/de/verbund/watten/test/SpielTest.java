@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.regelwerk.Regelwerk;
 import de.verbund.watten.spiel.Spiel;
 import de.verbund.watten.spieler.Spieler;
 
@@ -20,7 +21,9 @@ public class SpielTest {
 		System.out.println("Starte das Testen(Achte auf static!)");
 
 		sp1 = new Spieler();
+		
 		sp2 = new Spieler();
+		
 
 	}
 
@@ -94,8 +97,14 @@ public class SpielTest {
 		
 		spiel.setFarbe("Schelln");
 		spiel.setSchlag("_10");
-		spiel.getRegeln();
+		Regelwerk rules = spiel.getRegeln();
 		
+		sp1.setGespielt(new Karte("Herz", "_Koenig"));
+		sp2.setGespielt(new Karte("Schelln", "_Koenig"));
+		
+		rules.wertAus(sp1.getGespielt(), sp2.getGespielt());
+
+
 		
 	
 	}
