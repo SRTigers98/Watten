@@ -1,6 +1,6 @@
 Aufgabenverteilung:
-	- Fabian: ServiceTest & IntegrationTest(*-server)
-	- Benjamin: Service & Integration(*-server)
+	- Fabian: Service & ServiceTest(*-server)
+	- Benjamin: Service & Kommunikation(*-server)
 	- Marc: GUI(*-gui)
 	- Sven: GUI(*-gui)
 	- Benedikt: Design(*-gui)
@@ -12,3 +12,5 @@ Das Dateiverwaltung-Team versucht, Images für die Karten bereitzustellen.
 ScrumDaily 10:30: Alle kommen mit ihren Aufgaben zurecht. Die Client-Server-Verbindung nimmt Gestalt an und die GUIs für die
 Clients sind optisch fast fertig und werden nach und nach mit Inhalt gefüllt. Im Service wird das Refelwerk entwickelt und
 getestet.
+
+Erste Kommunikation zwischen Client und Server funktioniert.

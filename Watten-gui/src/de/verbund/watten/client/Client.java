@@ -17,20 +17,20 @@ public interface Client {
 	 * 
 	 * @param karte
 	 */
-	public void sendeKarte(int id, Karte karte);
+	public void sendeKarte(Karte karte);
 
 	/**
 	 * Sendet den angesagten Schlag an den Server
 	 * 
 	 * @param schlag
 	 */
-	public void sendeSchlag(int id, String schlag);
+	public void sendeSchlag(String schlag);
 
 	/**
 	 * Sendet die angesagte Farbe an den Server
 	 * 
 	 * @param farbe
 	 */
-	public void sendeFarbe(int id, String farbe);
+	public void sendeFarbe(String farbe);
 
 }

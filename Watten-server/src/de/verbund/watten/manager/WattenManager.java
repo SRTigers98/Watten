@@ -10,6 +10,10 @@ public interface WattenManager {
 
 	public void spieleKarte(int id, Karte karte);
 
+	public void sendeHandkarten();
+
 	public void starteSpiel() throws WattenException;
+
+	public void entferneSpieler(int id);
 
 }
