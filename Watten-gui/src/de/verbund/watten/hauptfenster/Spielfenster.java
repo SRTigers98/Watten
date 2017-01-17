@@ -551,6 +551,16 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K3.setIcon(back);
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
+			Karte karte1 = handkarten.get(0);
+			lblSP1K1.setIcon(iconHolen(karte1));
+			Karte karte2 = handkarten.get(1);
+			lblSP1K2 .setIcon(iconHolen(karte2));
+			Karte karte3 = handkarten.get(2);
+			lblSP1K3.setIcon(iconHolen(karte3));
+			Karte karte4 = handkarten.get(3);
+			lblSP1K4.setIcon(iconHolen(karte4));
+			Karte karte5 = handkarten.get(4);
+			lblSP1K5.setIcon(iconHolen(karte5));
 		} catch (IOException e) {
 			if (meldung == null) {
 				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
@@ -560,6 +570,25 @@ public class Spielfenster implements ClientGUI {
 			}
 		}
 
+	}
+	
+	private Icon iconHolen(Karte karte){
+		String schlag = karte.getSchlag();
+		String farbe = karte.getFarbe();
+		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/karten/"+farbe+schlag);
+		try {
+			Image imageIcon = ImageIO.read(urlIcon);
+			Icon icon = new ImageIcon(imageIcon);
+			return icon;
+		} catch (IOException e) {
+			if (meldung == null) {
+				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+			}
+		}
+		return null;
 	}
 
 	@Override
