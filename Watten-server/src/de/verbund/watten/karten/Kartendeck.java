@@ -3,8 +3,6 @@ package de.verbund.watten.karten;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.verbund.watten.karten.Karte;
-
 public class Kartendeck {
 
 	private String[] schlaege;
@@ -45,7 +43,7 @@ public class Kartendeck {
 	private void erzeugeDeck() {
 		for (String f : farben) {
 			for (String s : schlaege) {
-				deck.add(new Karte(s, f));
+				deck.add(new Karte(f, s));
 			}
 		}
 	}

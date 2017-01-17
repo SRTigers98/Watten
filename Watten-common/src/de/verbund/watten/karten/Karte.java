@@ -13,7 +13,7 @@ public class Karte implements Serializable {
 		// default-Konstruktor
 	}
 
-	public Karte(String schlag, String farbe) {
+	public Karte(String farbe, String schlag) {
 		this.schlag = schlag;
 		this.farbe = farbe;
 	}
