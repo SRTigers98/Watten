@@ -25,9 +25,7 @@ public class WattenClient implements Runnable {
 			// Erzeuge Ausgabestrom
 			out = new ObjectOutputStream(socket.getOutputStream());
 			// Erzeuge Eingabestrom
-
 			in = new ObjectInputStream(socket.getInputStream());
-
 			// Thread erzeugen und starten
 			Thread t = new Thread(this);
 			t.start();
@@ -37,7 +35,6 @@ public class WattenClient implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public WattenClient() {
@@ -70,7 +67,6 @@ public class WattenClient implements Runnable {
 		// Erzeuge Ausgabestrom zum Client
 		while (ok) {
 			// warte auf Input
-
 			try {
 				// es muss Serialisierbar sein
 				Serializable gesendet = (Serializable) in.readObject();
@@ -84,8 +80,7 @@ public class WattenClient implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		clientGUI.ausgabe("...beendet");
-
+		// clientGUI.ausgabe("...beendet");
 	}
 
 	private void verarbeite(Serializable gesendet) {
@@ -93,7 +88,5 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals("text")) {
 			clientGUI.ausgabe(kdo.getParameter().get(0).toString());
 		}
-		// ...
-
 	}
 }
