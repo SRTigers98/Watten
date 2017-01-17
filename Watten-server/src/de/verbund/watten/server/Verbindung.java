@@ -79,7 +79,7 @@ public class Verbindung implements Runnable {
 		if (kdo.getKommando().equals("setzeName")) {
 			// TODO Spieler erzeugen
 			int id = socketServer.getManager().generateId();
-			Spieler spieler = new Spieler(0, kdo.getParameter().get(0).toString());
+			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
 			socketServer.getManager().addSpieler(spieler);
 		}
 		if (kdo.getKommando().equals("spieleKarte")) {
