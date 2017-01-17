@@ -5,8 +5,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.net.SocketException;
 
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.spieler.Spieler;
 
@@ -43,6 +45,10 @@ public class Verbindung implements Runnable {
 					// out.writeObject(returnObj);
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
+				} catch (SocketException s) {
+					// TODO
+					System.err.println("Connection reset");
+					ok = false;
 				}
 			}
 			// beenden
@@ -85,7 +91,16 @@ public class Verbindung implements Runnable {
 			kdo2.setKommando("sendeID");
 			kdo2.addParameter(id);
 			sende(kdo2);
-			System.out.println("Ping");
+			try {
+				socketServer.getManager().starteSpiel();
+			} catch (WattenException e) {
+				Kommando kdo3 = new Kommando();
+				kdo3.setKommando("txt");
+				kdo3.addParameter(2);
+				kdo3.addParameter(e.getMessage());
+				sende(kdo3);
+			}
+			System.out.println(spieler.getName());
 		}
 		if (kdo.getKommando().equals("spieleKarte")) {
 			int id = (int) kdo.getParameter().get(0);

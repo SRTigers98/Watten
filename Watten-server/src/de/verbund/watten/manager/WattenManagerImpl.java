@@ -1,7 +1,6 @@
 package de.verbund.watten.manager;
 
-import java.util.List;
-
+import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.server.WattenServer;
 import de.verbund.watten.spiel.Spiel;
@@ -11,7 +10,6 @@ public class WattenManagerImpl implements WattenManager {
 
 	private WattenServer server;
 	private Spiel spiel;
-	private List<Integer> ids;
 
 	public WattenManagerImpl(WattenServer server) {
 		this.server = server;
@@ -28,14 +26,23 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void addSpieler(Spieler spieler) {
-		// TODO Auto-generated method stub
-
+		spiel.getSpieler().add(spieler);
 	}
 
 	@Override
 	public void spieleKarte(int id, Karte karte) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void starteSpiel() throws WattenException {
+		if (spiel.getSpieler().size() == 2) {
+			// starte Spiel
+			System.out.println("Start");
+		} else {
+			throw new WattenException("Noch nicht genügend Spieler vorhanden!");
+		}
 	}
 
 }
