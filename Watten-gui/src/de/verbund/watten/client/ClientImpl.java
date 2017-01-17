@@ -26,23 +26,25 @@ public class ClientImpl implements Client {
 	public void sendeKarte(int id, Karte karte) {
 		Kommando kdo = new Kommando();
 		kdo.setKommando("spieleKarte");
-		kdo.addParameter(karte);
 		kdo.addParameter(id);
+		kdo.addParameter(karte);
 		client.sende(kdo);
 	}
 
 	@Override
-	public void sendeSchlag(String schlag) {
+	public void sendeSchlag(int id, String schlag) {
 		Kommando kdo = new Kommando();
 		kdo.setKommando("ansageSchlag");
+		kdo.addParameter(id);
 		kdo.addParameter(schlag);
 		client.sende(kdo);
 	}
 
 	@Override
-	public void sendeFarbe(String farbe) {
+	public void sendeFarbe(int id, String farbe) {
 		Kommando kdo = new Kommando();
 		kdo.setKommando("ansageFarbe");
+		kdo.addParameter(id);
 		kdo.addParameter(farbe);
 		client.sende(kdo);
 	}

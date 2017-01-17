@@ -33,22 +33,9 @@ public class WattenManagerImpl implements WattenManager {
 	}
 
 	@Override
-	public void spieleKarte(Spieler spieler, Karte karte) {
+	public void spieleKarte(int id, Karte karte) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public int generateId() {
-		int id;
-		while (true) {
-			id = (int) ((Math.random() * 1000000) + 1);
-			if (!ids.contains(id)) {
-				break;
-			}
-		}
-		ids.add(id);
-		return id;
 	}
 
 }
