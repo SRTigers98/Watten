@@ -10,6 +10,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JSplitPane;
+
+import de.verbund.watten.client.ClientImpl;
+
 import javax.swing.JLabel;
 
 public class Spielfenster {
@@ -54,7 +57,8 @@ public class Spielfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Spielfenster window = new Spielfenster("Test");
+					ClientImpl server = new ClientImpl();
+					Spielfenster window = new Spielfenster("Test", server);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,9 +70,10 @@ public class Spielfenster {
 	/**
 	 * Create the application.
 	 */
-	public Spielfenster(String name1) {
+	public Spielfenster(String name1, ClientImpl client) {
 		lblName1 = new JLabel(name1 + ":");
 		initialize();
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		frame.setVisible(true);
 	}
 
