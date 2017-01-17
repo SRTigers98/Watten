@@ -1,6 +1,7 @@
 package de.verbund.watten.hauptfenster;
 
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
@@ -78,9 +79,26 @@ public class Spielfenster implements ClientGUI{
 	public Spielfenster(String name1) {
 		lblName1 = new JLabel(name1 + ":");
 		initialize();
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		hintergrundLaden();
 		frame.setVisible(true);
 		gibHandkarten(null);
+	}
+
+	@SuppressWarnings("serial")
+	private void hintergrundLaden() {
+		try {
+			URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+			Image imgTisch = ImageIO.read(urlTisch);
+			JPanel panelHintergrund = new JPanel() {
+				@Override
+				public void paintComponent(Graphics g) {
+					g.drawImage(imgTisch, 0, 0, null);
+				}
+			};
+		} catch (IOException e1) {
+			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+		}		
 	}
 
 	/**
@@ -320,18 +338,20 @@ public class Spielfenster implements ClientGUI{
 	}
 
 	@Override
-	public void gibHandkarten(List<Karte> handkarten) {
-		URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
-		Image img;
+	public void gibHandkarten(List<Karte> handkarten){
 		try {
-			img = ImageIO.read(urlLogo);
+			URL urlBack = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
+			Image img = ImageIO.read(urlBack);
 			Icon back = new ImageIcon(img);
 			lblSP2K1.setIcon(back);
+			lblSP2K2.setIcon(back);
+			lblSP2K3.setIcon(back);
+			lblSP2K4.setIcon(back);
+			lblSP2K5.setIcon(back);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			new Meldung(2, "Handkarten können nicht angezeigt werden!");
 		}
-		
+
 	}
 
 	@Override
