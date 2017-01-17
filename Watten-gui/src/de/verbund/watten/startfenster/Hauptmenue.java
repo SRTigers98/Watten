@@ -30,7 +30,7 @@ public class Hauptmenue {
 	private JTextField txtName;
 	private JLabel lblFehlermeldung;
 	private JButton btnGo;
-	private ClientImpl server = new ClientImpl(null);
+	private ClientImpl server = new ClientImpl();
 
 	/**
 	 * Create the application.
