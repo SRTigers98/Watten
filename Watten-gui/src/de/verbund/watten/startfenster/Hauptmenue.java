@@ -6,18 +6,14 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
-
 import de.verbund.watten.client.ClientImpl;
-import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.hauptfenster.Spielfenster;
-
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
