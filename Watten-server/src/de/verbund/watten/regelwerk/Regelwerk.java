@@ -70,6 +70,7 @@ public class Regelwerk {
 			regelwerk.put(farbe + "_Sau", 67);
 		}
 
+		//restl. Farben
 		int value = 20;
 		verteileNiedrigePrio("_7", value);
 		verteileNiedrigePrio("_8", value);
@@ -95,11 +96,23 @@ public class Regelwerk {
 
 	public int wertAus(Karte sp1, Karte sp2) {
 		// TODO Auto-generated method stub
-		
+		int gewinner = 0;
+		int valueSp1 = regelwerk.get(sp1.getFarbe()+sp1.getSchlag());
+		int valueSp2 = regelwerk.get(sp2.getFarbe()+sp2.getSchlag());
+		if (valueSp1 > 50){
+			if (valueSp1 > valueSp2){
+				gewinner = SPIELER_1;
+			}
+			if (valueSp1 > valueSp2){
+				gewinner = SPIELER_1;
+			}
+		}
+			
+			
 		//SPIELER_1 = 1;
 		//SPIELER_2 = 2;
 		
-		return 0;
+		return gewinner;
 	}
 
 }

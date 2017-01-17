@@ -54,7 +54,7 @@ public class Spiel {
 	public Regelwerk getRegeln() {
 		if (regeln == null) {
 			// Schlag: _7 , _8 , _9 , _10 , _Unter , _Ober , _Koenig , _Sau
-			regeln = new Regelwerk(farbe, schlag);
+			//regeln = new Regelwerk(farbe, schlag);
 		}
 		return regeln;
 	}
