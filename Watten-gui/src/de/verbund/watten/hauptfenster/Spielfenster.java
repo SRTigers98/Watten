@@ -1,8 +1,14 @@
 package de.verbund.watten.hauptfenster;
 
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -74,6 +80,7 @@ public class Spielfenster implements ClientGUI{
 		initialize();
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		frame.setVisible(true);
+		gibHandkarten(null);
 	}
 
 	/**
@@ -314,7 +321,16 @@ public class Spielfenster implements ClientGUI{
 
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
-		// TODO Auto-generated method stub
+		URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
+		Image img;
+		try {
+			img = ImageIO.read(urlLogo);
+			Icon back = new ImageIcon(img);
+			lblSP2K1.setIcon(back);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
