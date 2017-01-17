@@ -529,6 +529,17 @@ public class Spielfenster implements ClientGUI {
 		}
 	}
 
+	private JPanel getPanelTisch() {
+		if (panelTisch == null) {
+			panelTisch = new JPanel();
+			panelTisch.setLayout(new BorderLayout(0, 0));
+			panelTisch.add(getPanelFeld(), BorderLayout.CENTER);
+			panelTisch.add(getPanelSP1(), BorderLayout.SOUTH);
+			panelTisch.add(getPanelSP2(), BorderLayout.NORTH);
+		}
+		return panelTisch;
+	}
+	
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
 		try {
@@ -554,17 +565,6 @@ public class Spielfenster implements ClientGUI {
 	@Override
 	public void setClient(Client client) {
 		this.client = client;
-	}
-
-	private JPanel getPanelTisch() {
-		if (panelTisch == null) {
-			panelTisch = new JPanel();
-			panelTisch.setLayout(new BorderLayout(0, 0));
-			panelTisch.add(getPanelFeld(), BorderLayout.CENTER);
-			panelTisch.add(getPanelSP1(), BorderLayout.SOUTH);
-			panelTisch.add(getPanelSP2(), BorderLayout.NORTH);
-		}
-		return panelTisch;
 	}
 
 	@Override
