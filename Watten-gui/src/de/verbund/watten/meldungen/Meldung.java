@@ -63,6 +63,12 @@ public class Meldung {
 	 *            <br>
 	 *            Die Nachricht die in der Meldung wiedergegeben wird.
 	 * 
+	 * @return Durch klicken der Buttons unten auf den Meldungen passieren
+	 *         folgende Dinge:<br>
+	 *         - Bei einer Warnung oder einem Hinweis verschwindet das
+	 *         Fenster.<br>
+	 *         - Bei einem Fehler wird man zum Hauptmenü weitergeleitet.
+	 * 
 	 */
 	public Meldung(int art, String meldung) {
 		initialize();
