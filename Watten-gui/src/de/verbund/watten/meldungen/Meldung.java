@@ -13,8 +13,37 @@ public class Meldung {
 	/**
 	 * Create the application.
 	 */
-	public Meldung() {
+	public Meldung(int art) {
 		initialize();
+		switch (art) {
+		// Warnung
+		case 1:
+			initWarnung();
+			break;
+		// Fehler
+		case 2:
+			initFehler();
+			break;
+		// Hinweis
+		case 3:
+			initHinweis();
+			break;
+		}
+	}
+
+	private void initHinweis() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void initFehler() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void initWarnung() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/**
@@ -28,6 +57,7 @@ public class Meldung {
 		frame.getContentPane().add(getLower_panel(), BorderLayout.SOUTH);
 		frame.getContentPane().add(getUpper_panel(), BorderLayout.CENTER);
 		frame.setVisible(true);
+		// Warnung
 	}
 
 	private JPanel getLower_panel() {
