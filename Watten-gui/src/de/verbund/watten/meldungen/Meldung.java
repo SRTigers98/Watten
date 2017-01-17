@@ -34,13 +34,13 @@ public class Meldung {
 	private JButton btnSchließen;
 
 	/**
-	 * Launch the application.
+	 * Test Launch der Fenster Normaler Aufruf über den Kontruktor
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Meldung window = new Meldung(1, "Test");
+					Meldung window = new Meldung(3, "Test");
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,6 +80,16 @@ public class Meldung {
 			initHinweis(meldung);
 			break;
 		}
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 300, 200);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 
 	private void initHinweis(String txt) {
@@ -129,16 +139,6 @@ public class Meldung {
 
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 300, 300);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-	}
-
 	private JPanel getUpperPanel() {
 		if (upper_panel == null) {
 			upper_panel = new JPanel();
@@ -155,6 +155,7 @@ public class Meldung {
 			gbc_lblMeldung.gridy = 0;
 			upper_panel.add(getLblMeldung(), gbc_lblMeldung);
 			GridBagConstraints gbc_textPane = new GridBagConstraints();
+			gbc_textPane.insets = new Insets(10, 10, 10, 10);
 			gbc_textPane.fill = GridBagConstraints.BOTH;
 			gbc_textPane.gridx = 0;
 			gbc_textPane.gridy = 2;
@@ -188,7 +189,7 @@ public class Meldung {
 			gbl_lower_panel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 			lower_panel_warnung.setLayout(gbl_lower_panel);
 			GridBagConstraints gbc_btnOk = new GridBagConstraints();
-			gbc_btnOk.anchor = GridBagConstraints.SOUTH;
+			gbc_btnOk.insets = new Insets(0, 90, 5, 90);
 			gbc_btnOk.gridwidth = 12;
 			gbc_btnOk.gridx = 0;
 			gbc_btnOk.gridy = 0;
@@ -222,6 +223,7 @@ public class Meldung {
 			gbl_panel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 			lower_panel_hinweis.setLayout(gbl_panel);
 			GridBagConstraints gbc_btnOk = new GridBagConstraints();
+			gbc_btnOk.insets = new Insets(0, 125, 5, 125);
 			gbc_btnOk.gridwidth = 11;
 			gbc_btnOk.gridx = 0;
 			gbc_btnOk.gridy = 0;
@@ -255,9 +257,8 @@ public class Meldung {
 			gbl_lower_panel_fehler.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 			lower_panel_fehler.setLayout(gbl_lower_panel_fehler);
 			GridBagConstraints gbc_btnSchließen = new GridBagConstraints();
-			gbc_btnSchließen.anchor = GridBagConstraints.SOUTH;
 			gbc_btnSchließen.gridwidth = 11;
-			gbc_btnSchließen.insets = new Insets(0, 0, 0, 5);
+			gbc_btnSchließen.insets = new Insets(0, 125, 5, 125);
 			gbc_btnSchließen.gridx = 0;
 			gbc_btnSchließen.gridy = 0;
 			lower_panel_fehler.add(getBtnSchließen(), gbc_btnSchließen);
