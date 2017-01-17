@@ -1,5 +1,7 @@
 package de.verbund.watten.client;
 
+import de.verbund.watten.karten.Karte;
+
 public interface Client {
 
 	/**
@@ -9,5 +11,12 @@ public interface Client {
 	 *            der zu übermittelnde Name des Spielers
 	 */
 	public void sendeName(String name);
+
+	/**
+	 * Sendet die ausgespielte Karte an den Server
+	 * 
+	 * @param karte
+	 */
+	public void sendeKarte(Karte karte);
 
 }

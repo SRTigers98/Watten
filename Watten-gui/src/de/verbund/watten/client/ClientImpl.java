@@ -1,6 +1,7 @@
 package de.verbund.watten.client;
 
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.karten.Karte;
 
 public class ClientImpl implements Client {
 
@@ -15,6 +16,13 @@ public class ClientImpl implements Client {
 		Kommando kdo = new Kommando();
 		kdo.setKommando("setzeName");
 		kdo.addParameter(name);
+		client.sende(kdo);
+	}
+
+	public void sendeKarte(Karte karte) {
+		Kommando kdo = new Kommando();
+		kdo.setKommando("spieltKarte");
+		kdo.addParameter(karte);
 		client.sende(kdo);
 	}
 
