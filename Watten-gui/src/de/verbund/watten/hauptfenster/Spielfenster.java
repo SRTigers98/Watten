@@ -57,8 +57,7 @@ public class Spielfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClientImpl server = new ClientImpl();
-					Spielfenster window = new Spielfenster("Test", server);
+					Spielfenster window = new Spielfenster("Test");
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
