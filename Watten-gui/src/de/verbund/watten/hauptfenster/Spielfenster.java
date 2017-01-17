@@ -24,7 +24,7 @@ import de.verbund.watten.spieler.Spieler;
 
 import javax.swing.JLabel;
 
-public class Spielfenster implements ClientGUI{
+public class Spielfenster implements ClientGUI {
 
 	private Client client;
 	private JFrame frame;
@@ -60,6 +60,7 @@ public class Spielfenster implements ClientGUI{
 	private JLabel lblKSP2;
 	private JLabel lblKSP1;
 	private JPanel panelTisch;
+	private Meldung meldung;
 
 	/**
 	 * Launch the application.
@@ -88,7 +89,6 @@ public class Spielfenster implements ClientGUI{
 		gibHandkarten(null);
 	}
 
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -110,6 +110,7 @@ public class Spielfenster implements ClientGUI{
 		}
 		return panelSP2;
 	}
+
 	private JPanel getPanelSP1() {
 		if (panelSP1 == null) {
 			panelSP1 = new JPanel();
@@ -120,41 +121,46 @@ public class Spielfenster implements ClientGUI{
 		}
 		return panelSP1;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanel_1() {
 		if (panelWins2 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelWins2 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelWins2 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelWins2.add(getLblName2());
 			panelWins2.add(getLblWins2());
 		}
 		return panelWins2;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanel_1_1() {
 		if (panelHand2 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelHand2 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelHand2 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+
+			}
 			panelHand2.add(getLblSP2K1());
 			panelHand2.add(getLblSP2K2());
 			panelHand2.add(getLblSP2K3());
@@ -163,61 +169,67 @@ public class Spielfenster implements ClientGUI{
 		}
 		return panelHand2;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanelStich2() {
 		if (panelStich2 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelStich2 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelStich2 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelStich2.add(getLblStich2());
 			panelStich2.add(getLblAnzStiche2());
 		}
 		return panelStich2;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanelWins1() {
 		if (panelWins1 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelWins1 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelWins1 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelWins1.add(getLblName1());
 			panelWins1.add(getLblWins1());
 		}
 		return panelWins1;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanel_1_2() {
 		if (panelHand1 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelHand1 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelHand1 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelHand1.add(getLblSP1K1());
 			panelHand1.add(getLblSP1K2());
 			panelHand1.add(getLblSP1K3());
@@ -226,85 +238,94 @@ public class Spielfenster implements ClientGUI{
 		}
 		return panelHand1;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanelStich1() {
 		if (panelStich1 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelStich1 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelStich1 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelStich1.add(getLblStich1());
 			panelStich1.add(getLblAnzStiche1());
 		}
 		return panelStich1;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanelFeld() {
 		if (panelFeld == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelFeld = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelFeld = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelFeld.setLayout(new BorderLayout(0, 0));
 			panelFeld.add(getPanel_1_3(), BorderLayout.NORTH);
 			panelFeld.add(getPanelKarte1(), BorderLayout.SOUTH);
 		}
 		return panelFeld;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanel_1_3() {
 		if (panelKarte2 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelKarte2 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelKarte2 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelKarte2.add(getLblKsp());
 		}
 		return panelKarte2;
 	}
+
 	@SuppressWarnings("serial")
 	private JPanel getPanelKarte1() {
 		if (panelKarte1 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
 				Image imgTisch = ImageIO.read(urlTisch);
-				panelKarte1 = new JPanel(){
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
+				panelKarte1 = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}
 			panelKarte1.add(getLblKsp_1());
 		}
 		return panelKarte1;
 	}
+
 	private JLabel getLblName2() {
 		if (lblName2 == null) {
 			lblName2 = new JLabel("Name 2:");
@@ -312,6 +333,7 @@ public class Spielfenster implements ClientGUI{
 		}
 		return lblName2;
 	}
+
 	private JLabel getLblWins2() {
 		if (lblWins2 == null) {
 			lblWins2 = new JLabel("AnzWins");
@@ -319,6 +341,7 @@ public class Spielfenster implements ClientGUI{
 		}
 		return lblWins2;
 	}
+
 	private JLabel getLblName1() {
 		if (lblName1 == null) {
 			lblName1 = new JLabel("Name 1:");
@@ -326,6 +349,7 @@ public class Spielfenster implements ClientGUI{
 		lblName1.setForeground(Color.WHITE);
 		return lblName1;
 	}
+
 	private JLabel getLblWins1() {
 		if (lblWins1 == null) {
 			lblWins1 = new JLabel("AnzWins");
@@ -333,6 +357,7 @@ public class Spielfenster implements ClientGUI{
 		}
 		return lblWins1;
 	}
+
 	private JLabel getLblStich2() {
 		if (lblStich2 == null) {
 			lblStich2 = new JLabel("Stiche:");
@@ -340,6 +365,7 @@ public class Spielfenster implements ClientGUI{
 		}
 		return lblStich2;
 	}
+
 	private JLabel getLblStich1() {
 		if (lblStich1 == null) {
 			lblStich1 = new JLabel("Stiche:");
@@ -347,6 +373,7 @@ public class Spielfenster implements ClientGUI{
 		}
 		return lblStich1;
 	}
+
 	private JLabel getLblAnzStiche2() {
 		if (lblAnzStiche2 == null) {
 			lblAnzStiche2 = new JLabel("AnzStiche");
@@ -354,6 +381,7 @@ public class Spielfenster implements ClientGUI{
 		}
 		return lblAnzStiche2;
 	}
+
 	private JLabel getLblAnzStiche1() {
 		if (lblAnzStiche1 == null) {
 			lblAnzStiche1 = new JLabel("AnzStiche");
@@ -361,72 +389,84 @@ public class Spielfenster implements ClientGUI{
 		}
 		return lblAnzStiche1;
 	}
+
 	private JLabel getLblSP1K1() {
 		if (lblSP1K1 == null) {
 			lblSP1K1 = new JLabel("");
 		}
 		return lblSP1K1;
 	}
+
 	private JLabel getLblSP1K2() {
 		if (lblSP1K2 == null) {
 			lblSP1K2 = new JLabel("");
 		}
 		return lblSP1K2;
 	}
+
 	private JLabel getLblSP1K3() {
 		if (lblSP1K3 == null) {
 			lblSP1K3 = new JLabel("");
 		}
 		return lblSP1K3;
 	}
+
 	private JLabel getLblSP1K4() {
 		if (lblSP1K4 == null) {
 			lblSP1K4 = new JLabel("");
 		}
 		return lblSP1K4;
 	}
+
 	private JLabel getLblSP1K5() {
 		if (lblSP1K5 == null) {
 			lblSP1K5 = new JLabel("");
 		}
 		return lblSP1K5;
 	}
+
 	private JLabel getLblSP2K1() {
 		if (lblSP2K1 == null) {
 			lblSP2K1 = new JLabel("");
 		}
 		return lblSP2K1;
 	}
+
 	private JLabel getLblSP2K2() {
 		if (lblSP2K2 == null) {
 			lblSP2K2 = new JLabel("");
 		}
 		return lblSP2K2;
 	}
+
 	private JLabel getLblSP2K3() {
 		if (lblSP2K3 == null) {
 			lblSP2K3 = new JLabel("");
 		}
 		return lblSP2K3;
 	}
+
 	private JLabel getLblSP2K4() {
 		if (lblSP2K4 == null) {
 			lblSP2K4 = new JLabel("");
 		}
 		return lblSP2K4;
 	}
+
 	private JLabel getLblSP2K5() {
 		if (lblSP2K5 == null) {
 			lblSP2K5 = new JLabel("");
 		}
 		return lblSP2K5;
 	}
+
 	private JLabel getLblKsp() {
 		if (lblKSP2 == null) {
 			lblKSP2 = new JLabel("");
 		}
 		return lblKSP2;
 	}
+
 	private JLabel getLblKsp_1() {
 		if (lblKSP1 == null) {
 			lblKSP1 = new JLabel("");
@@ -436,11 +476,11 @@ public class Spielfenster implements ClientGUI{
 
 	@Override
 	public void ausgabe(int art, String message) {
-		new Meldung(art, message);
+		meldung = new Meldung(art, message);
 	}
 
 	@Override
-	public void gibHandkarten(List<Karte> handkarten){
+	public void gibHandkarten(List<Karte> handkarten) {
 		try {
 			URL urlBack = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
 			Image img = ImageIO.read(urlBack);
@@ -451,7 +491,7 @@ public class Spielfenster implements ClientGUI{
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
 		} catch (IOException e) {
-			new Meldung(2, "Handkarten können nicht angezeigt werden!");
+			meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
 		}
 
 	}
@@ -460,7 +500,7 @@ public class Spielfenster implements ClientGUI{
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
+
 	private JPanel getPanelTisch() {
 		if (panelTisch == null) {
 			panelTisch = new JPanel();
@@ -475,12 +515,12 @@ public class Spielfenster implements ClientGUI{
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setId(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
