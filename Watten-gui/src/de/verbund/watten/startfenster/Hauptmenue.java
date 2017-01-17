@@ -37,7 +37,7 @@ public class Hauptmenue {
 		initialize();
 		JPanel panel;
 		try {
-			URL urlLogo = getClass().getClassLoader().getResource("startfenster/picasso.png");
+			URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/startfenster/picasso.png");
 			Image img = ImageIO.read(urlLogo);
 			panel = new JPanel() {
 				@Override
