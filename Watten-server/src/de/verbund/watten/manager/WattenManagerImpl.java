@@ -1,5 +1,7 @@
 package de.verbund.watten.manager;
 
+import java.util.List;
+
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
@@ -38,13 +40,31 @@ public class WattenManagerImpl implements WattenManager {
 	}
 
 	@Override
+	public void sendeHandkarten() {
+		for (Spieler s : spiel.getSpieler()) {
+			List<Karte> hand = s.getHand();
+		}
+	}
+
+	@Override
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
+			spiel.teileAus();
+			sendeHandkarten();
 			Kommando kdo = Hilfe.getMeldungKommando(3, "Spieler gefunden. Spiel startet.");
 			server.sendeAnAlle(kdo);
 		} else {
 			throw new WattenException("Noch nicht genügend Spieler vorhanden!");
+		}
+	}
+
+	@Override
+	public void entferneSpieler(int id) {
+		for (Spieler s : spiel.getSpieler()) {
+			if (s.getId() == id) {
+				spiel.getSpieler().remove(s);
+			}
 		}
 	}
 

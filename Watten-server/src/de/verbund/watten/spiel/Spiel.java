@@ -20,7 +20,6 @@ public class Spiel {
 		deck = new Kartendeck().getDeck();
 		// TODO Spieler hinzufügen
 		spieler = new ArrayList<>();
-		teileAus();
 	}
 
 	public void teileAus() {

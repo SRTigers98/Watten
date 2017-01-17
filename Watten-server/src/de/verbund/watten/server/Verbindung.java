@@ -15,6 +15,7 @@ import de.verbund.watten.spieler.Spieler;
 
 public class Verbindung implements Runnable {
 
+	private int id;
 	private Socket socket;
 	private WattenServer socketServer;
 	private boolean ok = true;
@@ -44,12 +45,15 @@ public class Verbindung implements Runnable {
 					Serializable returnObj = verarbeite(gesendet);
 					// R�ckgabe des Objektes
 					// out.writeObject(returnObj);
+					System.out.println("Connection found");
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (SocketException s) {
 					// TODO
 					System.err.println("Connection reset");
 					ok = false;
+					socketServer.getManager().entferneSpieler(id);
+					socketServer.getVerbindungen().remove(this);
 				}
 			}
 			// beenden
@@ -85,8 +89,9 @@ public class Verbindung implements Runnable {
 		}
 		if (kdo.getKommando().equals("sendeName")) {
 			// TODO UUID später
-			int id = socketServer.getVerbindungen().size();
+			id = socketServer.getVerbindungen().size();
 			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
+			// TODO Fehlermeldung, wenn zu viele Spieler
 			socketServer.getManager().addSpieler(spieler);
 			Kommando kdo2 = new Kommando();
 			kdo2.setKommando("sendeID");
@@ -100,8 +105,7 @@ public class Verbindung implements Runnable {
 			}
 		}
 		if (kdo.getKommando().equals("spieleKarte")) {
-			int id = (int) kdo.getParameter().get(0);
-			Karte karte = (Karte) kdo.getParameter().get(1);
+			Karte karte = (Karte) kdo.getParameter().get(0);
 			socketServer.getManager().spieleKarte(id, karte);
 		}
 		if (kdo.getKommando().equals("beende")) {
