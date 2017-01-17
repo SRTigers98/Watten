@@ -18,7 +18,7 @@ public class ClientImpl implements Client {
 	@Override
 	public void sendeName(String name) {
 		Kommando kdo = new Kommando();
-		kdo.setKommando("setzeName");
+		kdo.setKommando("sendeName");
 		kdo.addParameter(name);
 		client.sende(kdo);
 	}

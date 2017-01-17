@@ -21,7 +21,7 @@ public class WattenClient implements Runnable {
 		// Baue Verbindung zum Server auf
 		this.clientGUI = clientGUI;
 		try {
-			socket = new Socket("localhost", 4444);
+			socket = new Socket("192.168.36.90", 4444);
 			// Erzeuge Ausgabestrom
 			out = new ObjectOutputStream(socket.getOutputStream());
 			// Erzeuge Eingabestrom

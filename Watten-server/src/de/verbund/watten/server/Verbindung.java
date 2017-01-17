@@ -76,7 +76,7 @@ public class Verbindung implements Runnable {
 		if (kdo.getKommando().equals("beende")) {
 			ok = false;
 		}
-		if (kdo.getKommando().equals("setzeName")) {
+		if (kdo.getKommando().equals("sendeName")) {
 			// TODO UUID später
 			int id = socketServer.getVerbindungen().size();
 			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
@@ -85,6 +85,7 @@ public class Verbindung implements Runnable {
 			kdo2.setKommando("sendeID");
 			kdo2.addParameter(id);
 			sende(kdo2);
+			System.out.println("Ping");
 		}
 		if (kdo.getKommando().equals("spieleKarte")) {
 			int id = (int) kdo.getParameter().get(0);
