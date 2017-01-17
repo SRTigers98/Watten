@@ -56,6 +56,7 @@ public class Spielfenster implements ClientGUI{
 	private JLabel lblSP2K5;
 	private JLabel lblKSP2;
 	private JLabel lblKSP1;
+	private JPanel panelTisch;
 
 	/**
 	 * Launch the application.
@@ -80,26 +81,10 @@ public class Spielfenster implements ClientGUI{
 		lblName1 = new JLabel(name1 + ":");
 		initialize();
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		hintergrundLaden();
 		frame.setVisible(true);
 		gibHandkarten(null);
 	}
 
-	@SuppressWarnings("serial")
-	private void hintergrundLaden() {
-		try {
-			URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
-			Image imgTisch = ImageIO.read(urlTisch);
-			JPanel panelHintergrund = new JPanel() {
-				@Override
-				public void paintComponent(Graphics g) {
-					g.drawImage(imgTisch, 0, 0, null);
-				}
-			};
-		} catch (IOException e1) {
-			new Meldung(2, "Hintergrund konnte nicht geladen werden!");
-		}		
-	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -109,9 +94,7 @@ public class Spielfenster implements ClientGUI{
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		frame.getContentPane().add(getPanelSP2(), BorderLayout.NORTH);
-		frame.getContentPane().add(getPanelSP1(), BorderLayout.SOUTH);
-		frame.getContentPane().add(getPanelFeld(), BorderLayout.CENTER);
+		frame.getContentPane().add(getPanelTisch(), BorderLayout.CENTER);
 	}
 
 	private JPanel getPanelSP2() {
@@ -357,5 +340,27 @@ public class Spielfenster implements ClientGUI{
 	@Override
 	public void setClient(Client client) {
 		this.client = client;
+	}
+	@SuppressWarnings("serial")
+	private JPanel getPanelTisch() {
+		if (panelTisch == null) {
+			try {
+				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+				Image imgTisch = ImageIO.read(urlTisch);
+				panelTisch = new JPanel(){
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+			}		
+			panelTisch.setLayout(new BorderLayout(0, 0));
+			panelTisch.add(getPanelFeld(), BorderLayout.CENTER);
+			panelTisch.add(getPanelSP1(), BorderLayout.SOUTH);
+			panelTisch.add(getPanelSP2(), BorderLayout.NORTH);
+		}
+		return panelTisch;
 	}
 }
