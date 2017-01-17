@@ -1,7 +1,6 @@
 package de.verbund.watten.client;
 
 import de.verbund.watten.client.gui.ClientGUI;
-import de.verbund.watten.client.gui.ClientGUIImpl;
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.karten.Karte;
 
@@ -10,8 +9,9 @@ public class ClientImpl implements Client {
 	private WattenClient client;
 	private ClientGUI clientGUI;
 
-	public ClientImpl() {
-		clientGUI = new ClientGUIImpl();
+	public ClientImpl(ClientGUI gui) {
+		clientGUI = gui;
+		clientGUI.setClient(this);
 		this.client = new WattenClient(clientGUI);
 	}
 
@@ -44,14 +44,6 @@ public class ClientImpl implements Client {
 		kdo.setKommando("ansageFarbe");
 		kdo.addParameter(farbe);
 		client.sende(kdo);
-	}
-
-	public WattenClient getClient() {
-		return client;
-	}
-
-	public ClientGUI getClientGUI() {
-		return clientGUI;
 	}
 
 }
