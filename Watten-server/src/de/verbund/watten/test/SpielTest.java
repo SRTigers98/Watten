@@ -36,7 +36,8 @@ public class SpielTest {
 		spieler.add(sp1);
 		spieler.add(sp2);
 
-		System.out.println(spieler);
+		
+		
 		spiel.teileAus();
 		assertEquals(5, sp1.getHand().size());
 		assertEquals(5, sp2.getHand().size());
