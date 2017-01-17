@@ -17,7 +17,7 @@ public interface Client {
 	 * 
 	 * @param karte
 	 */
-	public void sendeKarte(Karte karte);
+	public void sendeKarte(int id, Karte karte);
 
 	/**
 	 * Sendet den angesagten Schlag an den Server
