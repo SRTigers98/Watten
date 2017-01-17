@@ -57,7 +57,7 @@ public class Verbindung implements Runnable {
 
 	public void sende(Kommando obj) {
 		try {
-			// Sende zum Server
+			// Sende zum Client
 			out.writeObject(obj);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -77,14 +77,19 @@ public class Verbindung implements Runnable {
 			ok = false;
 		}
 		if (kdo.getKommando().equals("setzeName")) {
-			// TODO Spieler erzeugen
-			int id = socketServer.getManager().generateId();
+			// TODO UUID später
+			int id = socketServer.getVerbindungen().size();
 			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
 			socketServer.getManager().addSpieler(spieler);
+			Kommando kdo2 = new Kommando();
+			kdo2.setKommando("sendeID");
+			kdo2.addParameter(id);
+			sende(kdo2);
 		}
 		if (kdo.getKommando().equals("spieleKarte")) {
-			Karte karte = (Karte) kdo.getParameter().get(0);
-
+			int id = (int) kdo.getParameter().get(0);
+			Karte karte = (Karte) kdo.getParameter().get(1);
+			socketServer.getManager().spieleKarte(id, karte);
 		}
 		if (kdo.getKommando().equals("beende")) {
 			ok = false;
