@@ -1,15 +1,22 @@
 package de.verbund.watten.hauptfenster;
 
 import java.awt.EventQueue;
+import java.util.List;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
+import de.verbund.watten.client.Client;
+import de.verbund.watten.client.gui.ClientGUI;
+import de.verbund.watten.karten.Karte;
+import de.verbund.watten.meldungen.Meldung;
+
 import javax.swing.JLabel;
 
-public class Spielfenster {
+public class Spielfenster implements ClientGUI{
 
+	private Client client;
 	private JFrame frame;
 	private JPanel panelSP2;
 	private JPanel panelSP1;
@@ -298,5 +305,21 @@ public class Spielfenster {
 			lblKSP1 = new JLabel("KSP1");
 		}
 		return lblKSP1;
+	}
+
+	@Override
+	public void ausgabe(int art, String message) {
+		new Meldung(art, message);
+	}
+
+	@Override
+	public void gibHandkarten(List<Karte> handkarten) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setClient(Client client) {
+		this.client = client;
 	}
 }
