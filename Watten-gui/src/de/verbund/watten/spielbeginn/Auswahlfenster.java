@@ -116,9 +116,10 @@ public class Auswahlfenster {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 350, 240);
 		frame.setTitle("Farbe Auswahl");
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Farbe(), BorderLayout.CENTER);
 		frame.setVisible(true);
+		frame.setAlwaysOnTop(true);
 	}
 
 	/**
@@ -128,9 +129,10 @@ public class Auswahlfenster {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 680, 240);
 		frame.setTitle("Schlag Auswahl");
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Schlag(), BorderLayout.CENTER);
 		frame.setVisible(true);
+		frame.setAlwaysOnTop(true);
 	}
 
 	/**
@@ -265,7 +267,7 @@ public class Auswahlfenster {
 			rdbtnSchelln.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnSchelln) {
-						farb_auswahl = "SCHELLN";
+						farb_auswahl = "Schelln";
 					}
 				}
 			});
@@ -297,7 +299,7 @@ public class Auswahlfenster {
 			rdbtnHerz.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnHerz) {
-						farb_auswahl = "HERZ";
+						farb_auswahl = "Herz";
 					}
 				}
 			});
@@ -329,7 +331,7 @@ public class Auswahlfenster {
 			rdbtnEichel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnEichel) {
-						farb_auswahl = "EICHEL";
+						farb_auswahl = "Eichel";
 					}
 				}
 			});
@@ -345,8 +347,12 @@ public class Auswahlfenster {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnCommitFarbe) {
 						schlag_auswahl = null;
-						farbeCommit();
-						frame.dispose();
+						if (farb_auswahl != null) {
+							farbeCommit();
+							frame.dispose();
+						} else {
+							new Meldung(3, "Wählen Sie eine Farbe aus!");
+						}
 					}
 				}
 			});
@@ -725,8 +731,12 @@ public class Auswahlfenster {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnCommitSchlag) {
 						farb_auswahl = null;
-						schlagCommit();
-						frame.dispose();
+						if (schlag_auswahl != null) {
+							schlagCommit();
+							frame.dispose();
+						} else {
+							new Meldung(3, "Wählen Sie einen Schlag aus!");
+						}
 					}
 				}
 			});
