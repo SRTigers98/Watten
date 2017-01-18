@@ -71,11 +71,9 @@ public class Spielfenster implements ClientGUI {
 	 * Create the application.
 	 */
 	public Spielfenster(String name1) {
-		lblName1 = new JLabel(name1 + ":");
 		initialize();
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
-		gibHandkarten(null);
 	}
 
 	/**
@@ -540,6 +538,11 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K3.setIcon(back);
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
+			
+			if (handkarten == null){
+				System.out.println("keine karten");
+			}
+			
 			Karte karte1 = handkarten.get(0);
 			lblSP1K1.setIcon(iconHolen(karte1));
 			Karte karte2 = handkarten.get(1);
@@ -585,7 +588,7 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		// TODO Auto-generated method stub
-
+		lblName1 = new JLabel(spieler.get(0) + ":");
+		lblName2 = new JLabel(spieler.get(1) + ":");
 	}
 }
