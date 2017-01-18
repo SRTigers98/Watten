@@ -661,11 +661,12 @@ public class Spielfenster implements ClientGUI {
 			gbc_lblFarbe.gridy = 1;
 			panelAnsage.add(getLblFarbe(), gbc_lblFarbe);
 			GridBagConstraints gbc_lblSchlagWert = new GridBagConstraints();
-			gbc_lblSchlagWert.insets = new Insets(0, 0, 5, 0);
+			gbc_lblSchlagWert.insets = new Insets(0, 5, 5, 0);
 			gbc_lblSchlagWert.gridx = 1;
 			gbc_lblSchlagWert.gridy = 0;
 			panelAnsage.add(getLblSchlagWert(), gbc_lblSchlagWert);
 			GridBagConstraints gbc_lblFarbeWert = new GridBagConstraints();
+			gbc_lblFarbeWert.insets = new Insets(0, 5, 5, 0);
 			gbc_lblFarbeWert.gridx = 1;
 			gbc_lblFarbeWert.gridy = 1;
 			panelAnsage.add(getLblFarbeWert(), gbc_lblFarbeWert);
@@ -765,9 +766,13 @@ public class Spielfenster implements ClientGUI {
 	public void amZug(int id, boolean ansage) {
 		if(ansage == true){
 			if(id == sp1.getId()){
-				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
+				Auswahlfenster auswahl = new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
+				//TODO aulesen
+				//client.sendeSchlag(auslese);
 			}else if(id == sp2.getId()){
-				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL);
+				Auswahlfenster auswahl = new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL);
+				//TODO aulesen
+//				client.sendeFarbe(auslese);
 			}else{
 				if (meldung == null) {
 					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
@@ -782,13 +787,11 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSchlag(String schlag) {
-		// TODO Auto-generated method stub
-		
-	}
+		lblSchlagWert.setText(schlag);
+		}
 
 	@Override
 	public void gibFarbe(String farbe) {
-		// TODO Auto-generated method stub
-		
-	}
+		lblFarbeWert.setText(farbe);
+		}
 }
