@@ -11,9 +11,9 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.KommandoKonst;
+import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.spieler.Spieler;
-import konstanten.KommandoKonst;
-import konstanten.MeldungKonst;
 
 public class Verbindung implements Runnable {
 

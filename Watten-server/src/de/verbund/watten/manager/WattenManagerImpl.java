@@ -6,11 +6,11 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.server.Verbindung;
 import de.verbund.watten.server.WattenServer;
 import de.verbund.watten.spiel.Spiel;
 import de.verbund.watten.spieler.Spieler;
-import konstanten.MeldungKonst;
 
 public class WattenManagerImpl implements WattenManager {
 

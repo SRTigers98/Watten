@@ -3,6 +3,7 @@ package de.verbund.watten.client;
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.KommandoKonst;
 
 public class ClientImpl implements Client {
 
@@ -33,7 +34,7 @@ public class ClientImpl implements Client {
 	@Override
 	public void sendeSchlag(String schlag) {
 		Kommando kdo = new Kommando();
-		kdo.setKommando("ansageSchlag");
+		kdo.setKommando(KommandoKonst.ANSAGE_SCHLAG);
 		kdo.addParameter(schlag);
 		client.sende(kdo);
 	}
@@ -41,7 +42,7 @@ public class ClientImpl implements Client {
 	@Override
 	public void sendeFarbe(String farbe) {
 		Kommando kdo = new Kommando();
-		kdo.setKommando("ansageFarbe");
+		kdo.setKommando(KommandoKonst.ANSAGE_FARBE);
 		kdo.addParameter(farbe);
 		client.sende(kdo);
 	}
