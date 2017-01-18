@@ -7,9 +7,9 @@ import de.verbund.watten.karten.Karte;
 
 /**
  * 
- * @author Fabian
- * Klasse setzt das Regelwerk fest, welche Karten andere Karten stechen.
- * werteAus gleicht die beiden gespielten Karten mit dem Regelwerk ab und liefert den Gewinner des Stiches
+ * @author Fabian Klasse setzt das Regelwerk fest, welche Karten andere Karten
+ *         stechen. werteAus gleicht die beiden gespielten Karten mit dem
+ *         Regelwerk ab und liefert den Gewinner des Stiches
  */
 
 public class Regelwerk {
@@ -91,7 +91,6 @@ public class Regelwerk {
 
 	}
 
-
 	private int verteileNiedrigePrio(String kartenwert, int value) {
 		if (!regelwerk.containsKey("Herz" + kartenwert))
 			regelwerk.put("Herz" + kartenwert, value);
@@ -106,14 +105,22 @@ public class Regelwerk {
 	}
 
 	public int werteAus(Karte sp1, Karte sp2) {
-		// TODO Wer hat zuerst gespielt?
+
 		int gewinner = 0;
 		int valueSp1 = regelwerk.get(sp1.getFarbe() + sp1.getSchlag());
 		int valueSp2 = regelwerk.get(sp2.getFarbe() + sp2.getSchlag());
 		gewinner = werteTrumpf(gewinner, valueSp1, valueSp2);
+		if (gewinner == 0) {
+			if (sp1.getFarbe().equals(sp2.getFarbe())) {
+				if (valueSp1 < valueSp2) {
+					gewinner = SPIELER_2;
+				}
+			}
+			if (gewinner == 0) {
+				gewinner = SPIELER_1;
+			}
 
-		// SPIELER_1 = 1;
-		// SPIELER_2 = 2;
+		}
 
 		return gewinner;
 	}
@@ -125,6 +132,9 @@ public class Regelwerk {
 			}
 			if (valueSp2 > valueSp1) {
 				gewinner = SPIELER_2;
+			}
+			if (valueSp1 == valueSp2) {
+				gewinner = SPIELER_1;
 			}
 		}
 
