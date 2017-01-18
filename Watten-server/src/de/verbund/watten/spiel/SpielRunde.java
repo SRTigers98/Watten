@@ -4,13 +4,19 @@ import de.verbund.watten.karten.Karte;
 import de.verbund.watten.regelwerk.Regelwerk;
 import de.verbund.watten.spieler.Spieler;
 
+/**
+ * 
+ * Speichert die gespielten Karten einer Runde und ermittelt den Sieger.
+ * 
+ * @author Benjamin
+ *
+ */
 public class SpielRunde {
 
 	private Regelwerk regeln;
 	private Spieler sp1;
 	private Spieler sp2;
 	private int sieger;
-	private int amZug;
 
 	public SpielRunde(Regelwerk regeln, Spieler sp1, Spieler sp2) {
 		this.regeln = regeln;
@@ -28,7 +34,10 @@ public class SpielRunde {
 			k1 = sp2.getGespielt();
 			k2 = sp1.getGespielt();
 		}
-		return regeln.werteAus(k1, k2);
+		int gewinner = regeln.werteAus(k1, k2);
+		sp1.setGespielt(null);
+		sp2.setGespielt(null);
+		return gewinner;
 	}
 
 	public Spieler getSp1() {
@@ -53,14 +62,6 @@ public class SpielRunde {
 
 	public void setSieger(int sieger) {
 		this.sieger = sieger;
-	}
-
-	public int getAmZug() {
-		return amZug;
-	}
-
-	public void setAmZug(int amZug) {
-		this.amZug = amZug;
 	}
 
 }
