@@ -32,7 +32,7 @@ public class ClientDummy implements Client {
 		spieler.add(new Spieler(0, "Test1"));
 		spieler.add(new Spieler(1, "Test2"));
 		clientGUI.gibSpieler(spieler);
-		clientGUI.amZug(0, true);
+		clientGUI.amZug(true, false);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class ClientDummy implements Client {
 	public void sendeSchlag(String schlag) {
 		clientGUI.gibSchlag(schlag);
 		clientGUI.gibFarbe("Herz");
-		clientGUI.amZug(0, false);
+		clientGUI.amZug(false, false);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class ClientDummy implements Client {
 		// kommt in diesem Dummy nicht vor
 		clientGUI.gibSchlag("_Koenig");
 		clientGUI.gibFarbe(farbe);
-		clientGUI.amZug(0, false);
+		clientGUI.amZug(false, false);
 	}
 
 }
