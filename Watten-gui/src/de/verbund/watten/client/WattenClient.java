@@ -110,6 +110,7 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.SENDE_FARBE)) {
 			verteileFarbe(kdo);
 		}
+		// TODO Spieler empfangen
 	}
 
 	private void verteileFarbe(Kommando kdo) {
