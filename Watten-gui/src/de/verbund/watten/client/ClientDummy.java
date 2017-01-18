@@ -37,7 +37,6 @@ public class ClientDummy implements Client {
 
 	@Override
 	public void sendeKarte(Karte karte) {
-		// TODO sendeKarte Dummy
 		clientGUI.ausgabe(MeldungKonst.HINWEIS, "Karte erfolgreich gesendet!");
 	}
 

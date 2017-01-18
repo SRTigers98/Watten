@@ -1,5 +1,6 @@
 package de.verbund.watten.spiel;
 
+import de.verbund.watten.karten.Karte;
 import de.verbund.watten.regelwerk.Regelwerk;
 import de.verbund.watten.spieler.Spieler;
 
@@ -18,7 +19,16 @@ public class SpielRunde {
 	}
 
 	public int werteAus() {
-		return regeln.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		Karte k1 = null;
+		Karte k2 = null;
+		if (sp1.isKommtRaus()) {
+			k1 = sp1.getGespielt();
+			k2 = sp2.getGespielt();
+		} else {
+			k1 = sp2.getGespielt();
+			k2 = sp1.getGespielt();
+		}
+		return regeln.werteAus(k1, k2);
 	}
 
 	public Spieler getSp1() {
