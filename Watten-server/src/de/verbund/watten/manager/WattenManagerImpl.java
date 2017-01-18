@@ -117,6 +117,7 @@ public class WattenManagerImpl implements WattenManager {
 	@Override
 	public void setzeSchlag(String schlag) {
 		spiel.setSchlag(schlag);
+
 	}
 
 	@Override
