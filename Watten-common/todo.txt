@@ -1,7 +1,7 @@
 TODOS für dieses Projekt
 ========================
 
-[ ] Erstelle in jeder Klasse einen JavaDoc-Kommentar, der in einem Satz ausdrückt, welche Aufgabe die Klasse hat.
+[X] Erstelle in jeder Klasse einen JavaDoc-Kommentar, der in einem Satz ausdrückt, welche Aufgabe die Klasse hat.
 	Beachte dabei das Prinzip SRP
 	
 Beachte: Wenn eine Aufgabe erledigt ist: pullen, aus [ ] mach [X] und gleich pushen
