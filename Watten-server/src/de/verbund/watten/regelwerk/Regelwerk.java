@@ -6,10 +6,11 @@ import java.util.Map;
 import de.verbund.watten.karten.Karte;
 
 /**
+ * Klasse setzt das Regelwerk fest, welche Karten andere Karten stechen.
+ * werteAus gleicht die beiden gespielten Karten mit dem Regelwerk ab und
+ * liefert den Gewinner des Stiches
  * 
- * @author Fabian Klasse setzt das Regelwerk fest, welche Karten andere Karten
- *         stechen. werteAus gleicht die beiden gespielten Karten mit dem
- *         Regelwerk ab und liefert den Gewinner des Stiches
+ * @author Fabian
  */
 
 public class Regelwerk {
@@ -86,7 +87,6 @@ public class Regelwerk {
 		verteileNiedrigePrio("_Ober", value);
 		verteileNiedrigePrio("_Koenig", value);
 		verteileNiedrigePrio("_Sau", value);
-
 
 	}
 
