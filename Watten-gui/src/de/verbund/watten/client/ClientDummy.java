@@ -36,20 +36,17 @@ public class ClientDummy implements Client {
 
 	@Override
 	public void sendeKarte(Karte karte) {
-		// TODO Auto-generated method stub
-
+		// TODO sendeKarte Dummy
 	}
 
 	@Override
 	public void sendeSchlag(String schlag) {
-		// TODO Auto-generated method stub
-
+		clientGUI.amZug(0, false);
 	}
 
 	@Override
 	public void sendeFarbe(String farbe) {
-		// TODO Auto-generated method stub
-
+		// kommt in diesem Dummy nicht vor
 	}
 
 }
