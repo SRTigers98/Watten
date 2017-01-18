@@ -34,7 +34,7 @@ public class Meldung {
 	private JButton btnSchließen;
 
 	/**
-	 * Test Launch der Fenster Normaler Aufruf über den Kontruktor
+	 * Test Launch der Fenster | Normaler Aufruf über den Kontruktor
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
