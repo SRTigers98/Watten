@@ -106,13 +106,13 @@ public class Verbindung implements Runnable {
 	}
 
 	private void sagAnFarbe(Kommando kdo) {
-		// TODO Auto-generated method stub
-
+		String farbe = kdo.getParameter().get(0).toString();
+		socketServer.getManager().setzeFarbe(farbe);
 	}
 
 	private void sagAnSchlag(Kommando kdo) {
-		// TODO Auto-generated method stub
-
+		String schlag = kdo.getParameter().get(0).toString();
+		socketServer.getManager().setzeSchlag(schlag);
 	}
 
 	private void spieleKarte(Kommando kdo) {
