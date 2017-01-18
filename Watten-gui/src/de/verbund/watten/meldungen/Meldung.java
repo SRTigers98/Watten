@@ -278,7 +278,7 @@ public class Meldung {
 			btnSchließen.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnSchließen) {
-						new Hauptmenue();
+						// new Hauptmenue();
 						frame.dispose();
 					}
 				}
