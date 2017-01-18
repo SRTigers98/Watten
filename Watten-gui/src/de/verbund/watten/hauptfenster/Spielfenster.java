@@ -75,7 +75,6 @@ public class Spielfenster implements ClientGUI {
 		initialize();
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
-		gibHandkarten(null);
 	}
 
 	/**
@@ -540,6 +539,11 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K3.setIcon(back);
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
+			
+			if (handkarten == null){
+				System.out.println("keine karten");
+			}
+			
 			Karte karte1 = handkarten.get(0);
 			lblSP1K1.setIcon(iconHolen(karte1));
 			Karte karte2 = handkarten.get(1);
