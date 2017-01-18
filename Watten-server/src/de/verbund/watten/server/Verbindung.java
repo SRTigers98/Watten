@@ -15,6 +15,13 @@ import de.verbund.watten.konstanten.KommandoKonst;
 import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.spieler.Spieler;
 
+/**
+ * 
+ * Repräsentiert die Verbindung zwischen einem Client und dem Server.
+ * 
+ * @author Benjamin
+ *
+ */
 public class Verbindung implements Runnable {
 
 	private int id;

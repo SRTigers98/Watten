@@ -11,6 +11,13 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.manager.WattenManager;
 import de.verbund.watten.manager.WattenManagerImpl;
 
+/**
+ * 
+ * Der Server, über den die komplette Applikation läuft.
+ * 
+ * @author Benjamin
+ *
+ */
 public class WattenServer implements Runnable {
 
 	private WattenManager manager;
