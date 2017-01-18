@@ -17,6 +17,13 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 import java.awt.event.ActionEvent;
 
+/**
+ * Meldungen generiert Hinweise, Warnungen und Fehlermeldungen mit einem
+ * übergebenen Text.
+ * 
+ * @author Mcscha
+ *
+ */
 public class Meldung {
 
 	private static final int HINWEIS = 3;

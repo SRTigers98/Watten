@@ -25,6 +25,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Zeigt das Hauptmenü an. Hier kann man Namen, Ip-Adresse und Port angeben um
+ * ein Spiel zu starten. Alle drei müssen angegeben werden.
+ * 
+ * @author Mcscha
+ *
+ */
 public class Hauptmenue {
 
 	private JFrame frame;

@@ -22,6 +22,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import de.verbund.watten.konstanten.AuswahlfensterKonst;
 
+/**
+ * Auswahlfenster generiert das Farb Auswahl Fenster und das Schlag Auswahl
+ * Fenster. Dies wird zu Beginn eines Spiel aufgerufen.
+ * 
+ * @author Mcscha
+ *
+ */
 public class Auswahlfenster {
 
 	private static final int SAU = 14;
@@ -99,7 +106,7 @@ public class Auswahlfenster {
 	 *         Server übermittelt.
 	 */
 	public Auswahlfenster(int art) {
-		initialize();
+		// initialize();
 		switch (art) {
 		case AuswahlfensterKonst.SCHLAG_WAHL:
 			initSchlag();
@@ -119,6 +126,7 @@ public class Auswahlfenster {
 		frame.setTitle("Farbe Auswahl");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Farbe(), BorderLayout.CENTER);
+		frame.setVisible(true);
 	}
 
 	/**
@@ -130,18 +138,17 @@ public class Auswahlfenster {
 		frame.setTitle("Schlag Auswahl");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Schlag(), BorderLayout.CENTER);
+		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 *
+	 * private void initialize() { frame = new JFrame(); frame.setBounds(100,
+	 * 100, 680, 300); frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 * frame.getContentPane(); frame.getContentPane().add(getPanel_Schlag(),
+	 * BorderLayout.CENTER); }
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 680, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane();
-		frame.getContentPane().add(getPanel_Schlag(), BorderLayout.CENTER);
-	}
 
 	private JPanel getPanel_Farbe() {
 		if (panel_Farbe == null) {
