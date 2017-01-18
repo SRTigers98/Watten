@@ -781,10 +781,8 @@ public class Spielfenster implements ClientGUI {
 		if(ansage == true){
 			if(id == sp1.getId()){
 				auswahl = new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
-				client.sendeSchlag(auswahl.getschlag());
 			}else if(id == sp2.getId()){
 				auswahl = new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
-				client.sendeFarbe(auswahl.getfarbe());
 			}else{
 				if (meldung == null) {
 					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
@@ -793,7 +791,8 @@ public class Spielfenster implements ClientGUI {
 					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
 				}
 			}
-		amZug = true;
+		}else{
+			amZug = true;
 		}
 	}
 
