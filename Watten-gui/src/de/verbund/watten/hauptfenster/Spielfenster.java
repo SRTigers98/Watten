@@ -74,6 +74,11 @@ public class Spielfenster implements ClientGUI {
 	private Spieler sp2;
 	private boolean amZug;
 	private List<Karte> handkarten;
+	private Karte karte1;
+	private Karte karte2;
+	private Karte karte3;
+	private Karte karte4;
+	private Karte karte5;
 
 	/**
 	 * Create the application.
@@ -436,7 +441,7 @@ public class Spielfenster implements ClientGUI {
 			lblSP1K1.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					//TODO Karte ausspielen
+					karteSpielen(lblSP1K1);
 				}
 			});
 		}
@@ -449,7 +454,7 @@ public class Spielfenster implements ClientGUI {
 			lblSP1K2.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					//TODO Karte ausspielen
+					karteSpielen(lblSP1K2);
 				}
 			});
 		}
@@ -462,7 +467,7 @@ public class Spielfenster implements ClientGUI {
 			lblSP1K3.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					//TODO Karte ausspielen
+					karteSpielen(lblSP1K3);
 				}
 			});
 		}
@@ -475,7 +480,7 @@ public class Spielfenster implements ClientGUI {
 			lblSP1K4.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					//TODO Karte ausspielen
+					karteSpielen(lblSP1K4);
 				}
 			});
 		}
@@ -488,7 +493,7 @@ public class Spielfenster implements ClientGUI {
 			lblSP1K5.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					//TODO Karte ausspielen
+					karteSpielen(lblSP1K5);
 				}
 			});
 		}
@@ -570,12 +575,29 @@ public class Spielfenster implements ClientGUI {
 			Icon iconKarte = lable.getIcon();
 			lable.setIcon(null);
 			lblKSP1.setIcon(iconKarte);
-			karteAusIcon(iconKarte);
+			if(lable.getName().contains("K1")){
+				client.sendeKarte(karte1);
+			}
+			else if(lable.getName().contains("K2")){
+				client.sendeKarte(karte2);
+			}
+			else if(lable.getName().contains("K3")){
+				client.sendeKarte(karte3);
+			}
+			else if(lable.getName().contains("K4")){
+				client.sendeKarte(karte4);
+			}
+			else if(lable.getName().contains("K5")){
+				client.sendeKarte(karte5);
+			}else{
+				if (meldung == null) {
+					meldung = new Meldung(MeldungKonst.FEHLER, "Fehler beim übermitteln der Karte!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(MeldungKonst.FEHLER, "Fehler beim übermitteln der Karte!");
+				}
+			}
 		}
-	}
-	
-	private void karteAusIcon(Icon icon) {
-		
 	}
 
 	@Override
@@ -590,15 +612,15 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K3.setIcon(back);
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
-			Karte karte1 = handkarten.get(0);
+			karte1 = handkarten.get(0);
 			lblSP1K1.setIcon(iconHolen(karte1));
-			Karte karte2 = handkarten.get(1);
+			karte2 = handkarten.get(1);
 			lblSP1K2 .setIcon(iconHolen(karte2));
-			Karte karte3 = handkarten.get(2);
+			karte3 = handkarten.get(2);
 			lblSP1K3.setIcon(iconHolen(karte3));
-			Karte karte4 = handkarten.get(3);
+			karte4 = handkarten.get(3);
 			lblSP1K4.setIcon(iconHolen(karte4));
-			Karte karte5 = handkarten.get(4);
+			karte5 = handkarten.get(4);
 			lblSP1K5.setIcon(iconHolen(karte5));
 		} catch (IOException e) {
 			if (meldung == null) {
