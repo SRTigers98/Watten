@@ -15,7 +15,7 @@ public class ClientDummy implements Client {
 	public ClientDummy(ClientGUI gui) {
 		clientGUI = gui;
 		clientGUI.setClient(this);
-		this.client = new WattenClient(clientGUI);
+		client = null;
 	}
 
 	@Override
