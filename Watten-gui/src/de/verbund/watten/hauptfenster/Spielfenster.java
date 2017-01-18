@@ -1,6 +1,5 @@
 package de.verbund.watten.hauptfenster;
 
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
@@ -61,11 +60,6 @@ public class Spielfenster implements ClientGUI {
 	private JLabel lblKSP1;
 	private JPanel panelTisch;
 	private Meldung meldung;
-
-//	public static void main(String[] args) {							//Nur zum testen
-//		Spielfenster window = new Spielfenster("Test");
-//		window.frame.setVisible(true);
-//	}
 
 	/**
 	 * Create the application.
@@ -538,11 +532,6 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K3.setIcon(back);
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
-			
-			if (handkarten == null){
-				System.out.println("keine karten");
-			}
-			
 			Karte karte1 = handkarten.get(0);
 			lblSP1K1.setIcon(iconHolen(karte1));
 			Karte karte2 = handkarten.get(1);
@@ -588,7 +577,7 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		lblName1 = new JLabel(spieler.get(0) + ":");
-		lblName2 = new JLabel(spieler.get(1) + ":");
+		lblName1.setText(spieler.get(0).getName());
+		lblName2.setText(spieler.get(1).getName());
 	}
 }
