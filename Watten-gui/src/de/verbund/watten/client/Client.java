@@ -2,6 +2,14 @@ package de.verbund.watten.client;
 
 import de.verbund.watten.karten.Karte;
 
+/**
+ * 
+ * Die Klasse, die die Daten, die die Client-Anwendung zu übermitteln hat, an
+ * den Server sendet.
+ * 
+ * @author Benjamin
+ *
+ */
 public interface Client {
 
 	/**

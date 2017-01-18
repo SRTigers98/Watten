@@ -6,6 +6,14 @@ import de.verbund.watten.client.Client;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.spieler.Spieler;
 
+/**
+ * 
+ * Das Interface, dass die empfangenen Daten vom Server an die GUI-Applikation
+ * übermittelt. Die Implementation liegt in der GUI selbst.
+ * 
+ * @author Benjamin
+ *
+ */
 public interface ClientGUI {
 
 	/**
