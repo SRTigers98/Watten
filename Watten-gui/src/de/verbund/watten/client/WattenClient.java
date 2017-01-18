@@ -12,6 +12,7 @@ import java.util.List;
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.karten.Karte;
+import konstanten.Konstanten;
 
 public class WattenClient implements Runnable {
 	Socket socket;
@@ -76,7 +77,7 @@ public class WattenClient implements Runnable {
 				// Die Analyse des Objektes
 				verarbeite(gesendet);
 			} catch (ClassNotFoundException e) {
-				clientGUI.ausgabe(2, "Fehler beim Lesen: " + e.getMessage());
+				clientGUI.ausgabe(Konstanten.FEHLER, "Fehler beim Lesen: " + e.getMessage());
 				e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

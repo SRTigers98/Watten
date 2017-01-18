@@ -10,6 +10,7 @@ import de.verbund.watten.server.Verbindung;
 import de.verbund.watten.server.WattenServer;
 import de.verbund.watten.spiel.Spiel;
 import de.verbund.watten.spieler.Spieler;
+import konstanten.Konstanten;
 
 public class WattenManagerImpl implements WattenManager {
 
@@ -63,7 +64,7 @@ public class WattenManagerImpl implements WattenManager {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
 			spiel.teileAus();
-			Kommando kdo = Hilfe.getMeldungKommando(3, "Spieler gefunden. Spiel startet.");
+			Kommando kdo = Hilfe.getMeldungKommando(Konstanten.HINWEIS, "Spieler gefunden. Spiel startet.");
 			server.sendeAnAlle(kdo);
 		} else {
 			throw new WattenException("Noch nicht genügend Spieler vorhanden!");
