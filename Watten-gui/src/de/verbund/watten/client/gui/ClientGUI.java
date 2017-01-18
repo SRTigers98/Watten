@@ -42,13 +42,19 @@ public interface ClientGUI {
 	public void gibSpieler(List<Spieler> spieler);
 
 	/**
-	 * Gibt die ID des Spielers der in der aktuellen Runde als erster am Zug
-	 * ist.
+	 * Teilt mit, wenn der Spieler am Zug ist, er ansagen muss und was er
+	 * ansagen muss.
 	 * 
 	 * @param die
 	 *            ID
 	 */
-	public void amZug(int id, boolean ansage);
+	public void amZug(boolean schlag);
+
+	/**
+	 * 
+	 * Teilt mit, dass der Spieler am Zug ist.
+	 */
+	public void amZug();
 
 	/**
 	 * 

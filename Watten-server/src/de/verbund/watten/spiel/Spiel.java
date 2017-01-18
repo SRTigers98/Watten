@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.karten.Kartendeck;
 import de.verbund.watten.regelwerk.Regelwerk;
@@ -56,8 +57,17 @@ public class Spiel {
 		}
 	}
 
-	public void werteAus() {
-		// TODO Gespielte Karten vergleichen
+	public void werteAus() throws WattenException {
+		SpielRunde runde = new SpielRunde(regeln, spieler.get(0), spieler.get(1));
+		runden.add(runde);
+		int sieger = runde.werteAus();
+		if (sieger == 0) {
+			throw new WattenException("Fehler in der Auswertung!");
+		} else if (sieger == 1) {
+			spieler.get(0).setStiche(spieler.get(0).getStiche() + 1);
+		} else {
+			spieler.get(1).setStiche(spieler.get(1).getStiche() + 1);
+		}
 	}
 
 	public void neueRunde() {
@@ -77,7 +87,9 @@ public class Spiel {
 	}
 
 	public List<Karte> getDeck() {
-		// TODO Wenn null, dann Exception
+		if (deck == null) {
+			deck = new Kartendeck().getDeck();
+		}
 		return deck;
 	}
 

@@ -102,12 +102,31 @@ public class WattenClient implements Runnable {
 			clientGUI.ausgabe((int) kdo.getParameter().get(0), kdo.getParameter().get(1).toString());
 		}
 		if (kdo.getKommando().equals(KommandoKonst.SENDE_HANDKARTEN)) {
-			List<Karte> hand = new ArrayList<>();
-			for (Serializable p : kdo.getParameter()) {
-				hand.add((Karte) p);
-			}
-			clientGUI.gibHandkarten(hand);
+			verteileHandkarten(kdo);
 		}
+		if (kdo.getKommando().equals(KommandoKonst.SENDE_SCHLAG)) {
+			verteileSchlag(kdo);
+		}
+		if (kdo.getKommando().equals(KommandoKonst.SENDE_FARBE)) {
+			verteileFarbe(kdo);
+		}
+		// TODO Spieler empfangen
+	}
+
+	private void verteileFarbe(Kommando kdo) {
+		clientGUI.gibFarbe(kdo.getParameter().get(0).toString());
+	}
+
+	private void verteileSchlag(Kommando kdo) {
+		clientGUI.gibSchlag(kdo.getParameter().get(0).toString());
+	}
+
+	private void verteileHandkarten(Kommando kdo) {
+		List<Karte> hand = new ArrayList<>();
+		for (Serializable p : kdo.getParameter()) {
+			hand.add((Karte) p);
+		}
+		clientGUI.gibHandkarten(hand);
 	}
 
 }

@@ -6,6 +6,7 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.KommandoKonst;
 import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.server.Verbindung;
 import de.verbund.watten.server.WattenServer;
@@ -37,7 +38,6 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void spieleKarte(int id, Karte karte) {
-		// TODO Auto-generated method stub
 		for (Spieler s : spiel.getSpieler()) {
 			if (s.getId() == id) {
 				s.setGespielt(karte);
@@ -50,7 +50,13 @@ public class WattenManagerImpl implements WattenManager {
 			}
 		}
 		if (alleGespielt) {
-			spiel.werteAus();
+			try {
+				spiel.werteAus();
+				sendeSpieler();
+			} catch (WattenException e) {
+				Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.FEHLER, e.getMessage());
+				server.sendeAnAlle(kdo);
+			}
 		}
 	}
 
@@ -73,13 +79,43 @@ public class WattenManagerImpl implements WattenManager {
 	}
 
 	@Override
+	public void sendeSpieler() {
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.SENDE_SPIELER);
+		for (Verbindung v : server.getVerbindungen()) {
+			List<Spieler> spieler = spiel.getSpieler();
+			Spieler sp = null;
+			for (Spieler s : spieler) {
+				if (v.getId() == s.getId()) {
+					kdo.addParameter(s);
+					sp = s;
+				}
+			}
+			spieler.remove(sp);
+			for (Spieler s : spieler) {
+				kdo.addParameter(s);
+			}
+			v.sende(kdo);
+		}
+	}
+
+	@Override
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
-			spiel.getSpieler().get(0).setKommtRaus(true);
-			spiel.teileAus();
 			Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, "Spieler gefunden. Spiel startet.");
 			server.sendeAnAlle(kdo);
+			spiel.getSpieler().get(0).setKommtRaus(true);
+			sendeSpieler();
+			spiel.teileAus();
+			sendeHandkarten();
+			int id = spiel.getSpieler().get(0).getId();
+			kdo = Hilfe.getMeldungAmZug(true);
+			for (Verbindung v : server.getVerbindungen()) {
+				if (v.getId() == id) {
+					v.sende(kdo);
+				}
+			}
 		} else {
 			throw new WattenException("Noch nicht genügend Spieler vorhanden!");
 		}
@@ -99,12 +135,35 @@ public class WattenManagerImpl implements WattenManager {
 	@Override
 	public void setzeSchlag(String schlag) {
 		spiel.setSchlag(schlag);
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.SENDE_SCHLAG);
+		kdo.addParameter(schlag);
+		server.sendeAnAlle(kdo);
+		int id = spiel.getSpieler().get(0).getId();
+		kdo = Hilfe.getMeldungAmZug(false);
+		for (int i = 0; i < server.getVerbindungen().size(); i++) {
+			if (server.getVerbindungen().get(i).getId() == id) {
+				server.getVerbindungen().get(i + 1).sende(kdo);
+				break;
+			}
+		}
 	}
 
 	@Override
 	public void setzeFarbe(String farbe) {
 		spiel.setFarbe(farbe);
 		spiel.getRegeln();
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.SENDE_FARBE);
+		kdo.addParameter(farbe);
+		server.sendeAnAlle(kdo);
+		int id = spiel.getSpieler().get(0).getId();
+		kdo = Hilfe.getMeldungAmZug();
+		for (Verbindung v : server.getVerbindungen()) {
+			if (v.getId() == id) {
+				v.sende(kdo);
+			}
+		}
 	}
 
 }

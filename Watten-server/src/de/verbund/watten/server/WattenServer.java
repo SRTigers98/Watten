@@ -71,7 +71,6 @@ public class WattenServer implements Runnable {
 	public void sendeAnAlle(Kommando kdo) {
 		for (int i = 0; i < verbindungen.size(); ++i) {
 			Verbindung v = (Verbindung) verbindungen.get(i);
-			// TODO Lebt die Verbindung noch?
 			v.sende(kdo);
 		}
 

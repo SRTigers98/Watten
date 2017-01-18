@@ -20,6 +20,8 @@ public interface WattenManager {
 
 	public void sendeHandkarten();
 
+	public void sendeSpieler();
+
 	public void starteSpiel() throws WattenException;
 
 	public void setzeSchlag(String schlag);

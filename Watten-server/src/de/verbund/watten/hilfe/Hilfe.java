@@ -1,6 +1,7 @@
 package de.verbund.watten.hilfe;
 
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.konstanten.KommandoKonst;
 
 /**
  * 
@@ -16,6 +17,19 @@ public class Hilfe {
 		kdo.setKommando("text");
 		kdo.addParameter(art);
 		kdo.addParameter(message);
+		return kdo;
+	}
+
+	public static Kommando getMeldungAmZug(boolean schlag) {
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.AM_ZUG);
+		kdo.addParameter(schlag);
+		return kdo;
+	}
+
+	public static Kommando getMeldungAmZug() {
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.AM_ZUG);
 		return kdo;
 	}
 

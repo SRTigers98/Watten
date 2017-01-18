@@ -77,7 +77,6 @@ public class Spielfenster implements ClientGUI {
 	private Spieler sp1;
 	private Spieler sp2;
 	private boolean amZug;
-	private List<Karte> handkarten;
 	private Karte karte1;
 	private Karte karte2;
 	private Karte karte3;
@@ -88,6 +87,7 @@ public class Spielfenster implements ClientGUI {
 	private JLabel lblFarbe;
 	private JLabel lblSchlagWert;
 	private JLabel lblFarbeWert;
+	private JLabel lblAnsage;
 
 	/**
 	 * Create the application.
@@ -646,28 +646,34 @@ public class Spielfenster implements ClientGUI {
 			}
 			GridBagLayout gbl_panelAnsage = new GridBagLayout();
 			gbl_panelAnsage.columnWidths = new int[]{0, 0, 0};
-			gbl_panelAnsage.rowHeights = new int[]{0, 0, 0, 0, 0};
+			gbl_panelAnsage.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 			gbl_panelAnsage.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-			gbl_panelAnsage.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+			gbl_panelAnsage.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			panelAnsage.setLayout(gbl_panelAnsage);
+			GridBagConstraints gbc_lblAnsage = new GridBagConstraints();
+			gbc_lblAnsage.insets = new Insets(0, 0, 5, 5);
+			gbc_lblAnsage.gridx = 0;
+			gbc_lblAnsage.gridy = 0;
+			panelAnsage.add(getLblAnsage(), gbc_lblAnsage);
 			GridBagConstraints gbc_lblSchlag = new GridBagConstraints();
-			gbc_lblSchlag.insets = new Insets(0, 0, 5, 0);
+			gbc_lblSchlag.insets = new Insets(0, 0, 5, 5);
 			gbc_lblSchlag.gridx = 0;
-			gbc_lblSchlag.gridy = 0;
+			gbc_lblSchlag.gridy = 1;
 			panelAnsage.add(getLblSchlag(), gbc_lblSchlag);
 			GridBagConstraints gbc_lblFarbe = new GridBagConstraints();
-			gbc_lblFarbe.insets = new Insets(0, 0, 5, 0);
+			gbc_lblFarbe.insets = new Insets(0, 0, 5, 5);
 			gbc_lblFarbe.gridx = 0;
-			gbc_lblFarbe.gridy = 1;
+			gbc_lblFarbe.gridy = 2;
 			panelAnsage.add(getLblFarbe(), gbc_lblFarbe);
 			GridBagConstraints gbc_lblSchlagWert = new GridBagConstraints();
-			gbc_lblSchlagWert.insets = new Insets(0, 0, 5, 0);
+			gbc_lblSchlagWert.insets = new Insets(0, 5, 5, 0);
 			gbc_lblSchlagWert.gridx = 1;
-			gbc_lblSchlagWert.gridy = 0;
+			gbc_lblSchlagWert.gridy = 1;
 			panelAnsage.add(getLblSchlagWert(), gbc_lblSchlagWert);
 			GridBagConstraints gbc_lblFarbeWert = new GridBagConstraints();
+			gbc_lblFarbeWert.insets = new Insets(0, 5, 5, 0);
 			gbc_lblFarbeWert.gridx = 1;
-			gbc_lblFarbeWert.gridy = 1;
+			gbc_lblFarbeWert.gridy = 2;
 			panelAnsage.add(getLblFarbeWert(), gbc_lblFarbeWert);
 		}
 		return panelAnsage;
@@ -698,10 +704,16 @@ public class Spielfenster implements ClientGUI {
 		return lblFarbeWert;
 	}
 
+	private JLabel getLblAnsage() {
+		if (lblAnsage == null) {
+			lblAnsage = new JLabel("Ansage");
+		}
+		return lblAnsage;
+	}
+	
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
 		try {
-			this.handkarten = handkarten;
 			URL urlBack = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
 			Image img = ImageIO.read(urlBack);
 			Icon back = new ImageIcon(img);
@@ -755,40 +767,47 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		lblName1.setText(spieler.get(0).getName());
-		lblName2.setText(spieler.get(1).getName());
 		sp1 = spieler.get(0);
 		sp2 = spieler.get(1);
+		lblName1.setText(sp1.getName());
+		lblName2.setText(sp2.getName());
+		lblAnzStiche1.setText(Integer.toString(sp1.getStiche()));
+		lblAnzStiche2.setText(Integer.toString(sp2.getStiche()));
+		lblWins1.setText(Integer.toString(sp1.getPunkte()));
+		lblWins2.setText(Integer.toString(sp2.getPunkte()));
 	}
 
 	@Override
-	public void amZug(int id, boolean ansage) {
-		if(ansage == true){
-			if(id == sp1.getId()){
-				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
-			}else if(id == sp2.getId()){
-				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL);
-			}else{
-				if (meldung == null) {
-					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
-				} else {
-					meldung.terminate();
-					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
-				}
+	public void amZug(boolean schlag) {
+		if(schlag == true){
+			new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
+		}else if(schlag == false){
+			new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
+		}else{
+			if (meldung == null) {
+				meldung = new Meldung(MeldungKonst.FEHLER, "Falscher Ansageboolean!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(MeldungKonst.FEHLER, "Falscher Ansageboolean!");
 			}
-		amZug = true;
 		}
+	}
+	
+	public void amZug(){
+		amZug = true;
 	}
 
 	@Override
 	public void gibSchlag(String schlag) {
-		// TODO Auto-generated method stub
-		
+		if(schlag.equals("_Koenig")){
+			lblSchlagWert.setText("König");			
+		}else{
+			lblSchlagWert.setText(schlag.substring(1));			
+		}
 	}
 
 	@Override
 	public void gibFarbe(String farbe) {
-		// TODO Auto-generated method stub
-		
+		lblFarbeWert.setText(farbe);
 	}
 }

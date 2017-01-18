@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -157,7 +160,7 @@ public class Hauptmenue {
 							korrekt = false;
 						}
 						if (txtIp.getText().isEmpty() || txtName.getText().equals("")) {
-							if (!txtIp.getText().matches("")) {
+							if (IsIP6or4(txtIp.getText())) {
 								txt.append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n");
 							} else {
 								txt.append("Sie müssen eine IP-Adresse angeben. \n");
@@ -177,8 +180,9 @@ public class Hauptmenue {
 							server.sendeName(txtName.getText());
 
 							frame.dispose();
+						} else {
+							new Meldung(MeldungKonst.HINWEIS, txt.toString());
 						}
-						new Meldung(MeldungKonst.HINWEIS, txt.toString());
 					}
 				}
 			});
@@ -215,5 +219,27 @@ public class Hauptmenue {
 			txtPort.setColumns(10);
 		}
 		return txtPort;
+	}
+
+	boolean IsIP6or4(String addr) {
+		try {
+
+			InetAddress address = InetAddress.getByName(addr);
+
+			if (address instanceof Inet4Address) {
+				// your IP is IPv4
+				return true;
+			} else if (address instanceof Inet6Address) {
+				// your IP is IPv6
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception e) {
+
+			return false;
+
+		}
 	}
 }
