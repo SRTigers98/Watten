@@ -75,7 +75,7 @@ public class Auswahlfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Auswahlfenster window = new Auswahlfenster(1, null);
+					Auswahlfenster window = new Auswahlfenster(2, null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -118,8 +118,10 @@ public class Auswahlfenster {
 		frame.setTitle("Farbe Auswahl");
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Farbe(), BorderLayout.CENTER);
-		frame.setVisible(true);
 		frame.setAlwaysOnTop(true);
+		frame.setUndecorated(true);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 
 	/**
@@ -131,8 +133,10 @@ public class Auswahlfenster {
 		frame.setTitle("Schlag Auswahl");
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Schlag(), BorderLayout.CENTER);
-		frame.setVisible(true);
 		frame.setAlwaysOnTop(true);
+		frame.setUndecorated(true);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 
 	/**
