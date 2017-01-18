@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.spieler.Spieler;
 
 public class ClientDummy implements Client {
 
@@ -26,6 +27,10 @@ public class ClientDummy implements Client {
 		handkarten.add(new Karte("Eichel", "_Sau"));
 		handkarten.add(new Karte("Herz", "_Koenig"));
 		clientGUI.gibHandkarten(handkarten);
+		List<Spieler> spieler = new ArrayList<>();
+		spieler.add(new Spieler(0, "Test1"));
+		spieler.add(new Spieler(1, "Test2"));
+		clientGUI.gibSpieler(spieler);
 	}
 
 	@Override

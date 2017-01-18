@@ -12,6 +12,7 @@ import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.spieler.Spieler;
+import konstanten.MeldungKonst;
 
 public class Verbindung implements Runnable {
 
@@ -96,7 +97,7 @@ public class Verbindung implements Runnable {
 			try {
 				socketServer.getManager().starteSpiel();
 			} catch (WattenException e) {
-				Kommando kdo2 = Hilfe.getMeldungKommando(3, e.getMessage());
+				Kommando kdo2 = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, e.getMessage());
 				sende(kdo2);
 			}
 		}

@@ -12,8 +12,11 @@ import java.util.List;
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.karten.Karte;
+import konstanten.KommandoKonst;
+import konstanten.MeldungKonst;
 
 public class WattenClient implements Runnable {
+
 	Socket socket;
 	ObjectOutputStream out;
 	ObjectInputStream in;
@@ -76,7 +79,7 @@ public class WattenClient implements Runnable {
 				// Die Analyse des Objektes
 				verarbeite(gesendet);
 			} catch (ClassNotFoundException e) {
-				clientGUI.ausgabe(2, "Fehler beim Lesen: " + e.getMessage());
+				clientGUI.ausgabe(MeldungKonst.FEHLER, "Fehler beim Lesen: " + e.getMessage());
 				e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -87,7 +90,7 @@ public class WattenClient implements Runnable {
 
 	private void verarbeite(Serializable gesendet) {
 		Kommando kdo = (Kommando) gesendet;
-		if (kdo.getKommando().equals("text")) {
+		if (kdo.getKommando().equals(KommandoKonst.TEXT)) {
 			clientGUI.ausgabe((int) kdo.getParameter().get(0), kdo.getParameter().get(1).toString());
 		}
 		if (kdo.getKommando().equals("sendeHandkarten")) {
