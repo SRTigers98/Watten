@@ -41,6 +41,8 @@ public class ClientDummy implements Client {
 
 	@Override
 	public void sendeSchlag(String schlag) {
+		clientGUI.gibSchlag(schlag);
+		clientGUI.gibFarbe("Herz");
 		clientGUI.amZug(0, false);
 	}
 
