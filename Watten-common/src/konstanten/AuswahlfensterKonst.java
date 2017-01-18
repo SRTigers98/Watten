@@ -2,9 +2,9 @@ package konstanten;
 
 /**
  * 
- * Enthält die Konstanten zur Meldungs-Klasse.
+ * Enthält die Konstanten zum Auswahlfenster.
  * 
- * @author Benjamin
+ * @author Marc
  *
  */
 public class AuswahlfensterKonst {
