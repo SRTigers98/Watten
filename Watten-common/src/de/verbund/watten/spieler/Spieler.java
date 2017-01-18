@@ -5,6 +5,13 @@ import java.util.List;
 
 import de.verbund.watten.karten.Karte;
 
+/**
+ * 
+ * Datenhaltungsklasse für die Spieler, die am Spiel teilnehmen.
+ * 
+ * @author Benjamin
+ *
+ */
 public class Spieler {
 
 	private int id;

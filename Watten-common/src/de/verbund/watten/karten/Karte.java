@@ -2,6 +2,13 @@ package de.verbund.watten.karten;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * Datenhaltungsklasse für die Karten, mit denen gespielt wird.
+ * 
+ * @author Benjamin
+ *
+ */
 public class Karte implements Serializable {
 
 	private String schlag;

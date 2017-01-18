@@ -18,7 +18,7 @@ import konstanten.MeldungKonst;
 /**
  * 
  * Kommuniziert mit dem Server. Diese Klasse sendet und empfängt die Daten vom
- * Server und bereitet diese zum Transport bzw. zur Verarbeitung in der GUI vor.
+ * Server.
  * 
  * @author Benjamin
  *
