@@ -117,12 +117,20 @@ public class WattenManagerImpl implements WattenManager {
 	@Override
 	public void setzeSchlag(String schlag) {
 		spiel.setSchlag(schlag);
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.SENDE_SCHLAG);
+		kdo.addParameter(schlag);
+		server.sendeAnAlle(kdo);
 	}
 
 	@Override
 	public void setzeFarbe(String farbe) {
 		spiel.setFarbe(farbe);
 		spiel.getRegeln();
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.SENDE_FARBE);
+		kdo.addParameter(farbe);
+		server.sendeAnAlle(kdo);
 	}
 
 }

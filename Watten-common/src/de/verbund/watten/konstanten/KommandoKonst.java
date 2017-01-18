@@ -18,7 +18,7 @@ public class KommandoKonst {
 	public static final String SENDE_NAME = "sendeName";
 	public static final String ANSAGE_FARBE = "ansageFarbe";
 	public static final String ANSAGE_SCHLAG = "ansageSchlag";
-	public static final Object SENDE_SCHLAG = "sendeSchlag";
-	public static final Object SENDE_FARBE = "sendeFarbe";
+	public static final String SENDE_SCHLAG = "sendeSchlag";
+	public static final String SENDE_FARBE = "sendeFarbe";
 
 }
