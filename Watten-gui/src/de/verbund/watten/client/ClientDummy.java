@@ -31,7 +31,7 @@ public class ClientDummy implements Client {
 		spieler.add(new Spieler(0, "Test1"));
 		spieler.add(new Spieler(1, "Test2"));
 		clientGUI.gibSpieler(spieler);
-		clientGUI.amZug(0);
+		clientGUI.amZug(0, true);
 	}
 
 	@Override

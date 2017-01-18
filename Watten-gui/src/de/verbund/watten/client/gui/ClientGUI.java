@@ -47,7 +47,7 @@ public interface ClientGUI {
 	 * @param die
 	 *            ID
 	 */
-	public void amZug(int id);
+	public void amZug(int id, boolean ansage);
 
 	/**
 	 * Setzt die Client-Referenz auf den entsprechenden Client
