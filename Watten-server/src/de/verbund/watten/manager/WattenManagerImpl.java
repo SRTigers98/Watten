@@ -109,6 +109,13 @@ public class WattenManagerImpl implements WattenManager {
 			sendeSpieler();
 			spiel.teileAus();
 			sendeHandkarten();
+			int id = spiel.getSpieler().get(0).getId();
+			kdo = Hilfe.getMeldungAmZug(true);
+			for (Verbindung v : server.getVerbindungen()) {
+				if (v.getId() == id) {
+					v.sende(kdo);
+				}
+			}
 		} else {
 			throw new WattenException("Noch nicht genügend Spieler vorhanden!");
 		}
@@ -132,6 +139,14 @@ public class WattenManagerImpl implements WattenManager {
 		kdo.setKommando(KommandoKonst.SENDE_SCHLAG);
 		kdo.addParameter(schlag);
 		server.sendeAnAlle(kdo);
+		int id = spiel.getSpieler().get(0).getId();
+		kdo = Hilfe.getMeldungAmZug(false);
+		for (int i = 0; i < server.getVerbindungen().size(); i++) {
+			if (server.getVerbindungen().get(i).getId() == id) {
+				server.getVerbindungen().get(i + 1).sende(kdo);
+				break;
+			}
+		}
 	}
 
 	@Override
@@ -142,6 +157,13 @@ public class WattenManagerImpl implements WattenManager {
 		kdo.setKommando(KommandoKonst.SENDE_FARBE);
 		kdo.addParameter(farbe);
 		server.sendeAnAlle(kdo);
+		int id = spiel.getSpieler().get(0).getId();
+		kdo = Hilfe.getMeldungAmZug();
+		for (Verbindung v : server.getVerbindungen()) {
+			if (v.getId() == id) {
+				v.sende(kdo);
+			}
+		}
 	}
 
 }
