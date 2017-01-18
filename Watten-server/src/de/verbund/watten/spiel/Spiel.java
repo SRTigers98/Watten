@@ -9,6 +9,14 @@ import de.verbund.watten.karten.Kartendeck;
 import de.verbund.watten.regelwerk.Regelwerk;
 import de.verbund.watten.spieler.Spieler;
 
+/**
+ * 
+ * Verwaltet ein einzelnes Spiel, weiß was angesagt wurde, wer mitspielt und
+ * kennt die einzelnen Spielrunden.
+ * 
+ * @author Benjamin
+ *
+ */
 public class Spiel {
 
 	private Regelwerk regeln;

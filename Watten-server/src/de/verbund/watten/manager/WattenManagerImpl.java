@@ -38,7 +38,20 @@ public class WattenManagerImpl implements WattenManager {
 	@Override
 	public void spieleKarte(int id, Karte karte) {
 		// TODO Auto-generated method stub
-
+		for (Spieler s : spiel.getSpieler()) {
+			if (s.getId() == id) {
+				s.setGespielt(karte);
+			}
+		}
+		boolean alleGespielt = true;
+		for (Spieler s : spiel.getSpieler()) {
+			if (s.getGespielt() == null) {
+				alleGespielt = false;
+			}
+		}
+		if (alleGespielt) {
+			spiel.werteAus();
+		}
 	}
 
 	@Override

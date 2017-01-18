@@ -3,6 +3,13 @@ package de.verbund.watten.karten;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * Erstellt ein vollständiges Kartendeck in einer Liste von Karten.
+ * 
+ * @author Benjamin
+ *
+ */
 public class Kartendeck {
 
 	private String[] schlaege;
