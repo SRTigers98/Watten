@@ -87,7 +87,9 @@ public class Spiel {
 	}
 
 	public List<Karte> getDeck() {
-		// TODO Wenn null, dann Exception
+		if (deck == null) {
+			deck = new Kartendeck().getDeck();
+		}
 		return deck;
 	}
 
