@@ -21,10 +21,18 @@ import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
 import de.verbund.watten.spielbeginn.Auswahlfenster;
 import de.verbund.watten.spieler.Spieler;
-import konstanten.MeldungKonst;
+import de.verbund.watten.konstanten.AuswahlfensterKonst;
+import de.verbund.watten.konstanten.MeldungKonst;
 
 import javax.swing.JLabel;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+/**
+ * Spielfenster realisiert die Anzeige auf dem einelnen Client
+ * Spielfenster übergibt actions des Users an die Clientklasse
+ * 
+ * @author SvSy
+ */
 public class Spielfenster implements ClientGUI {
 
 	private Client client;
@@ -64,6 +72,8 @@ public class Spielfenster implements ClientGUI {
 	private Meldung meldung;
 	private Spieler sp1;
 	private Spieler sp2;
+	private boolean amZug;
+	private List<Karte> handkarten;
 
 	/**
 	 * Create the application.
@@ -122,10 +132,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelWins2.add(getLblName2());
@@ -149,10 +159,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 
 			}
@@ -180,10 +190,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelStich2.add(getLblStich2());
@@ -207,10 +217,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelWins1.add(getLblName1());
@@ -234,10 +244,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelHand1.add(getLblSP1K1());
@@ -264,10 +274,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelStich1.add(getLblStich1());
@@ -291,10 +301,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelFeld.setLayout(new BorderLayout(0, 0));
@@ -319,10 +329,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelKarte2.add(getLblKsp());
@@ -345,10 +355,10 @@ public class Spielfenster implements ClientGUI {
 				};
 			} catch (IOException e1) {
 				if (meldung == null) {
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				} else {
 					meldung.terminate();
-					meldung = new Meldung(2, "Hintergrund konnte nicht geladen werden!");
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
 			panelKarte1.add(getLblKsp_1());
@@ -423,6 +433,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K1() {
 		if (lblSP1K1 == null) {
 			lblSP1K1 = new JLabel("");
+			lblSP1K1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K1;
 	}
@@ -430,6 +446,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K2() {
 		if (lblSP1K2 == null) {
 			lblSP1K2 = new JLabel("");
+			lblSP1K2.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K2;
 	}
@@ -437,6 +459,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K3() {
 		if (lblSP1K3 == null) {
 			lblSP1K3 = new JLabel("");
+			lblSP1K3.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K3;
 	}
@@ -444,6 +472,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K4() {
 		if (lblSP1K4 == null) {
 			lblSP1K4 = new JLabel("");
+			lblSP1K4.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K4;
 	}
@@ -451,6 +485,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K5() {
 		if (lblSP1K5 == null) {
 			lblSP1K5 = new JLabel("");
+			lblSP1K5.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K5;
 	}
@@ -525,9 +565,23 @@ public class Spielfenster implements ClientGUI {
 		return panelTisch;
 	}
 	
+	private void karteSpielen(JLabel lable){
+		if(amZug == true){
+			Icon iconKarte = lable.getIcon();
+			lable.setIcon(null);
+			lblKSP1.setIcon(iconKarte);
+			karteAusIcon(iconKarte);
+		}
+	}
+	
+	private void karteAusIcon(Icon icon) {
+		
+	}
+
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
 		try {
+			this.handkarten = handkarten;
 			URL urlBack = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
 			Image img = ImageIO.read(urlBack);
 			Icon back = new ImageIcon(img);
@@ -548,10 +602,10 @@ public class Spielfenster implements ClientGUI {
 			lblSP1K5.setIcon(iconHolen(karte5));
 		} catch (IOException e) {
 			if (meldung == null) {
-				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
 			} else {
 				meldung.terminate();
-				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
 			}
 		}
 
@@ -565,10 +619,10 @@ public class Spielfenster implements ClientGUI {
 			return icon;
 		} catch (IOException e) {
 			if (meldung == null) {
-				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
 			} else {
 				meldung.terminate();
-				meldung = new Meldung(2, "Handkarten können nicht angezeigt werden!");
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
 			}
 		}
 		return null;
@@ -588,18 +642,34 @@ public class Spielfenster implements ClientGUI {
 	}
 
 	@Override
-	public void amZug(int id) {
-		if(id == sp1.getId()){
-			Auswahlfenster auswahlFarbe = new Auswahlfenster();
-		}else if(id == sp2.getId()){
-			System.out.println("Spieler 2 beginnt!");
-		}else{
-			if (meldung == null) {
-				meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
-			} else {
-				meldung.terminate();
-				meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+	public void amZug(int id, boolean ansage) {
+		if(ansage == true){
+			if(id == sp1.getId()){
+				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
+			}else if(id == sp2.getId()){
+				//TODO Schlagwahl anzeigen
+				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL);
+			}else{
+				if (meldung == null) {
+					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+				}
 			}
+		amZug = true;
 		}
+	}
+
+	@Override
+	public void gibSchlag(String schlag) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gibFarbe(String farbe) {
+		// TODO Auto-generated method stub
+		
 	}
 }
