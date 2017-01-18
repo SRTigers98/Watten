@@ -19,6 +19,7 @@ import de.verbund.watten.client.Client;
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
+import de.verbund.watten.spielbeginn.Auswahlfenster;
 import de.verbund.watten.spieler.Spieler;
 import konstanten.MeldungKonst;
 
@@ -589,7 +590,7 @@ public class Spielfenster implements ClientGUI {
 	@Override
 	public void amZug(int id) {
 		if(id == sp1.getId()){
-			System.out.println("Spieler 1 beginnt!");
+			Auswahlfenster auswahlFarbe = new Auswahlfenster();
 		}else if(id == sp2.getId()){
 			System.out.println("Spieler 2 beginnt!");
 		}else{
