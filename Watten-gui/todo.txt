@@ -4,7 +4,7 @@ TODOS für dieses Projekt
 [ ] Erstelle in jeder Klasse einen JavaDoc-Kommentar, der in einem Satz ausdrückt, welche Aufgabe die Klasse hat.
 	Beachte dabei das Prinzip SRP
 
-[ ] ClientImpl: nutze für die Kommandos "sendeName" etc. Konstanten. Lager die Konstanten in das Common-Projekt aus und nutze diese
+[X] ClientImpl: nutze für die Kommandos "sendeName" etc. Konstanten. Lager die Konstanten in das Common-Projekt aus und nutze diese
 	auch im Server => Vermeidung von Schreibfehlern, gemeinsame Aktualisierung
 	
 [ ] WattenClient: IP und Port sollten konfigurierbar sein.
