@@ -62,21 +62,10 @@ public class Spielfenster implements ClientGUI {
 	private JPanel panelTisch;
 	private Meldung meldung;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Spielfenster window = new Spielfenster("Test");
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {							//Nur zum testen
+//		Spielfenster window = new Spielfenster("Test");
+//		window.frame.setVisible(true);
+//	}
 
 	/**
 	 * Create the application.
