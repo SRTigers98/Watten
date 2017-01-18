@@ -690,7 +690,7 @@ public class Auswahlfenster {
 
 	private JRadioButton getRdbtnKoenig() {
 		if (rdbtnKoenig == null) {
-			rdbtnKoenig = new JRadioButton("Koenig");
+			rdbtnKoenig = new JRadioButton("König");
 			rdbtnKoenig.setBackground(hellesGruen);
 			rdbtnKoenig.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
