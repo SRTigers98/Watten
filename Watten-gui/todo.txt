@@ -1,7 +1,7 @@
 TODOS für dieses Projekt
 ========================
 
-[ ] Erstelle in jeder Klasse einen JavaDoc-Kommentar, der in einem Satz ausdrückt, welche Aufgabe die Klasse hat.
+[X] Erstelle in jeder Klasse einen JavaDoc-Kommentar, der in einem Satz ausdrückt, welche Aufgabe die Klasse hat.
 	Beachte dabei das Prinzip SRP (.client und .client.gui und .hauptfenster erledigt)
 
 [X] ClientImpl: nutze für die Kommandos "sendeName" etc. Konstanten. Lager die Konstanten in das Common-Projekt aus und nutze diese

@@ -736,7 +736,7 @@ public class Auswahlfenster {
 	}
 
 	protected void schlagCommit() {
-
+		// TODO Auto-generated method stub
 	}
 
 	protected void farbCommit() {
