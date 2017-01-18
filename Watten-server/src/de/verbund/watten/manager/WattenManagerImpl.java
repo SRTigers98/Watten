@@ -6,6 +6,7 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.KommandoKonst;
 import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.server.Verbindung;
 import de.verbund.watten.server.WattenServer;
@@ -37,7 +38,6 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void spieleKarte(int id, Karte karte) {
-		// TODO Auto-generated method stub
 		for (Spieler s : spiel.getSpieler()) {
 			if (s.getId() == id) {
 				s.setGespielt(karte);
@@ -50,7 +50,18 @@ public class WattenManagerImpl implements WattenManager {
 			}
 		}
 		if (alleGespielt) {
-			spiel.werteAus();
+			try {
+				spiel.werteAus();
+				Kommando kdo = new Kommando();
+				kdo.setKommando(KommandoKonst.SENDE_SPIELER);
+				for (Spieler s : spiel.getSpieler()) {
+					kdo.addParameter(s);
+				}
+				server.sendeAnAlle(kdo);
+			} catch (WattenException e) {
+				Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.FEHLER, e.getMessage());
+				server.sendeAnAlle(kdo);
+			}
 		}
 	}
 

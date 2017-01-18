@@ -1,5 +1,6 @@
 package de.verbund.watten.spieler;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import de.verbund.watten.karten.Karte;
  * @author Benjamin
  *
  */
-public class Spieler {
+public class Spieler implements Serializable {
 
 	private int id;
 	private String name;
