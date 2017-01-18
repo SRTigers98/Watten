@@ -25,6 +25,8 @@ import konstanten.AuswahlfensterKonst;
 import konstanten.MeldungKonst;
 
 import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  * Spielfenster realisiert die Anzeige auf dem einelnen Client
  * Spielfenster übergibt actions des Users an die Clientklasse
@@ -429,6 +431,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K1() {
 		if (lblSP1K1 == null) {
 			lblSP1K1 = new JLabel("");
+			lblSP1K1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K1;
 	}
@@ -436,6 +444,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K2() {
 		if (lblSP1K2 == null) {
 			lblSP1K2 = new JLabel("");
+			lblSP1K2.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K2;
 	}
@@ -443,6 +457,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K3() {
 		if (lblSP1K3 == null) {
 			lblSP1K3 = new JLabel("");
+			lblSP1K3.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K3;
 	}
@@ -450,6 +470,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K4() {
 		if (lblSP1K4 == null) {
 			lblSP1K4 = new JLabel("");
+			lblSP1K4.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K4;
 	}
@@ -457,6 +483,12 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K5() {
 		if (lblSP1K5 == null) {
 			lblSP1K5 = new JLabel("");
+			lblSP1K5.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//TODO Karte ausspielen
+				}
+			});
 		}
 		return lblSP1K5;
 	}
