@@ -602,6 +602,14 @@ public class Spielfenster implements ClientGUI {
 					meldung = new Meldung(MeldungKonst.FEHLER, "Fehler beim übermitteln der Karte!");
 				}
 			}
+			amZug = false;
+		} else {
+			if (meldung == null) {
+				meldung = new Meldung(MeldungKonst.HINWEIS, "Du bist nicht dran!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(MeldungKonst.HINWEIS, "Du bist nicht dran!");
+			}
 		}
 	}
 
