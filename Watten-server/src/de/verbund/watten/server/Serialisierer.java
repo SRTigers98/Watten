@@ -5,6 +5,13 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * 
+ * Ist für die Serialisierung der Objekte zuständig.
+ * 
+ * @author Friedrich
+ *
+ */
 public class Serialisierer {
 
 	public static Object lese(String dateiName) throws Exception {

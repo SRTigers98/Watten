@@ -90,17 +90,7 @@ public class Verbindung implements Runnable {
 			ok = false;
 		}
 		if (kdo.getKommando().equals(KommandoKonst.SENDE_NAME)) {
-			// TODO UUID später
-			id = socketServer.getVerbindungen().size();
-			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
-			// TODO Fehlermeldung, wenn zu viele Spieler
-			socketServer.getManager().addSpieler(spieler);
-			try {
-				socketServer.getManager().starteSpiel();
-			} catch (WattenException e) {
-				Kommando kdo2 = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, e.getMessage());
-				sende(kdo2);
-			}
+			erhalteName(kdo);
 		}
 		if (kdo.getKommando().equals(KommandoKonst.SPIELE_KARTE)) {
 			Karte karte = (Karte) kdo.getParameter().get(0);
@@ -114,6 +104,20 @@ public class Verbindung implements Runnable {
 		}
 
 		return gesendet;
+	}
+
+	private void erhalteName(Kommando kdo) {
+		// TODO UUID später
+		id = socketServer.getVerbindungen().size();
+		Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
+		// TODO Fehlermeldung, wenn zu viele Spieler
+		socketServer.getManager().addSpieler(spieler);
+		try {
+			socketServer.getManager().starteSpiel();
+		} catch (WattenException e) {
+			Kommando kdo2 = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, e.getMessage());
+			sende(kdo2);
+		}
 	}
 
 	public void beende() {
