@@ -705,6 +705,13 @@ public class Spielfenster implements ClientGUI {
 		return lblFarbeWert;
 	}
 
+	private JLabel getLblAnsage() {
+		if (lblAnsage == null) {
+			lblAnsage = new JLabel("Ansage");
+		}
+		return lblAnsage;
+	}
+	
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
 		try {
@@ -770,12 +777,13 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void amZug(int id, boolean ansage) {
+		Auswahlfenster auswahl;
 		if(ansage == true){
 			if(id == sp1.getId()){
-				Auswahlfenster auswahl = new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
-				client.sendeFarbe(auswahl.getfarbe());
+				auswahl = new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
+				client.sendeSchlag(auswahl.getschlag());
 			}else if(id == sp2.getId()){
-				Auswahlfenster auswahl = new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL);
+				auswahl = new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
 				client.sendeFarbe(auswahl.getfarbe());
 			}else{
 				if (meldung == null) {
@@ -797,11 +805,5 @@ public class Spielfenster implements ClientGUI {
 	@Override
 	public void gibFarbe(String farbe) {
 		lblFarbeWert.setText(farbe);
-		}
-	private JLabel getLblAnsage() {
-		if (lblAnsage == null) {
-			lblAnsage = new JLabel("Ansage:");
-		}
-		return lblAnsage;
 	}
 }
