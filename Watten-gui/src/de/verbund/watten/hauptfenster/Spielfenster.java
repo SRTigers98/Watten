@@ -72,6 +72,8 @@ public class Spielfenster implements ClientGUI {
 	private Meldung meldung;
 	private Spieler sp1;
 	private Spieler sp2;
+	private boolean amZug;
+	private List<Karte> handkarten;
 
 	/**
 	 * Create the application.
@@ -563,9 +565,18 @@ public class Spielfenster implements ClientGUI {
 		return panelTisch;
 	}
 	
+	private void karteSpielen(JLabel lable){
+		if(amZug == true){
+			Icon iconKarte = lable.getIcon();
+			lable.setIcon(null);
+			lblKSP1.setIcon(iconKarte);
+		}
+	}
+	
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
 		try {
+			this.handkarten = handkarten;
 			URL urlBack = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
 			Image img = ImageIO.read(urlBack);
 			Icon back = new ImageIcon(img);
@@ -631,7 +642,8 @@ public class Spielfenster implements ClientGUI {
 			if(id == sp1.getId()){
 				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
 			}else if(id == sp2.getId()){
-				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL); //TODO erst nach Schlagwahl!
+				//TODO Schlagwahl anzeigen
+				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL);
 			}else{
 				if (meldung == null) {
 					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
@@ -640,7 +652,7 @@ public class Spielfenster implements ClientGUI {
 					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
 				}
 			}
-		//TODO Karte Spielen
+		amZug = true;
 		}
 	}
 }
