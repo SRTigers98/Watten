@@ -12,8 +12,8 @@ import java.util.List;
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.karten.Karte;
-import konstanten.KommandoKonst;
-import konstanten.MeldungKonst;
+import de.verbund.watten.konstanten.KommandoKonst;
+import de.verbund.watten.konstanten.MeldungKonst;
 
 /**
  * 

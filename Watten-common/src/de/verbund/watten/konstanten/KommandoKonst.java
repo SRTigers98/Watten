@@ -1,4 +1,4 @@
-package konstanten;
+package de.verbund.watten.konstanten;
 
 /**
  * 
@@ -16,5 +16,7 @@ public class KommandoKonst {
 	public static final String SENDE_SPIELER = "sendeSpieler";
 	public static final String SPIELE_KARTE = "spieleKarte";
 	public static final String SENDE_NAME = "sendeName";
+	public static final String ANSAGE_FARBE = "ansageFarbe";
+	public static final String ANSAGE_SCHLAG = "ansageSchlag";
 
 }

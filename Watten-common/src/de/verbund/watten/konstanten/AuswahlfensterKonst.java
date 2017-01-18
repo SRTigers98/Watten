@@ -1,4 +1,4 @@
-package konstanten;
+package de.verbund.watten.konstanten;
 
 /**
  * 

@@ -59,7 +59,6 @@ public class WattenServer implements Runnable {
 		kdo.setKommando("info");
 		kdo.addParameter("Ping vom Server");
 		sendeAnAlle(kdo);
-
 	}
 
 	public void sendeAnAlle(Kommando kdo) {
