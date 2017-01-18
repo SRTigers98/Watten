@@ -14,6 +14,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
 import de.verbund.watten.client.Client;
+import de.verbund.watten.client.ClientDummy;
 import de.verbund.watten.client.ClientImpl;
 import de.verbund.watten.hauptfenster.Spielfenster;
 import java.awt.Insets;
@@ -127,7 +128,10 @@ public class Hauptmenue {
 							lblFehlermeldung.setText("Bitte geben Sie einen Namen an.");
 						} else {
 							Spielfenster spiel = new Spielfenster(txtName.getText());
-							Client server = new ClientImpl(spiel);
+							// Bei fertigen Programm Dummy wieder durch
+							// ClientImpl ersetzten
+							// Client server = new ClientImpl(spiel);
+							ClientDummy server = new ClientDummy(spiel);
 							server.sendeName(txtName.getText());
 							frame.dispose();
 						}
