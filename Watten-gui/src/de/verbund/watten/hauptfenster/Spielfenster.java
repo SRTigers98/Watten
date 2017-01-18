@@ -778,23 +778,23 @@ public class Spielfenster implements ClientGUI {
 	}
 
 	@Override
-	public void amZug(int id, boolean ansage) {
-		if(ansage == true){
-			if(id == sp1.getId()){
-				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
-			}else if(id == sp2.getId()){
-				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
-			}else{
-				if (meldung == null) {
-					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
-				} else {
-					meldung.terminate();
-					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
-				}
-			}
+	public void amZug(boolean schlag) {
+		if(schlag == true){
+			new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
+		}else if(schlag == false){
+			new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
 		}else{
-			amZug = true;
+			if (meldung == null) {
+				meldung = new Meldung(MeldungKonst.FEHLER, "Falscher Ansageboolean!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(MeldungKonst.FEHLER, "Falscher Ansageboolean!");
+			}
 		}
+	}
+	
+	public void amZug(){
+		amZug = true;
 	}
 
 	@Override
