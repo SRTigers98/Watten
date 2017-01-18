@@ -11,6 +11,18 @@ import de.verbund.watten.regelwerk.Regelwerk;
 import de.verbund.watten.spiel.Spiel;
 import de.verbund.watten.spieler.Spieler;
 
+/**
+ * 
+ * @author Fabian
+ * JUnit Tests für:
+ * testTeileAus, jede Karte nur 1 mal, 5 Handkarten pro Spieler
+ * testDeck, jede Karte nur 1 mal
+ * testSchlag, erste Dummy tests für Stich Auswertungen
+ * testRegelwerk, TODO Regelwerk Size, Doppelte Karten?
+ *
+ */
+
+
 public class SpielTest {
 
 	private static Spieler sp1;
@@ -102,11 +114,39 @@ public class SpielTest {
 		sp1.setGespielt(new Karte("Herz", "_Koenig"));
 		sp2.setGespielt(new Karte("Schelln", "_Koenig"));
 		
-		rules.wertAus(sp1.getGespielt(), sp2.getGespielt());
-
+		int i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(1, i);
+		
+		sp1.setGespielt(new Karte("Herz", "_10"));
+		sp2.setGespielt(new Karte("Schelln", "_10"));
+		
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(2, i);
+		
+		
+		sp1.setGespielt(new Karte("Herz", "_10"));
+		sp2.setGespielt(new Karte("Blau", "_10"));
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(0, i);
+		
+		
 
 		
+		sp1.setGespielt(new Karte("Schelln", "_10"));
+		sp2.setGespielt(new Karte("Schelln", "_Sau"));
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(1, i);
+		
+		
+		System.out.println(i);
+		
+		
 	
+	}
+	
+	@Test
+	public void testRegelwerk(){
+		
 	}
 
 }

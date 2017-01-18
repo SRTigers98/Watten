@@ -5,6 +5,13 @@ import java.util.Map;
 
 import de.verbund.watten.karten.Karte;
 
+/**
+ * 
+ * @author Fabian
+ * Klasse setzt das Regelwerk fest, welche Karten andere Karten stechen.
+ * werteAus gleicht die beiden gespielten Karten mit dem Regelwerk ab und liefert den Gewinner des Stiches
+ */
+
 public class Regelwerk {
 
 	private static final int SPIELER_1 = 1;
@@ -97,7 +104,7 @@ public class Regelwerk {
 		return value;
 	}
 
-	public int wertAus(Karte sp1, Karte sp2) {
+	public int werteAus(Karte sp1, Karte sp2) {
 		// TODO Wer hat zuerst gespielt?
 		int gewinner = 0;
 		int valueSp1 = regelwerk.get(sp1.getFarbe() + sp1.getSchlag());

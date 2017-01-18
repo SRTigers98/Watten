@@ -18,7 +18,7 @@ public class SpielRunde {
 	}
 
 	public int werteAus() {
-		return regeln.wertAus(sp1.getGespielt(), sp2.getGespielt());
+		return regeln.werteAus(sp1.getGespielt(), sp2.getGespielt());
 	}
 
 	public Spieler getSp1() {
