@@ -52,12 +52,7 @@ public class WattenManagerImpl implements WattenManager {
 		if (alleGespielt) {
 			try {
 				spiel.werteAus();
-				Kommando kdo = new Kommando();
-				kdo.setKommando(KommandoKonst.SENDE_SPIELER);
-				for (Spieler s : spiel.getSpieler()) {
-					kdo.addParameter(s);
-				}
-				server.sendeAnAlle(kdo);
+				sendeSpieler();
 			} catch (WattenException e) {
 				Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.FEHLER, e.getMessage());
 				server.sendeAnAlle(kdo);
@@ -84,13 +79,25 @@ public class WattenManagerImpl implements WattenManager {
 	}
 
 	@Override
+	public void sendeSpieler() {
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.SENDE_SPIELER);
+		for (Spieler s : spiel.getSpieler()) {
+			kdo.addParameter(s);
+		}
+		server.sendeAnAlle(kdo);
+	}
+
+	@Override
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
-			spiel.getSpieler().get(0).setKommtRaus(true);
-			spiel.teileAus();
 			Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, "Spieler gefunden. Spiel startet.");
 			server.sendeAnAlle(kdo);
+			spiel.getSpieler().get(0).setKommtRaus(true);
+			sendeSpieler();
+			spiel.teileAus();
+			sendeHandkarten();
 		} else {
 			throw new WattenException("Noch nicht genügend Spieler vorhanden!");
 		}
