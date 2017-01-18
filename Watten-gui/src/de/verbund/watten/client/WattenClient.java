@@ -59,7 +59,7 @@ public class WattenClient implements Runnable {
 	public void beende() {
 		try {
 			Kommando kdo = new Kommando();
-			kdo.setKommando("beende");
+			kdo.setKommando(KommandoKonst.BEENDE);
 			sende(kdo);
 			// und Ressourcen frei geben
 			out.close();
@@ -93,7 +93,7 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.TEXT)) {
 			clientGUI.ausgabe((int) kdo.getParameter().get(0), kdo.getParameter().get(1).toString());
 		}
-		if (kdo.getKommando().equals("sendeHandkarten")) {
+		if (kdo.getKommando().equals(KommandoKonst.SENDE_HANDKARTEN)) {
 			List<Karte> hand = new ArrayList<>();
 			for (Serializable p : kdo.getParameter()) {
 				hand.add((Karte) p);

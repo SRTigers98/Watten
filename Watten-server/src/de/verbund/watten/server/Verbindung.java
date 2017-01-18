@@ -12,6 +12,7 @@ import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.spieler.Spieler;
+import konstanten.KommandoKonst;
 import konstanten.MeldungKonst;
 
 public class Verbindung implements Runnable {
@@ -85,10 +86,10 @@ public class Verbindung implements Runnable {
 			kdo = new Kommando();
 			kdo.setReturnWert("Fehlerhafter Aufruf!");
 		}
-		if (kdo.getKommando().equals("beende")) {
+		if (kdo.getKommando().equals(KommandoKonst.BEENDE)) {
 			ok = false;
 		}
-		if (kdo.getKommando().equals("sendeName")) {
+		if (kdo.getKommando().equals(KommandoKonst.SENDE_NAME)) {
 			// TODO UUID später
 			id = socketServer.getVerbindungen().size();
 			Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
@@ -101,14 +102,14 @@ public class Verbindung implements Runnable {
 				sende(kdo2);
 			}
 		}
-		if (kdo.getKommando().equals("spieleKarte")) {
+		if (kdo.getKommando().equals(KommandoKonst.SPIELE_KARTE)) {
 			Karte karte = (Karte) kdo.getParameter().get(0);
 			socketServer.getManager().spieleKarte(id, karte);
 		}
-		if (kdo.getKommando().equals("beende")) {
+		if (kdo.getKommando().equals(KommandoKonst.BEENDE)) {
 			ok = false;
 		}
-		if (kdo.getKommando().equals("beende")) {
+		if (kdo.getKommando().equals(KommandoKonst.BEENDE)) {
 			ok = false;
 		}
 
@@ -117,7 +118,7 @@ public class Verbindung implements Runnable {
 
 	public void beende() {
 		Kommando kdo = new Kommando();
-		kdo.setKommando("beende");
+		kdo.setKommando(KommandoKonst.BEENDE);
 		try {
 			out.writeObject(kdo);
 		} catch (IOException e) {
