@@ -19,14 +19,14 @@ public class ClientImpl implements Client {
 	@Override
 	public void sendeName(String name) {
 		Kommando kdo = new Kommando();
-		kdo.setKommando("sendeName");
+		kdo.setKommando(KommandoKonst.SENDE_NAME);
 		kdo.addParameter(name);
 		client.sende(kdo);
 	}
 
 	public void sendeKarte(Karte karte) {
 		Kommando kdo = new Kommando();
-		kdo.setKommando("spieleKarte");
+		kdo.setKommando(KommandoKonst.SPIELE_KARTE);
 		kdo.addParameter(karte);
 		client.sende(kdo);
 	}
