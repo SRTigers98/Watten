@@ -93,17 +93,31 @@ public class Verbindung implements Runnable {
 			erhalteName(kdo);
 		}
 		if (kdo.getKommando().equals(KommandoKonst.SPIELE_KARTE)) {
-			Karte karte = (Karte) kdo.getParameter().get(0);
-			socketServer.getManager().spieleKarte(id, karte);
+			spieleKarte(kdo);
 		}
-		if (kdo.getKommando().equals(KommandoKonst.BEENDE)) {
-			ok = false;
+		if (kdo.getKommando().equals(KommandoKonst.ANSAGE_SCHLAG)) {
+			sagAnSchlag(kdo);
 		}
-		if (kdo.getKommando().equals(KommandoKonst.BEENDE)) {
-			ok = false;
+		if (kdo.getKommando().equals(KommandoKonst.ANSAGE_FARBE)) {
+			sagAnFarbe(kdo);
 		}
 
 		return gesendet;
+	}
+
+	private void sagAnFarbe(Kommando kdo) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void sagAnSchlag(Kommando kdo) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void spieleKarte(Kommando kdo) {
+		Karte karte = (Karte) kdo.getParameter().get(0);
+		socketServer.getManager().spieleKarte(id, karte);
 	}
 
 	private void erhalteName(Kommando kdo) {
