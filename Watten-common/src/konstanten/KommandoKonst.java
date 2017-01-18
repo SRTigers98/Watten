@@ -1,5 +1,12 @@
 package konstanten;
 
+/**
+ * 
+ * Enthält die Konstanten zur Kommunikation zwischen Server und Client.
+ * 
+ * @author Benjamin
+ *
+ */
 public class KommandoKonst {
 
 	// Kommando Client:

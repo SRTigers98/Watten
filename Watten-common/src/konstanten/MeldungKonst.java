@@ -1,5 +1,12 @@
 package konstanten;
 
+/**
+ * 
+ * Enthält die Konstanten zur Meldungs-Klasse.
+ * 
+ * @author Benjamin
+ *
+ */
 public class MeldungKonst {
 
 	// Meldung:

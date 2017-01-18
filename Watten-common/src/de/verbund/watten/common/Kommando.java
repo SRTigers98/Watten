@@ -4,6 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * Klasse zur Kommunikation zwischen Server und Client.
+ * 
+ * @author Friedrich
+ *
+ */
 public class Kommando implements Serializable {
 
 	private String kommando;
