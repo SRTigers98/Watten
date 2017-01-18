@@ -71,7 +71,6 @@ public class Spielfenster implements ClientGUI {
 	 * Create the application.
 	 */
 	public Spielfenster(String name1) {
-		lblName1 = new JLabel(name1 + ":");
 		initialize();
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
@@ -589,7 +588,7 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		// TODO Auto-generated method stub
-
+		lblName1 = new JLabel(spieler.get(0) + ":");
+		lblName2 = new JLabel(spieler.get(1) + ":");
 	}
 }
