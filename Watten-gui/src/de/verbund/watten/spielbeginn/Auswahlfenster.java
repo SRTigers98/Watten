@@ -22,6 +22,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import de.verbund.watten.konstanten.AuswahlfensterKonst;
 
+/**
+ * Auswahlfenster generiert das Farb Auswahl Fenster und das Schlag Auswahl
+ * Fenster. Dies wird zu Beginn eines Spiel aufgerufen.
+ * 
+ * @author Mcscha
+ *
+ */
 public class Auswahlfenster {
 
 	private static final int SAU = 14;
