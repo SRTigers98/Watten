@@ -7,7 +7,7 @@ TODOS für dieses Projekt
 [X] ClientImpl: nutze für die Kommandos "sendeName" etc. Konstanten. Lager die Konstanten in das Common-Projekt aus und nutze diese
 	auch im Server => Vermeidung von Schreibfehlern, gemeinsame Aktualisierung
 	
-[ ] WattenClient: IP und Port sollten konfigurierbar sein.
+[X] WattenClient: IP und Port sollten konfigurierbar sein.
 
 [X] Spielfenster: Nur die Klasse, die als Startklasse des Programmes gedacht ist, sollte die Methode main haben.
 	Zum Testen kann man gerne mal ein main einfügen, danach aber wieder löschen oder auskommentieren, damit ein Dritter weiss, 
