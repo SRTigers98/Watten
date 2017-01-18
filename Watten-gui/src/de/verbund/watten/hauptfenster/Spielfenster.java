@@ -27,6 +27,10 @@ import de.verbund.watten.konstanten.MeldungKonst;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.SwingConstants;
 /**
  * Spielfenster realisiert die Anzeige auf dem einelnen Client
  * Spielfenster übergibt actions des Users an die Clientklasse
@@ -79,6 +83,11 @@ public class Spielfenster implements ClientGUI {
 	private Karte karte3;
 	private Karte karte4;
 	private Karte karte5;
+	private JPanel panelAnsage;
+	private JLabel lblSchlag;
+	private JLabel lblFarbe;
+	private JLabel lblSchlagWert;
+	private JLabel lblFarbeWert;
 
 	/**
 	 * Create the application.
@@ -315,6 +324,7 @@ public class Spielfenster implements ClientGUI {
 			panelFeld.setLayout(new BorderLayout(0, 0));
 			panelFeld.add(getPanel_1_3(), BorderLayout.NORTH);
 			panelFeld.add(getPanelKarte1(), BorderLayout.SOUTH);
+			panelFeld.add(getPanelAnsage(), BorderLayout.WEST);
 		}
 		return panelFeld;
 	}
@@ -612,6 +622,81 @@ public class Spielfenster implements ClientGUI {
 			}
 		}
 	}
+	
+	@SuppressWarnings("serial")
+	private JPanel getPanelAnsage() {
+		if (panelAnsage == null) {
+			try {
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				Image imgTisch = ImageIO.read(urlTisch);
+				panelAnsage = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				if (meldung == null) {
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
+				}
+			}
+		}
+			GridBagLayout gbl_panelAnsage = new GridBagLayout();
+			gbl_panelAnsage.columnWidths = new int[]{0, 0, 0};
+			gbl_panelAnsage.rowHeights = new int[]{0, 0, 0, 0, 0};
+			gbl_panelAnsage.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+			gbl_panelAnsage.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+			panelAnsage.setLayout(gbl_panelAnsage);
+			GridBagConstraints gbc_lblSchlag = new GridBagConstraints();
+			gbc_lblSchlag.insets = new Insets(0, 0, 5, 0);
+			gbc_lblSchlag.gridx = 0;
+			gbc_lblSchlag.gridy = 0;
+			panelAnsage.add(getLblSchlag(), gbc_lblSchlag);
+			GridBagConstraints gbc_lblFarbe = new GridBagConstraints();
+			gbc_lblFarbe.insets = new Insets(0, 0, 5, 0);
+			gbc_lblFarbe.gridx = 0;
+			gbc_lblFarbe.gridy = 1;
+			panelAnsage.add(getLblFarbe(), gbc_lblFarbe);
+			GridBagConstraints gbc_lblSchlagWert = new GridBagConstraints();
+			gbc_lblSchlagWert.insets = new Insets(0, 0, 5, 0);
+			gbc_lblSchlagWert.gridx = 1;
+			gbc_lblSchlagWert.gridy = 0;
+			panelAnsage.add(getLblSchlagWert(), gbc_lblSchlagWert);
+			GridBagConstraints gbc_lblFarbeWert = new GridBagConstraints();
+			gbc_lblFarbeWert.gridx = 1;
+			gbc_lblFarbeWert.gridy = 1;
+			panelAnsage.add(getLblFarbeWert(), gbc_lblFarbeWert);
+		return panelAnsage;
+	}
+	private JLabel getLblSchlag() {
+		if (lblSchlag == null) {
+			lblSchlag = new JLabel(" Schlag:  ");
+		}
+		return lblSchlag;
+	}
+	private JLabel getLblFarbe() {
+		if (lblFarbe == null) {
+			lblFarbe = new JLabel(" Farbe:");
+		}
+		return lblFarbe;
+	}
+	private JLabel getLblSchlagWert() {
+		if (lblSchlagWert == null) {
+			lblSchlagWert = new JLabel("SchlagWert");
+			lblSchlagWert.setVerticalAlignment(SwingConstants.BOTTOM);
+		}
+		return lblSchlagWert;
+	}
+	private JLabel getLblFarbeWert() {
+		if (lblFarbeWert == null) {
+			lblFarbeWert = new JLabel("FarbeWert");
+		}
+		return lblFarbeWert;
+	}
 
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
@@ -682,7 +767,6 @@ public class Spielfenster implements ClientGUI {
 			if(id == sp1.getId()){
 				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
 			}else if(id == sp2.getId()){
-				//TODO Schlagwahl anzeigen
 				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL);
 			}else{
 				if (meldung == null) {
