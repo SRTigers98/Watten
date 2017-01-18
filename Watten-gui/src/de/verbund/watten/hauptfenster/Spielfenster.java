@@ -438,6 +438,7 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K1() {
 		if (lblSP1K1 == null) {
 			lblSP1K1 = new JLabel("");
+			lblSP1K1.setName("K1");
 			lblSP1K1.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -451,6 +452,7 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K2() {
 		if (lblSP1K2 == null) {
 			lblSP1K2 = new JLabel("");
+			lblSP1K2.setName("K2");
 			lblSP1K2.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -464,6 +466,7 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K3() {
 		if (lblSP1K3 == null) {
 			lblSP1K3 = new JLabel("");
+			lblSP1K3.setName("K3");
 			lblSP1K3.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -477,6 +480,7 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K4() {
 		if (lblSP1K4 == null) {
 			lblSP1K4 = new JLabel("");
+			lblSP1K4.setName("K4");
 			lblSP1K4.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -490,6 +494,7 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSP1K5() {
 		if (lblSP1K5 == null) {
 			lblSP1K5 = new JLabel("");
+			lblSP1K5.setName("K5");
 			lblSP1K5.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
