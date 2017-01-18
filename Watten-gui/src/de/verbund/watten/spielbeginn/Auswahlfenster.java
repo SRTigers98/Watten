@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import de.verbund.watten.client.Client;
 import de.verbund.watten.konstanten.AuswahlfensterKonst;
 
 /**
@@ -64,6 +66,7 @@ public class Auswahlfenster {
 	private JRadioButton rdbtnKoenig;
 	private JRadioButton rdbtnSau;
 	private JButton btnCommitSchlag;
+	private Client client;
 
 	/**
 	 * Test Launch. Eigentlicher Aufruf über den Kontruktor.
@@ -72,7 +75,7 @@ public class Auswahlfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Auswahlfenster window = new Auswahlfenster(1);
+					Auswahlfenster window = new Auswahlfenster(1, null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -89,11 +92,13 @@ public class Auswahlfenster {
 	 *            <br>
 	 *            1- Es wird die SchlagWahl angezeigt. <br>
 	 *            2- Es wird die FarbWahl angezeigt. <br>
+	 * @param client
 	 * @return Bei beiden Fenster wird die ausgewählte Farbe oder Schlag an den
 	 *         Server übermittelt.
 	 */
-	public Auswahlfenster(int art) {
+	public Auswahlfenster(int art, Client client) {
 		// initialize();
+		this.client = client;
 		switch (art) {
 		case AuswahlfensterKonst.SCHLAG_WAHL:
 			initSchlag();
@@ -340,12 +345,18 @@ public class Auswahlfenster {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnCommitFarbe) {
 						schlag_auswahl = null;
+						farbeCommit();
 						frame.dispose();
 					}
 				}
 			});
 		}
 		return btnCommitFarbe;
+	}
+
+	protected void farbeCommit() {
+		client.sendeFarbe(farb_auswahl);
+
 	}
 
 	private JPanel getPanel_Schlag() {
@@ -714,6 +725,7 @@ public class Auswahlfenster {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnCommitSchlag) {
 						farb_auswahl = null;
+						schlagCommit();
 						frame.dispose();
 					}
 				}
@@ -722,11 +734,9 @@ public class Auswahlfenster {
 		return btnCommitSchlag;
 	}
 
-	public String getschlag() {
-		return schlag_auswahl;
+	protected void schlagCommit() {
+		client.sendeSchlag(schlag_auswahl);
+
 	}
 
-	public String getfarbe() {
-		return farb_auswahl;
-	}
 }
