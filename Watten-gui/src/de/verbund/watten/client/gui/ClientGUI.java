@@ -42,13 +42,19 @@ public interface ClientGUI {
 	public void gibSpieler(List<Spieler> spieler);
 
 	/**
-	 * Teilt mit, wenn der Spieler am Zug ist und ob er ansagen muss und was er
+	 * Teilt mit, wenn der Spieler am Zug ist, er ansagen muss und was er
 	 * ansagen muss.
 	 * 
 	 * @param die
 	 *            ID
 	 */
-	public void amZug(boolean ansage, boolean schlag);
+	public void amZug(boolean schlag);
+
+	/**
+	 * 
+	 * Teilt mit, dass der Spieler am Zug ist.
+	 */
+	public void amZug();
 
 	/**
 	 * 
