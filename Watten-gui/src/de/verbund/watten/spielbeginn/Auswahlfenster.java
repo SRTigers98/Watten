@@ -355,7 +355,7 @@ public class Auswahlfenster {
 							farbeCommit();
 							frame.dispose();
 						} else {
-							new Meldung(3, "Wählen Sie eine Farbe aus!");
+							// new Meldung(3, "Wählen Sie eine Farbe aus!");
 						}
 					}
 				}
@@ -739,7 +739,7 @@ public class Auswahlfenster {
 							schlagCommit();
 							frame.dispose();
 						} else {
-							new Meldung(3, "Wählen Sie einen Schlag aus!");
+							// new Meldung(3, "Wählen Sie einen Schlag aus!");
 						}
 					}
 				}

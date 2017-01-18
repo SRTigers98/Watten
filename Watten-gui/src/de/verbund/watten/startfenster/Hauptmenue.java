@@ -159,11 +159,12 @@ public class Hauptmenue {
 							txt.append("Sie müssen einen Namen angeben. \n");
 							korrekt = false;
 						}
-						if (txtIp.getText().isEmpty() || txtName.getText().equals("")) {
-							if (IsIP6or4(txtIp.getText())) {
-								txt.append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n");
-							} else {
+						System.out.println(txtIp.getText());
+						if (IsIP6or4(txtIp.getText())) {
+							if (txtIp.getText().isEmpty() || txtIp.getText().equals("")) {
 								txt.append("Sie müssen eine IP-Adresse angeben. \n");
+							} else {
+								txt.append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n");
 							}
 							korrekt = false;
 						}
@@ -223,9 +224,9 @@ public class Hauptmenue {
 
 	boolean IsIP6or4(String addr) {
 		try {
-
+			System.out.println(addr);
 			InetAddress address = InetAddress.getByName(addr);
-
+			System.out.println(address);
 			if (address instanceof Inet4Address) {
 				// your IP is IPv4
 				return true;
