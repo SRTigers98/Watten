@@ -21,8 +21,8 @@ import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
 import de.verbund.watten.spielbeginn.Auswahlfenster;
 import de.verbund.watten.spieler.Spieler;
-import konstanten.AuswahlfensterKonst;
-import konstanten.MeldungKonst;
+import de.verbund.watten.konstanten.AuswahlfensterKonst;
+import de.verbund.watten.konstanten.MeldungKonst;
 
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
@@ -570,9 +570,14 @@ public class Spielfenster implements ClientGUI {
 			Icon iconKarte = lable.getIcon();
 			lable.setIcon(null);
 			lblKSP1.setIcon(iconKarte);
+			karteAusIcon(iconKarte);
 		}
 	}
 	
+	private void karteAusIcon(Icon icon) {
+		
+	}
+
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
 		try {
@@ -654,5 +659,17 @@ public class Spielfenster implements ClientGUI {
 			}
 		amZug = true;
 		}
+	}
+
+	@Override
+	public void gibSchlag(String schlag) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gibFarbe(String farbe) {
+		// TODO Auto-generated method stub
+		
 	}
 }
