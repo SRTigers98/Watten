@@ -769,20 +769,23 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		lblName1.setText(spieler.get(0).getName());
-		lblName2.setText(spieler.get(1).getName());
 		sp1 = spieler.get(0);
 		sp2 = spieler.get(1);
+		lblName1.setText(sp1.getName());
+		lblName2.setText(sp2.getName());
+		lblAnzStiche1.setText(Integer.toString(sp1.getStiche()));
+		lblAnzStiche2.setText(Integer.toString(sp2.getStiche()));
+		lblWins1.setText(Integer.toString(sp1.getPunkte()));
+		lblWins2.setText(Integer.toString(sp2.getPunkte()));
 	}
 
 	@Override
 	public void amZug(int id, boolean ansage) {
-		Auswahlfenster auswahl;
 		if(ansage == true){
 			if(id == sp1.getId()){
-				auswahl = new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
+				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
 			}else if(id == sp2.getId()){
-				auswahl = new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
+				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
 			}else{
 				if (meldung == null) {
 					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
@@ -798,8 +801,12 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSchlag(String schlag) {
-		lblSchlagWert.setText(schlag);
+		if(schlag.equals("_Koenig")){
+			lblSchlagWert.setText("König");			
+		}else{
+			lblSchlagWert.setText(schlag.substring(1));			
 		}
+	}
 
 	@Override
 	public void gibFarbe(String farbe) {
