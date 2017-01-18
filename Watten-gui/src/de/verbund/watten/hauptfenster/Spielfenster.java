@@ -644,7 +644,6 @@ public class Spielfenster implements ClientGUI {
 					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
-		}
 			GridBagLayout gbl_panelAnsage = new GridBagLayout();
 			gbl_panelAnsage.columnWidths = new int[]{0, 0, 0};
 			gbl_panelAnsage.rowHeights = new int[]{0, 0, 0, 0, 0};
@@ -670,6 +669,7 @@ public class Spielfenster implements ClientGUI {
 			gbc_lblFarbeWert.gridx = 1;
 			gbc_lblFarbeWert.gridy = 1;
 			panelAnsage.add(getLblFarbeWert(), gbc_lblFarbeWert);
+		}
 		return panelAnsage;
 	}
 	private JLabel getLblSchlag() {
