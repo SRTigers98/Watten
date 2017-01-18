@@ -31,19 +31,6 @@ import de.verbund.watten.konstanten.AuswahlfensterKonst;
  */
 public class Auswahlfenster {
 
-	private static final int SAU = 14;
-	private static final int KOENIG = 13;
-	private static final int OBER = 12;
-	private static final int UNTER = 11;
-	private static final int ZEHN = 10;
-	private static final int NEUN = 9;
-	private static final int ACHT = 8;
-	private static final int SIEBEN = 7;
-	private static final int EICHEL = 6;
-	private static final int HERZ = 5;
-	private static final int SCHELLN = 4;
-	private static final int BLAU = 3;
-
 	private int schlag_auswahl;
 	private int farb_auswahl;
 	private JFrame frame;
@@ -124,7 +111,7 @@ public class Auswahlfenster {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 350, 240);
 		frame.setTitle("Farbe Auswahl");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Farbe(), BorderLayout.CENTER);
 		frame.setVisible(true);
 	}
@@ -136,7 +123,7 @@ public class Auswahlfenster {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 680, 240);
 		frame.setTitle("Schlag Auswahl");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().add(getPanel_Schlag(), BorderLayout.CENTER);
 		frame.setVisible(true);
 	}
@@ -241,7 +228,7 @@ public class Auswahlfenster {
 			rdbtnBlau.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnBlau) {
-						farb_auswahl = BLAU;
+						farb_auswahl = AuswahlfensterKonst.BLAU;
 					}
 				}
 			});
@@ -273,7 +260,7 @@ public class Auswahlfenster {
 			rdbtnSchelln.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnSchelln) {
-						farb_auswahl = SCHELLN;
+						farb_auswahl = AuswahlfensterKonst.SCHELLN;
 					}
 				}
 			});
@@ -305,7 +292,7 @@ public class Auswahlfenster {
 			rdbtnHerz.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnHerz) {
-						farb_auswahl = HERZ;
+						farb_auswahl = AuswahlfensterKonst.HERZ;
 					}
 				}
 			});
@@ -337,7 +324,7 @@ public class Auswahlfenster {
 			rdbtnEichel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnEichel) {
-						farb_auswahl = EICHEL;
+						farb_auswahl = AuswahlfensterKonst.EICHEL;
 					}
 				}
 			});
@@ -352,7 +339,7 @@ public class Auswahlfenster {
 			btnCommitFarbe.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnCommitFarbe) {
-						farbCommit();
+						schlag_auswahl = 0;
 						frame.dispose();
 					}
 				}
@@ -607,7 +594,7 @@ public class Auswahlfenster {
 			rdbtnSieben.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnSieben) {
-						schlag_auswahl = SIEBEN;
+						schlag_auswahl = AuswahlfensterKonst.SIEBEN;
 					}
 				}
 			});
@@ -622,7 +609,7 @@ public class Auswahlfenster {
 			rdbtnAcht.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnAcht) {
-						schlag_auswahl = ACHT;
+						schlag_auswahl = AuswahlfensterKonst.ACHT;
 					}
 				}
 			});
@@ -637,7 +624,7 @@ public class Auswahlfenster {
 			rdbtnNeun.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnNeun) {
-						schlag_auswahl = NEUN;
+						schlag_auswahl = AuswahlfensterKonst.NEUN;
 					}
 				}
 			});
@@ -652,7 +639,7 @@ public class Auswahlfenster {
 			rdbtnZehn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnZehn) {
-						schlag_auswahl = ZEHN;
+						schlag_auswahl = AuswahlfensterKonst.ZEHN;
 					}
 				}
 			});
@@ -667,7 +654,7 @@ public class Auswahlfenster {
 			rdbtnUnter.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnUnter) {
-						schlag_auswahl = UNTER;
+						schlag_auswahl = AuswahlfensterKonst.UNTER;
 					}
 				}
 			});
@@ -682,7 +669,7 @@ public class Auswahlfenster {
 			rdbtnOber.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnOber) {
-						schlag_auswahl = OBER;
+						schlag_auswahl = AuswahlfensterKonst.OBER;
 					}
 				}
 			});
@@ -697,7 +684,7 @@ public class Auswahlfenster {
 			rdbtnKoenig.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnKoenig) {
-						schlag_auswahl = KOENIG;
+						schlag_auswahl = AuswahlfensterKonst.KOENIG;
 					}
 				}
 			});
@@ -712,7 +699,7 @@ public class Auswahlfenster {
 			rdbtnSau.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnSau) {
-						schlag_auswahl = SAU;
+						schlag_auswahl = AuswahlfensterKonst.SAU;
 					}
 				}
 			});
@@ -726,7 +713,7 @@ public class Auswahlfenster {
 			btnCommitSchlag.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnCommitSchlag) {
-						schlagCommit();
+						farb_auswahl = 0;
 						frame.dispose();
 					}
 				}
@@ -735,12 +722,11 @@ public class Auswahlfenster {
 		return btnCommitSchlag;
 	}
 
-	protected void schlagCommit() {
-		// TODO Auto-generated method stub
+	protected int getschlag() {
+		return schlag_auswahl;
 	}
 
-	protected void farbCommit() {
-		// TODO Auto-generated method stub
-
+	protected int getfarbe() {
+		return farb_auswahl;
 	}
 }
