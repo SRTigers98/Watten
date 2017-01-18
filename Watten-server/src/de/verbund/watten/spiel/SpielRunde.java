@@ -34,7 +34,10 @@ public class SpielRunde {
 			k1 = sp2.getGespielt();
 			k2 = sp1.getGespielt();
 		}
-		return regeln.werteAus(k1, k2);
+		int gewinner = regeln.werteAus(k1, k2);
+		sp1.setGespielt(null);
+		sp2.setGespielt(null);
+		return gewinner;
 	}
 
 	public Spieler getSp1() {

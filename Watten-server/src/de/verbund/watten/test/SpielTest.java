@@ -21,7 +21,7 @@ import de.verbund.watten.spieler.Spieler;
  * testTeileAus, jede Karte nur 1 mal, 5 Handkarten pro Spieler
  * testDeck, jede Karte nur 1 mal
  * testSchlag, erste Dummy tests für Stich Auswertungen
- * testRegelwerk, TODO Regelwerk Size, Doppelte Karten?
+ * testRegelwerk, Regelwerk Size, Doppelte Karten
  *
  */
 
@@ -126,24 +126,36 @@ public class SpielTest {
 		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
 		assertEquals(2, i);
 		
-		
-		sp1.setGespielt(new Karte("Herz", "_10"));
-		sp2.setGespielt(new Karte("Blau", "_10"));
-		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
-		assertEquals(0, i);
-		
-		
 
-		
 		sp1.setGespielt(new Karte("Schelln", "_10"));
 		sp2.setGespielt(new Karte("Schelln", "_Sau"));
 		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
 		assertEquals(1, i);
 		
+		sp1.setGespielt(new Karte("Blau", "_10"));
+		sp2.setGespielt(new Karte("Herz", "_10"));
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(1, i);
 		
+		sp1.setGespielt(new Karte("Schelln", "_8"));
+		sp2.setGespielt(new Karte("Blau", "_10"));
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(2, i);
 		
+		sp1.setGespielt(new Karte("Schelln", "_8"));
+		sp2.setGespielt(new Karte("Blau", "_Sau"));
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(1, i);
 		
+		sp1.setGespielt(new Karte("Herz", "_Unter"));
+		sp2.setGespielt(new Karte("Blau", "_Sau"));
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(1, i);
 		
+		sp1.setGespielt(new Karte("Blau", "_Sau"));
+		sp2.setGespielt(new Karte("Herz", "_Unter"));
+		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(1, i);
 	
 	}
 	
