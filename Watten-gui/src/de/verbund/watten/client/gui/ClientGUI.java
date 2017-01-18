@@ -20,16 +20,26 @@ public interface ClientGUI {
 	 * Gibt die Handkarten des Spielers in einer Liste aus, wenn der Client
 	 * diese vom Server empfängt
 	 * 
-	 * @return eine Liste mit den Handkarten des Spielers
+	 * @param eine
+	 *            Liste mit den Handkarten des Spielers
 	 */
 	public void gibHandkarten(List<Karte> handkarten);
 
 	/**
 	 * Gibt die Spieler der aktuellen Partie in einer Liste
 	 * 
-	 * @return eine Liste mit den Spielern
+	 * @param eine
+	 *            Liste mit den Spielern
 	 */
 	public void gibSpieler(List<Spieler> spieler);
+
+	/**
+	 * Gibt die ID des Spielers der in der aktuellen Runde als erster am Zug ist
+	 * 
+	 * @param die
+	 *            ID
+	 */
+	public void amZug(int id);
 
 	/**
 	 * Setzt die Client-Referenz auf den entsprechenden Client
