@@ -722,11 +722,11 @@ public class Auswahlfenster {
 		return btnCommitSchlag;
 	}
 
-	protected int getschlag() {
+	public int getschlag() {
 		return schlag_auswahl;
 	}
 
-	protected int getfarbe() {
+	public int getfarbe() {
 		return farb_auswahl;
 	}
 }
