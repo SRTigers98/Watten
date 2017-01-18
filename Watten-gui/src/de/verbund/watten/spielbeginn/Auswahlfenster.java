@@ -24,7 +24,7 @@ import de.verbund.watten.konstanten.AuswahlfensterKonst;
 
 /**
  * Auswahlfenster generiert das Farb Auswahl Fenster und das Schlag Auswahl
- * Fenster. Dies wird zu Beginn eines Spiel aufgerufen.
+ * Fenster. Dies wird zu Beginn eines Spiel von Spielfenster aufgerufen.
  * 
  * @author Mcscha
  *
