@@ -50,6 +50,9 @@ public class ClientDummy implements Client {
 	@Override
 	public void sendeFarbe(String farbe) {
 		// kommt in diesem Dummy nicht vor
+		clientGUI.gibSchlag("_Koenig");
+		clientGUI.gibFarbe(farbe);
+		clientGUI.amZug(0, false);
 	}
 
 }
