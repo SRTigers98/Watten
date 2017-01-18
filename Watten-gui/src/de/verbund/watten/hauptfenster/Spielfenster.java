@@ -20,6 +20,7 @@ import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
 import de.verbund.watten.spieler.Spieler;
+import konstanten.MeldungKonst;
 
 import javax.swing.JLabel;
 
@@ -60,6 +61,8 @@ public class Spielfenster implements ClientGUI {
 	private JLabel lblKSP1;
 	private JPanel panelTisch;
 	private Meldung meldung;
+	private Spieler sp1;
+	private Spieler sp2;
 
 	/**
 	 * Create the application.
@@ -579,5 +582,23 @@ public class Spielfenster implements ClientGUI {
 	public void gibSpieler(List<Spieler> spieler) {
 		lblName1.setText(spieler.get(0).getName());
 		lblName2.setText(spieler.get(1).getName());
+		sp1 = spieler.get(0);
+		sp2 = spieler.get(1);
+	}
+
+	@Override
+	public void amZug(int id) {
+		if(id == sp1.getId()){
+			System.out.println("Spieler 1 beginnt!");
+		}else if(id == sp2.getId()){
+			System.out.println("Spieler 2 beginnt!");
+		}else{
+			if (meldung == null) {
+				meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+			}
+		}
 	}
 }
