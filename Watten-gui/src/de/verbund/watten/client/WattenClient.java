@@ -15,6 +15,14 @@ import de.verbund.watten.karten.Karte;
 import konstanten.KommandoKonst;
 import konstanten.MeldungKonst;
 
+/**
+ * 
+ * Kommuniziert mit dem Server. Diese Klasse sendet und empfängt die Daten vom
+ * Server und bereitet diese zum Transport bzw. zur Verarbeitung in der GUI vor.
+ * 
+ * @author Benjamin
+ *
+ */
 public class WattenClient implements Runnable {
 
 	Socket socket;
