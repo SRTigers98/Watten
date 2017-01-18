@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.spieler.Spieler;
 
 public class ClientDummy implements Client {
@@ -37,6 +38,7 @@ public class ClientDummy implements Client {
 	@Override
 	public void sendeKarte(Karte karte) {
 		// TODO sendeKarte Dummy
+		clientGUI.ausgabe(MeldungKonst.HINWEIS, "Karte erfolgreich gesendet!");
 	}
 
 	@Override
