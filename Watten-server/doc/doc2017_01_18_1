@@ -1,0 +1,14 @@
+Aufgabenverteilung:
+	- Fabian: Service & ServiceTest(*-server)
+	- Benjamin: Service & Kommunikation(*-server)
+	- Marc: GUI(*-gui)
+	- Sven: GUI(*-gui)
+	- Benedikt: Design(*-gui)
+	- Service Desk: Sven
+	
+Vom GUI-Team wird zunächst eine Startseite implementiert. Das Service-Team kümmert sich darum, dass der Service grundlegend funktoniert.
+Das Dateiverwaltung-Team versucht, Images für die Karten bereitzustellen.
+
+ScrumDaily 10:30: ---
+
+Dummy-Implementation für den Client wird nach und nach implementiert, der Server wird weiterentwickelt.
