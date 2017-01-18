@@ -20,9 +20,13 @@ public class Spieler {
 	private int stiche;
 	private int punkte;
 	private Karte gespielt;
+	private boolean kommtRaus;
 
 	public Spieler() {
 		// default-Konstruktor
+		stiche = 0;
+		punkte = 0;
+		kommtRaus = false;
 	}
 
 	public Spieler(int id, String name) {
@@ -30,6 +34,7 @@ public class Spieler {
 		this.name = name;
 		stiche = 0;
 		punkte = 0;
+		kommtRaus = false;
 	}
 
 	public int getId() {
@@ -77,6 +82,14 @@ public class Spieler {
 
 	public void setGespielt(Karte gespielt) {
 		this.gespielt = gespielt;
+	}
+
+	public boolean isKommtRaus() {
+		return kommtRaus;
+	}
+
+	public void setKommtRaus(boolean kommtRaus) {
+		this.kommtRaus = kommtRaus;
 	}
 
 }

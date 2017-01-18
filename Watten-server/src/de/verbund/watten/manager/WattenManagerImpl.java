@@ -63,6 +63,7 @@ public class WattenManagerImpl implements WattenManager {
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
+			spiel.getSpieler().get(0).setKommtRaus(true);
 			spiel.teileAus();
 			Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, "Spieler gefunden. Spiel startet.");
 			server.sendeAnAlle(kdo);
