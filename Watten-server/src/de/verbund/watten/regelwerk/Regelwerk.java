@@ -87,7 +87,6 @@ public class Regelwerk {
 		verteileNiedrigePrio("_Koenig", value);
 		verteileNiedrigePrio("_Sau", value);
 
-		// TODO Fabian Regelwerk
 
 	}
 

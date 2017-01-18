@@ -21,7 +21,7 @@ import de.verbund.watten.spieler.Spieler;
  * testTeileAus, jede Karte nur 1 mal, 5 Handkarten pro Spieler
  * testDeck, jede Karte nur 1 mal
  * testSchlag, erste Dummy tests für Stich Auswertungen
- * testRegelwerk, TODO Regelwerk Size, Doppelte Karten?
+ * testRegelwerk, Regelwerk Size, Doppelte Karten
  *
  */
 
