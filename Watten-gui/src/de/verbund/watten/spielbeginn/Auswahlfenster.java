@@ -72,7 +72,7 @@ public class Auswahlfenster {
 	private JButton btnCommitSchlag;
 
 	/**
-	 * Launch the application.
+	 * Test Launch. Eigentlicher Aufruf über den Kontruktor.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

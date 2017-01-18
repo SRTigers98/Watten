@@ -37,7 +37,9 @@ public class Hauptmenue {
 	private JTextField txtPort;
 
 	/**
-	 * Create the application.
+	 * Zeigt das Hauptmenü an. Hier kann man Namen, Ip-Adresse und Port angeben
+	 * um ein Spiel zu starten. Alle drei müssen angegeben werden.
+	 * 
 	 */
 	@SuppressWarnings("serial")
 	public Hauptmenue() {
@@ -166,6 +168,7 @@ public class Hauptmenue {
 							// Client server = new ClientImpl(spiel);
 							ClientDummy server = new ClientDummy(spiel);
 							server.sendeName(txtName.getText());
+
 							frame.dispose();
 						}
 						new Meldung(MeldungKonst.HINWEIS, txt.toString());
