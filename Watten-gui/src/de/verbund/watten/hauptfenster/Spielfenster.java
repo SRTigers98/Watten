@@ -77,7 +77,6 @@ public class Spielfenster implements ClientGUI {
 	private Spieler sp1;
 	private Spieler sp2;
 	private boolean amZug;
-	private List<Karte> handkarten;
 	private Karte karte1;
 	private Karte karte2;
 	private Karte karte3;
@@ -715,7 +714,6 @@ public class Spielfenster implements ClientGUI {
 	@Override
 	public void gibHandkarten(List<Karte> handkarten) {
 		try {
-			this.handkarten = handkarten;
 			URL urlBack = getClass().getClassLoader().getResource("de/verbund/watten/karten/Back.png");
 			Image img = ImageIO.read(urlBack);
 			Icon back = new ImageIcon(img);
