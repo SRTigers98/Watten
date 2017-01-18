@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.verbund.watten.client.gui.ClientGUI;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.spieler.Spieler;
 
 public class ClientDummy implements Client {
@@ -31,25 +32,25 @@ public class ClientDummy implements Client {
 		spieler.add(new Spieler(0, "Test1"));
 		spieler.add(new Spieler(1, "Test2"));
 		clientGUI.gibSpieler(spieler);
-		clientGUI.amZug(0);
+		clientGUI.amZug(0, true);
 	}
 
 	@Override
 	public void sendeKarte(Karte karte) {
-		// TODO Auto-generated method stub
-
+		// TODO sendeKarte Dummy
+		clientGUI.ausgabe(MeldungKonst.HINWEIS, "Karte erfolgreich gesendet!");
 	}
 
 	@Override
 	public void sendeSchlag(String schlag) {
-		// TODO Auto-generated method stub
-
+		clientGUI.gibSchlag(schlag);
+		clientGUI.gibFarbe("Herz");
+		clientGUI.amZug(0, false);
 	}
 
 	@Override
 	public void sendeFarbe(String farbe) {
-		// TODO Auto-generated method stub
-
+		// kommt in diesem Dummy nicht vor
 	}
 
 }

@@ -11,9 +11,9 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.exception.WattenException;
 import de.verbund.watten.hilfe.Hilfe;
 import de.verbund.watten.karten.Karte;
+import de.verbund.watten.konstanten.KommandoKonst;
+import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.spieler.Spieler;
-import konstanten.KommandoKonst;
-import konstanten.MeldungKonst;
 
 public class Verbindung implements Runnable {
 
@@ -93,17 +93,31 @@ public class Verbindung implements Runnable {
 			erhalteName(kdo);
 		}
 		if (kdo.getKommando().equals(KommandoKonst.SPIELE_KARTE)) {
-			Karte karte = (Karte) kdo.getParameter().get(0);
-			socketServer.getManager().spieleKarte(id, karte);
+			spieleKarte(kdo);
 		}
-		if (kdo.getKommando().equals(KommandoKonst.BEENDE)) {
-			ok = false;
+		if (kdo.getKommando().equals(KommandoKonst.ANSAGE_SCHLAG)) {
+			sagAnSchlag(kdo);
 		}
-		if (kdo.getKommando().equals(KommandoKonst.BEENDE)) {
-			ok = false;
+		if (kdo.getKommando().equals(KommandoKonst.ANSAGE_FARBE)) {
+			sagAnFarbe(kdo);
 		}
 
 		return gesendet;
+	}
+
+	private void sagAnFarbe(Kommando kdo) {
+		String farbe = kdo.getParameter().get(0).toString();
+		socketServer.getManager().setzeFarbe(farbe);
+	}
+
+	private void sagAnSchlag(Kommando kdo) {
+		String schlag = kdo.getParameter().get(0).toString();
+		socketServer.getManager().setzeSchlag(schlag);
+	}
+
+	private void spieleKarte(Kommando kdo) {
+		Karte karte = (Karte) kdo.getParameter().get(0);
+		socketServer.getManager().spieleKarte(id, karte);
 	}
 
 	private void erhalteName(Kommando kdo) {
