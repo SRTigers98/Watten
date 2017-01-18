@@ -3,6 +3,9 @@ package de.verbund.watten.test;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -53,7 +56,7 @@ public class SpielTest {
 		assertEquals(5, sp1.getHand().size());
 		assertEquals(5, sp2.getHand().size());
 
-		System.out.println(sp1.getHand().toString());
+		
 
 		for (int i = 0; i < sp1.getHand().size(); i++) {
 			int n = 0;
@@ -138,14 +141,62 @@ public class SpielTest {
 		assertEquals(1, i);
 		
 		
-		System.out.println(i);
+		
 		
 		
 	
 	}
 	
 	@Test
-	public void testRegelwerk(){
+	public void testMasse (){
+		System.out.println("Case 1  Schelln_7");
+		testRegelwerk("Schelln", "_7");
+		System.out.println("erfolgreich\nCase2 Herz_Koenig");
+		testRegelwerk("Herz", "_Koenig");
+		System.out.println("erfolgreich\nCase3 Blau_10");
+		testRegelwerk("Blau", "_10");
+		System.out.println("erfolgreich");
+		
+	}
+	
+	
+	
+	
+	
+	public void testRegelwerk(String farbe, String schlag ){	
+	
+		
+		Regelwerk rules = new Regelwerk(farbe, schlag);
+		
+		assertEquals(32, rules.getRegelwerk().size());
+		
+		Map<String, Integer> testRegeln = rules.getRegelwerk();		
+		System.out.println(testRegeln);
+		Set<String> keys = testRegeln.keySet();
+		
+		for (String string : keys) {
+			int n=0;
+			if (keys.contains(string)){
+				n++;
+			}
+			if (n>1){
+				fail("Karte mehrfach im Regelwerk");
+			}
+		}
+		int i = testRegeln.get("Herz_Koenig");
+		assertEquals(100, i);
+		
+		if (!(farbe+schlag).equals("Herz_Koenig")  && !(farbe+schlag).equals("Schelln_7") && !(farbe+schlag).equals("Eichel_7")){
+			i = testRegeln.get(farbe+schlag);
+			assertEquals(94, i);
+		}
+		
+				
+		System.out.println("Regelwerk");
+		
+		
+
+
 		
 	}
 

@@ -29,9 +29,9 @@ public class Regelwerk {
 		regelwerk.put("Eichel_7", 96);
 
 		// optionale 4. hoechste Karte
-		if (farbe.equals("Herz") && schlag.equals("Koenig")) {
-		} else if (farbe.equals("Schelln") && schlag.equals("7")) {
-		} else if (farbe.equals("Eichel") && schlag.equals("7")) {
+		if (farbe.equals("Herz") && schlag.equals("_Koenig")) {
+		} else if (farbe.equals("Schelln") && schlag.equals("_7")) {
+		} else if (farbe.equals("Eichel") && schlag.equals("_7")) {
 		} else {
 			regelwerk.put(farbe + schlag, 94);
 		}
@@ -91,6 +91,7 @@ public class Regelwerk {
 
 	}
 
+
 	private int verteileNiedrigePrio(String kartenwert, int value) {
 		if (!regelwerk.containsKey("Herz" + kartenwert))
 			regelwerk.put("Herz" + kartenwert, value);
@@ -130,4 +131,7 @@ public class Regelwerk {
 		return gewinner;
 	}
 
+	public Map<String, Integer> getRegelwerk() {
+		return regelwerk;
+	}
 }
