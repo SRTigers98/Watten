@@ -21,6 +21,7 @@ import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
 import de.verbund.watten.spielbeginn.Auswahlfenster;
 import de.verbund.watten.spieler.Spieler;
+import konstanten.AuswahlfensterKonst;
 import konstanten.MeldungKonst;
 
 import javax.swing.JLabel;
@@ -593,18 +594,21 @@ public class Spielfenster implements ClientGUI {
 	}
 
 	@Override
-	public void amZug(int id) {
-		if(id == sp1.getId()){
-			Auswahlfenster auswahlFarbe = new Auswahlfenster();
-		}else if(id == sp2.getId()){
-			System.out.println("Spieler 2 beginnt!");
-		}else{
-			if (meldung == null) {
-				meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
-			} else {
-				meldung.terminate();
-				meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+	public void amZug(int id, boolean ansage) {
+		if(ansage == true){
+			if(id == sp1.getId()){
+				new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL);
+			}else if(id == sp2.getId()){
+				new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL); //TODO erst nach Schlagwahl!
+			}else{
+				if (meldung == null) {
+					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(MeldungKonst.FEHLER, "ID passt nicht zu den Spielern!");
+				}
 			}
+		//TODO Karte Spielen
 		}
 	}
 }
