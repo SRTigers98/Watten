@@ -51,7 +51,7 @@ public class Auswahlfenster {
 	private JRadioButton rdbtnEichel;
 	private JButton btnCommitFarbe;
 	private Color dunklesGruen = new Color(0, 64, 0);
-	private Color hellesGruen = new Color(0, 150, 0);
+	private Color hellesGruen = new Color(34, 177, 76);
 	private JPanel panel_Schlag;
 	private JLabel lblSieben;
 	private JLabel lblAcht;
@@ -581,7 +581,7 @@ public class Auswahlfenster {
 		if (lblSau == null) {
 			lblSau = new JLabel("");
 			try {
-				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/a.png");
+				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/s.png");
 				Image img = ImageIO.read(urlLogo);
 				Icon ic = new ImageIcon(img);
 				lblSau.setIcon(ic);
