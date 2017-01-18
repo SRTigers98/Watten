@@ -6,7 +6,7 @@ public class StartServer {
 
 	public static void main(String[] args) throws IOException {
 		// TODO GUI zur Serversteuerung
-		new WattenServer();
+		WattenServer server = new WattenServer();
 		System.out.println("Server startup");
 		System.in.read();
 		System.out.println("Server shutdown");
