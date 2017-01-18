@@ -9,7 +9,7 @@ TODOS für dieses Projekt
 	
 [ ] WattenClient: IP und Port sollten konfigurierbar sein.
 
-[ ] Spielfenster: Nur die Klasse, die als Startklasse des Programmes gedacht ist, sollte die Methode main haben.
+[X] Spielfenster: Nur die Klasse, die als Startklasse des Programmes gedacht ist, sollte die Methode main haben.
 	Zum Testen kann man gerne mal ein main einfügen, danach aber wieder löschen oder auskommentieren, damit ein Dritter weiss, 
 	wo er das Programm starten muss.
 		
