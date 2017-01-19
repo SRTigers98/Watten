@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +91,7 @@ public class WattenClient implements Runnable {
 			} catch (ClassNotFoundException e) {
 				clientGUI.ausgabe(MeldungKonst.FEHLER, "Fehler beim Lesen: " + e.getMessage());
 				e.printStackTrace();
-			} catch (IOException e) {
+			} catch (SocketException e) {
 				clientGUI.ausgabe(MeldungKonst.FEHLER, "Server nicht mehr erreichbar!");
 				e.printStackTrace();
 				try {
@@ -99,6 +100,8 @@ public class WattenClient implements Runnable {
 					e1.printStackTrace();
 				}
 				System.exit(0);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
