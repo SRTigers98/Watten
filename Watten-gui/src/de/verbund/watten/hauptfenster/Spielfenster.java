@@ -915,6 +915,7 @@ public class Spielfenster implements ClientGUI {
 		return lblZug;
 	}
 
+	@SuppressWarnings("serial")
 	private JPanel getPanelAnsageAusgleich() {
 		if (panelAnsageAusgleich == null) {
 			try {
@@ -965,7 +966,8 @@ public class Spielfenster implements ClientGUI {
 	@Override
 	public void amZug(boolean schlag) {
 		if(schlag == true){
-			new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);		
+			meldung.terminate();
+			new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);
 		}else if(schlag == false){
 			new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
 		}else{
