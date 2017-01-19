@@ -14,6 +14,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Das Startfenster, welches das Projekt beschreibt und die Aufgabebereiche der
+ * Teilnehmer nennt. Außerdem wird man durch einen Button zum Hauptmenü
+ * weitergeleitet.
+ * 
+ * @author Mcscha
+ *
+ */
 public class Start {
 
 	private JFrame frame;

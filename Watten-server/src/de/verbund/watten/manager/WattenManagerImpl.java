@@ -39,9 +39,22 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void spieleKarte(int id, Karte karte) {
-		for (Spieler s : spiel.getSpieler()) {
+		int naechsterID = -1;
+		for (int i = 0; i < spiel.getSpieler().size(); i++) {
+			Spieler s = spiel.getSpieler().get(i);
 			if (s.getId() == id) {
 				s.setGespielt(karte);
+				if ((i + 1) == spiel.getSpieler().size()) {
+					naechsterID = spiel.getSpieler().get(0).getId();
+				} else {
+					naechsterID = spiel.getSpieler().get(i + 1).getId();
+				}
+			}
+		}
+		for (Verbindung v : server.getVerbindungen()) {
+			if (v.getId() == naechsterID) {
+				Kommando kdo = Hilfe.getMeldungAmZug();
+				v.sende(kdo);
 			}
 		}
 		boolean alleGespielt = true;
@@ -81,11 +94,11 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void sendeSpieler() {
-		Kommando kdo = new Kommando();
-		kdo.setKommando(KommandoKonst.SENDE_SPIELER);
 		for (Verbindung v : server.getVerbindungen()) {
+			Kommando kdo = new Kommando();
+			kdo.setKommando(KommandoKonst.SENDE_SPIELER);
 			List<Spieler> spieler = new ArrayList<>();
-			int index = 0;
+			int index = -1;
 			for (int i = 0; i < spiel.getSpieler().size(); i++) {
 				if (v.getId() == spiel.getSpieler().get(i).getId()) {
 					index = i;
@@ -109,14 +122,15 @@ public class WattenManagerImpl implements WattenManager {
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
-			Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, "Spieler gefunden. Spiel startet.");
-			server.sendeAnAlle(kdo);
+			// Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS,
+			// "Spieler gefunden. Spiel startet.");
+			// server.sendeAnAlle(kdo);
 			spiel.getSpieler().get(0).setKommtRaus(true);
 			sendeSpieler();
 			spiel.teileAus();
 			sendeHandkarten();
 			int id = spiel.getSpieler().get(0).getId();
-			kdo = Hilfe.getMeldungAmZug(true);
+			Kommando kdo = Hilfe.getMeldungAmZug(true);
 			for (Verbindung v : server.getVerbindungen()) {
 				if (v.getId() == id) {
 					v.sende(kdo);
