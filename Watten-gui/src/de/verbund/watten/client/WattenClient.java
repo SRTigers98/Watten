@@ -93,7 +93,6 @@ public class WattenClient implements Runnable {
 				e.printStackTrace();
 			} catch (SocketException e) {
 				clientGUI.ausgabe(MeldungKonst.FEHLER, "Server nicht mehr erreichbar!");
-				e.printStackTrace();
 				try {
 					Thread.sleep(3000);
 				} catch (InterruptedException e1) {

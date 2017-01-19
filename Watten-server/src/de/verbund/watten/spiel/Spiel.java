@@ -69,6 +69,7 @@ public class Spiel {
 				siegerID = s.getId();
 			}
 		}
+		System.out.println(farbe + schlag);
 		return siegerID;
 	}
 

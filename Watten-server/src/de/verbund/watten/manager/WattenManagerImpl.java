@@ -61,7 +61,6 @@ public class WattenManagerImpl implements WattenManager {
 		if (alleGespielt) {
 			try {
 				int siegerID = spiel.werteAus();
-				System.out.println(siegerID);
 				sendeSpieler();
 				Kommando kdo = Hilfe.getMeldungAmZug();
 				for (Verbindung v : server.getVerbindungen()) {
@@ -133,7 +132,6 @@ public class WattenManagerImpl implements WattenManager {
 				}
 			}
 			for (Spieler s : spieler) {
-				System.out.println("zum Kdo: " + s);
 				kdo.addParameter(s);
 			}
 			v.sende(kdo);
