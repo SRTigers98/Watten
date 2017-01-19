@@ -90,6 +90,7 @@ public class Spielfenster implements ClientGUI {
 	private JLabel lblAnsage;
 	private JPanel panelZug;
 	private JLabel lblZug;
+	private JPanel panelAnsageAusgleich;
 
 	/**
 	 * Create the application.
@@ -154,8 +155,23 @@ public class Spielfenster implements ClientGUI {
 					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
-			panelWins2.add(getLblName2());
-			panelWins2.add(getLblWins2());
+			GridBagLayout gbl_panelWins2 = new GridBagLayout();
+			gbl_panelWins2.columnWidths = new int[] {40, 70, 10};
+			gbl_panelWins2.rowHeights = new int[]{14, 0};
+			gbl_panelWins2.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+			gbl_panelWins2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+			panelWins2.setLayout(gbl_panelWins2);
+			GridBagConstraints gbc_lblName2 = new GridBagConstraints();
+			gbc_lblName2.anchor = GridBagConstraints.NORTHWEST;
+			gbc_lblName2.insets = new Insets(0, 0, 0, 5);
+			gbc_lblName2.gridx = 0;
+			gbc_lblName2.gridy = 0;
+			panelWins2.add(getLblName2(), gbc_lblName2);
+			GridBagConstraints gbc_lblWins2 = new GridBagConstraints();
+			gbc_lblWins2.anchor = GridBagConstraints.WEST;
+			gbc_lblWins2.gridx = 1;
+			gbc_lblWins2.gridy = 0;
+			panelWins2.add(getLblWins2(), gbc_lblWins2);
 		}
 		return panelWins2;
 	}
@@ -212,8 +228,23 @@ public class Spielfenster implements ClientGUI {
 					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
-			panelStich2.add(getLblStich2());
-			panelStich2.add(getLblAnzStiche2());
+			GridBagLayout gbl_panelStich2 = new GridBagLayout();
+			gbl_panelStich2.columnWidths = new int[] {40, 70, 10};
+			gbl_panelStich2.rowHeights = new int[]{14, 0};
+			gbl_panelStich2.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+			gbl_panelStich2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+			panelStich2.setLayout(gbl_panelStich2);
+			GridBagConstraints gbc_lblStich2 = new GridBagConstraints();
+			gbc_lblStich2.anchor = GridBagConstraints.NORTHWEST;
+			gbc_lblStich2.insets = new Insets(0, 0, 0, 5);
+			gbc_lblStich2.gridx = 0;
+			gbc_lblStich2.gridy = 0;
+			panelStich2.add(getLblStich2(), gbc_lblStich2);
+			GridBagConstraints gbc_lblAnzStiche2 = new GridBagConstraints();
+			gbc_lblAnzStiche2.anchor = GridBagConstraints.WEST;
+			gbc_lblAnzStiche2.gridx = 1;
+			gbc_lblAnzStiche2.gridy = 0;
+			panelStich2.add(getLblAnzStiche2(), gbc_lblAnzStiche2);
 		}
 		return panelStich2;
 	}
@@ -240,7 +271,17 @@ public class Spielfenster implements ClientGUI {
 				}
 			}
 			panelWins1.add(getLblName1());
-			panelWins1.add(getLblWins1());
+			GridBagLayout gbl_panelWins1 = new GridBagLayout();
+			gbl_panelWins1.columnWidths = new int[] {40, 70, 10};
+			gbl_panelWins1.rowHeights = new int[]{1, 0};
+			gbl_panelWins1.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+			gbl_panelWins1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+			panelWins1.setLayout(gbl_panelWins1);
+			GridBagConstraints gbc_lblWins1 = new GridBagConstraints();
+			gbc_lblWins1.anchor = GridBagConstraints.NORTHWEST;
+			gbc_lblWins1.gridx = 0;
+			gbc_lblWins1.gridy = 0;
+			panelWins1.add(getLblWins1(), gbc_lblWins1);
 		}
 		return panelWins1;
 	}
@@ -296,8 +337,23 @@ public class Spielfenster implements ClientGUI {
 					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
 				}
 			}
-			panelStich1.add(getLblStich1());
-			panelStich1.add(getLblAnzStiche1());
+			GridBagLayout gbl_panelStich1 = new GridBagLayout();
+			gbl_panelStich1.columnWidths = new int[] {40, 70, 10};
+			gbl_panelStich1.rowHeights = new int[]{14, 0};
+			gbl_panelStich1.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+			gbl_panelStich1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+			panelStich1.setLayout(gbl_panelStich1);
+			GridBagConstraints gbc_lblStich1 = new GridBagConstraints();
+			gbc_lblStich1.anchor = GridBagConstraints.NORTHWEST;
+			gbc_lblStich1.insets = new Insets(0, 0, 0, 5);
+			gbc_lblStich1.gridx = 0;
+			gbc_lblStich1.gridy = 0;
+			panelStich1.add(getLblStich1(), gbc_lblStich1);
+			GridBagConstraints gbc_lblAnzStiche1 = new GridBagConstraints();
+			gbc_lblAnzStiche1.anchor = GridBagConstraints.WEST;
+			gbc_lblAnzStiche1.gridx = 1;
+			gbc_lblAnzStiche1.gridy = 0;
+			panelStich1.add(getLblAnzStiche1(), gbc_lblAnzStiche1);
 		}
 		return panelStich1;
 	}
@@ -328,6 +384,7 @@ public class Spielfenster implements ClientGUI {
 			panelFeld.add(getPanelKarte1(), BorderLayout.SOUTH);
 			panelFeld.add(getPanelAnsage(), BorderLayout.WEST);
 			panelFeld.add(getPanelZug(), BorderLayout.CENTER);
+			panelFeld.add(getPanelAnsageAusgleich(), BorderLayout.EAST);
 		}
 		return panelFeld;
 	}
@@ -649,7 +706,7 @@ public class Spielfenster implements ClientGUI {
 				}
 			}
 			GridBagLayout gbl_panelAnsage = new GridBagLayout();
-			gbl_panelAnsage.columnWidths = new int[]{0, 0, 0};
+			gbl_panelAnsage.columnWidths = new int[] {50, 20, 50};
 			gbl_panelAnsage.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 			gbl_panelAnsage.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 			gbl_panelAnsage.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -886,4 +943,16 @@ public class Spielfenster implements ClientGUI {
 	}
 	
 	
+	private JPanel getPanelAnsageAusgleich() {
+		if (panelAnsageAusgleich == null) {
+			panelAnsageAusgleich = new JPanel();
+			GridBagLayout gbl_panelAnsageAusgleich = new GridBagLayout();
+			gbl_panelAnsageAusgleich.columnWidths = new int[] {50, 20, 50};
+			gbl_panelAnsageAusgleich.rowHeights = new int[]{0};
+			gbl_panelAnsageAusgleich.columnWeights = new double[]{Double.MIN_VALUE};
+			gbl_panelAnsageAusgleich.rowWeights = new double[]{Double.MIN_VALUE};
+			panelAnsageAusgleich.setLayout(gbl_panelAnsageAusgleich);
+		}
+		return panelAnsageAusgleich;
+	}
 }
