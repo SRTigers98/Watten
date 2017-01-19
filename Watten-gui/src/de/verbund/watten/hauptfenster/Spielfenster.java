@@ -88,6 +88,8 @@ public class Spielfenster implements ClientGUI {
 	private JLabel lblSchlagWert;
 	private JLabel lblFarbeWert;
 	private JLabel lblAnsage;
+	private JPanel panelZug;
+	private JLabel lblZug;
 
 	/**
 	 * Create the application.
@@ -325,6 +327,7 @@ public class Spielfenster implements ClientGUI {
 			panelFeld.add(getPanel_1_3(), BorderLayout.NORTH);
 			panelFeld.add(getPanelKarte1(), BorderLayout.SOUTH);
 			panelFeld.add(getPanelAnsage(), BorderLayout.WEST);
+			panelFeld.add(getPanelZug(), BorderLayout.CENTER);
 		}
 		return panelFeld;
 	}
@@ -797,6 +800,22 @@ public class Spielfenster implements ClientGUI {
 			}
 		}
 		return null;
+	}
+	
+	private JPanel getPanelZug() {
+		if (panelZug == null) {
+			panelZug = new JPanel();
+			panelZug.setLayout(new BorderLayout(0, 0));
+			panelZug.add(getLblZug());
+		}
+		return panelZug;
+	}
+	private JLabel getLblZug() {
+		if (lblZug == null) {
+			lblZug = new JLabel("");
+			lblZug.setHorizontalAlignment(SwingConstants.CENTER);
+		}
+		return lblZug;
 	}
 
 	@Override
