@@ -150,6 +150,9 @@ public class WattenClient implements Runnable {
 		for (Serializable p : kdo.getParameter()) {
 			spieler.add((Spieler) p);
 		}
+		for (Spieler s : spieler) {
+			System.out.println(s.getName() + ": " + s.getStiche());
+		}
 		clientGUI.gibSpieler(spieler);
 	}
 

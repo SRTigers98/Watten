@@ -61,10 +61,15 @@ public class Spiel {
 		int sieger = runde.werteAus();
 		if (sieger == 0 || sieger > spieler.size()) {
 			throw new WattenException("Fehler in der Auswertung!");
-		} 
-		spieler.get(sieger-1).addStich();
-		
-		return sieger;
+		}
+		spieler.get(sieger - 1).addStich();
+		int siegerID = 0;
+		for (Spieler s : spieler) {
+			if (s.isKommtRaus()) {
+				siegerID = s.getId();
+			}
+		}
+		return siegerID;
 	}
 
 	public void neueRunde() {

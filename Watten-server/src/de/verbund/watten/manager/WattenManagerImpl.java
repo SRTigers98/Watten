@@ -51,12 +51,6 @@ public class WattenManagerImpl implements WattenManager {
 				}
 			}
 		}
-		for (Verbindung v : server.getVerbindungen()) {
-			if (v.getId() == naechsterID) {
-				Kommando kdo = Hilfe.getMeldungAmZug();
-				v.sende(kdo);
-			}
-		}
 		sendeKarteAnAlle(id, karte);
 		boolean alleGespielt = true;
 		for (Spieler s : spiel.getSpieler()) {
@@ -66,18 +60,25 @@ public class WattenManagerImpl implements WattenManager {
 		}
 		if (alleGespielt) {
 			try {
-				int sieger = spiel.werteAus();
+				int siegerID = spiel.werteAus();
+				System.out.println(siegerID);
 				sendeSpieler();
-				int idSieger = spiel.getSpieler().get(sieger - 1).getId();
 				Kommando kdo = Hilfe.getMeldungAmZug();
 				for (Verbindung v : server.getVerbindungen()) {
-					if (v.getId() == idSieger) {
+					if (v.getId() == siegerID) {
 						v.sende(kdo);
 					}
 				}
 			} catch (WattenException e) {
 				Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.FEHLER, e.getMessage());
 				server.sendeAnAlle(kdo);
+			}
+		} else {
+			for (Verbindung v : server.getVerbindungen()) {
+				if (v.getId() == naechsterID) {
+					Kommando kdo = Hilfe.getMeldungAmZug();
+					v.sende(kdo);
+				}
 			}
 		}
 	}
