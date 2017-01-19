@@ -956,11 +956,18 @@ public class Spielfenster implements ClientGUI {
 		sp1 = spieler.get(0);
 		sp2 = spieler.get(1);
 		lblName1.setText(spieler.get(0).getName());
-		lblName2.setText(sp2.getName());
+		lblName2.setText(spieler.get(1).getName());
 		lblAnzStiche1.setText(Integer.toString(spieler.get(0).getStiche()));
-		lblAnzStiche2.setText(Integer.toString(sp2.getStiche()));
+		lblAnzStiche2.setText(Integer.toString(spieler.get(1).getStiche()));
 		lblWins1.setText(Integer.toString(spieler.get(0).getPunkte()));
-		lblWins2.setText(Integer.toString(sp2.getPunkte()));
+		lblWins2.setText(Integer.toString(spieler.get(1).getPunkte()));
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		lblKSP1.setIcon(null);
+		lblKSP2.setIcon(null);
 	}
 
 	@Override
@@ -997,6 +1004,21 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibGegnerKarte(int id, Karte karte) {
-		lblKSP2.setIcon(iconHolen(karte));	
+		lblKSP2.setIcon(iconHolen(karte));
+		if(!(lblSP2K1.getIcon() == null)){
+			lblSP2K1.setIcon(null);
+		}
+		else if(!(lblSP2K2.getIcon() == null)){
+			lblSP2K2.setIcon(null);
+		}
+		else if(!(lblSP2K3.getIcon() == null)){
+			lblSP2K3.setIcon(null);
+		}
+		else if(!(lblSP2K4.getIcon() == null)){
+			lblSP2K4.setIcon(null);
+		}
+		else if(!(lblSP2K5.getIcon() == null)){
+			lblSP2K5.setIcon(null);
+		}
 	}
 }
