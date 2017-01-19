@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import de.verbund.watten.server.WattenServer;
+import java.awt.Label;
+import java.awt.TextField;
 
 /**
  * 
@@ -23,6 +25,10 @@ public class Serveroutput implements ActionListener {
 
 	private JFrame frame;
 	TextArea textArea;
+	private Label lPort;
+	private TextField textField;
+	private static Serveroutput window;
+	private static WattenServer wattenServer;
 
 	/**
 	 * Launch the application.
@@ -31,8 +37,8 @@ public class Serveroutput implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Serveroutput window = new Serveroutput();
-					new WattenServer(window);
+					window = new Serveroutput();
+					wattenServer = new WattenServer(window);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,18 +65,34 @@ public class Serveroutput implements ActionListener {
 		frame.getContentPane().setLayout(null);
 
 		Button bShutdown = new Button("Shutdown Server and Close");
-		bShutdown.setBounds(0, 339, 784, 22);
-		bShutdown.addActionListener(this);
+		bShutdown.setFont(new Font("Courier New", Font.PLAIN, 12));
+		bShutdown.setBounds(609, 0, 175, 22);
+		bShutdown.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				wattenServer.beende();
+			}
+		});
 
 		frame.getContentPane().add(bShutdown);
 		textArea.setFont(new Font("Courier New", Font.PLAIN, 12));
-		textArea.setForeground(Color.WHITE);
+		textArea.setForeground(Color.GREEN);
 		textArea.setBackground(Color.BLACK);
 		textArea.setEditable(false);
 
-		textArea.setBounds(0, 0, 784, 339);
+		textArea.setBounds(0, 22, 784, 339);
 		frame.getContentPane().add(textArea);
+		
+		lPort = new Label("Port:");
+		lPort.setFont(new Font("Cordia New", Font.PLAIN, 12));
+		lPort.setBounds(0, 0, 36, 22);
+		frame.getContentPane().add(lPort);
+		
+		textField = new TextField();
+		textField.setBounds(38, 0, 90, 22);
+		frame.getContentPane().add(textField);
 		frame.setVisible(true);
+		textField.addActionListener(this);
 	}
 
 	public void outputNewLine(String outputLine) {
@@ -84,7 +106,8 @@ public class Serveroutput implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// Server Shutdown
-		System.exit(0);
+		// TODO Auto-generated method stub
+		
 	}
+	
 }
