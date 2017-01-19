@@ -35,9 +35,6 @@ public class SpielRunde {
 			k2 = sp1.getGespielt();
 		}
 		int gewinner = regeln.werteAus(k1, k2);
-		System.out.println("Spieler 1: " + sp1.getGespielt());
-		System.out.println("Spieler 2: " + sp2.getGespielt());
-		System.out.println("Gewinner: " + gewinner);
 		if (sp2.isKommtRaus()) {
 			if (gewinner == 1) {
 				gewinner = 2;
