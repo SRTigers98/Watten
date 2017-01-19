@@ -651,26 +651,31 @@ public class Spielfenster implements ClientGUI {
 			gbl_panelAnsage.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			panelAnsage.setLayout(gbl_panelAnsage);
 			GridBagConstraints gbc_lblAnsage = new GridBagConstraints();
+			gbc_lblAnsage.anchor = GridBagConstraints.WEST;
 			gbc_lblAnsage.insets = new Insets(0, 0, 5, 5);
 			gbc_lblAnsage.gridx = 0;
 			gbc_lblAnsage.gridy = 0;
 			panelAnsage.add(getLblAnsage(), gbc_lblAnsage);
 			GridBagConstraints gbc_lblSchlag = new GridBagConstraints();
+			gbc_lblSchlag.anchor = GridBagConstraints.EAST;
 			gbc_lblSchlag.insets = new Insets(0, 0, 5, 5);
 			gbc_lblSchlag.gridx = 0;
 			gbc_lblSchlag.gridy = 1;
 			panelAnsage.add(getLblSchlag(), gbc_lblSchlag);
 			GridBagConstraints gbc_lblFarbe = new GridBagConstraints();
+			gbc_lblFarbe.anchor = GridBagConstraints.EAST;
 			gbc_lblFarbe.insets = new Insets(0, 0, 5, 5);
 			gbc_lblFarbe.gridx = 0;
 			gbc_lblFarbe.gridy = 2;
 			panelAnsage.add(getLblFarbe(), gbc_lblFarbe);
 			GridBagConstraints gbc_lblSchlagWert = new GridBagConstraints();
+			gbc_lblSchlagWert.anchor = GridBagConstraints.WEST;
 			gbc_lblSchlagWert.insets = new Insets(0, 5, 5, 0);
 			gbc_lblSchlagWert.gridx = 1;
 			gbc_lblSchlagWert.gridy = 1;
 			panelAnsage.add(getLblSchlagWert(), gbc_lblSchlagWert);
 			GridBagConstraints gbc_lblFarbeWert = new GridBagConstraints();
+			gbc_lblFarbeWert.anchor = GridBagConstraints.WEST;
 			gbc_lblFarbeWert.insets = new Insets(0, 5, 5, 0);
 			gbc_lblFarbeWert.gridx = 1;
 			gbc_lblFarbeWert.gridy = 2;
@@ -680,13 +685,13 @@ public class Spielfenster implements ClientGUI {
 	}
 	private JLabel getLblSchlag() {
 		if (lblSchlag == null) {
-			lblSchlag = new JLabel(" Schlag:  ");
+			lblSchlag = new JLabel("Schlag:");
 		}
 		return lblSchlag;
 	}
 	private JLabel getLblFarbe() {
 		if (lblFarbe == null) {
-			lblFarbe = new JLabel(" Farbe:");
+			lblFarbe = new JLabel("Farbe:");
 		}
 		return lblFarbe;
 	}

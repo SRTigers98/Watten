@@ -46,7 +46,6 @@ public class Auswahlfenster {
 	private JLabel lblEichel;
 	private JRadioButton rdbtnEichel;
 	private JButton btnCommitFarbe;
-	private Color dunklesGruen = new Color(0, 64, 0);
 	private Color hellesGruen = new Color(34, 177, 76);
 	private JPanel panel_Schlag;
 	private JLabel lblSieben;
@@ -151,7 +150,7 @@ public class Auswahlfenster {
 	private JPanel getPanel_Farbe() {
 		if (panel_Farbe == null) {
 			panel_Farbe = new JPanel();
-			panel_Farbe.setBackground(dunklesGruen);
+			panel_Farbe.setBackground(hellesGruen);
 			GridBagLayout gbl_panel_schlag = new GridBagLayout();
 			gbl_panel_schlag.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 			gbl_panel_schlag.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -234,8 +233,7 @@ public class Auswahlfenster {
 	private JRadioButton getRdbtnBlau() {
 		if (rdbtnBlau == null) {
 			rdbtnBlau = new JRadioButton("Blau");
-			rdbtnBlau.setBackground(dunklesGruen);
-			rdbtnBlau.setForeground(Color.WHITE);
+			rdbtnBlau.setBackground(hellesGruen);
 			rdbtnBlau.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnBlau) {
@@ -266,8 +264,7 @@ public class Auswahlfenster {
 	private JRadioButton getRdbtnSchelln() {
 		if (rdbtnSchelln == null) {
 			rdbtnSchelln = new JRadioButton("Schelln");
-			rdbtnSchelln.setBackground(dunklesGruen);
-			rdbtnSchelln.setForeground(Color.WHITE);
+			rdbtnSchelln.setBackground(hellesGruen);
 			rdbtnSchelln.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnSchelln) {
@@ -298,8 +295,7 @@ public class Auswahlfenster {
 	private JRadioButton getRdbtnHerz() {
 		if (rdbtnHerz == null) {
 			rdbtnHerz = new JRadioButton("Herz");
-			rdbtnHerz.setBackground(dunklesGruen);
-			rdbtnHerz.setForeground(Color.WHITE);
+			rdbtnHerz.setBackground(hellesGruen);
 			rdbtnHerz.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnHerz) {
@@ -330,8 +326,7 @@ public class Auswahlfenster {
 	private JRadioButton getRdbtnEichel() {
 		if (rdbtnEichel == null) {
 			rdbtnEichel = new JRadioButton("Eichel");
-			rdbtnEichel.setBackground(dunklesGruen);
-			rdbtnEichel.setForeground(Color.WHITE);
+			rdbtnEichel.setBackground(hellesGruen);
 			rdbtnEichel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == rdbtnEichel) {
