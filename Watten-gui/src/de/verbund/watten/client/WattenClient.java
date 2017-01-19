@@ -91,8 +91,8 @@ public class WattenClient implements Runnable {
 				clientGUI.ausgabe(MeldungKonst.FEHLER, "Fehler beim Lesen: " + e.getMessage());
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				clientGUI.ausgabe(MeldungKonst.FEHLER, "Server nicht mehr erreichbar!");
+				// TODO beende clientGUI
 			}
 		}
 	}
