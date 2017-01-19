@@ -13,7 +13,7 @@ TODOS für dieses Projekt
 	Zum Testen kann man gerne mal ein main einfügen, danach aber wieder löschen oder auskommentieren, damit ein Dritter weiss, 
 	wo er das Programm starten muss.
 	
-[ ] Server Shutdown, sende Message an beide Clients. OnMessage recieved by Client... beende Client	
+[X] Server Shutdown, sende Message an beide Clients. OnMessage recieved by Client... beende Client	
 	
 		
 Beachte: Wenn eine Aufgabe erledigt ist: pullen, aus [ ] mach [X] und gleich pushen

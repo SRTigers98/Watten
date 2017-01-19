@@ -846,4 +846,6 @@ public class Spielfenster implements ClientGUI {
 	public void gibFarbe(String farbe) {
 		lblFarbeWert.setIcon(iconHolenFarbe(farbe));
 	}
+	
+	
 }
