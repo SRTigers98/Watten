@@ -38,6 +38,10 @@ public class Spieler implements Serializable {
 		kommtRaus = false;
 	}
 
+	public void addStich() {
+		stiche++;
+	}
+	
 	public int getId() {
 		return id;
 	}

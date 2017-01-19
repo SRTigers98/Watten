@@ -59,13 +59,11 @@ public class Spiel {
 		SpielRunde runde = new SpielRunde(regeln, spieler.get(0), spieler.get(1));
 		runden.add(runde);
 		int sieger = runde.werteAus();
-		if (sieger == 0) {
+		if (sieger == 0 || sieger > spieler.size()) {
 			throw new WattenException("Fehler in der Auswertung!");
-		} else if (sieger == 1) {
-			spieler.get(0).setStiche(spieler.get(0).getStiche() + 1);
-		} else {
-			spieler.get(1).setStiche(spieler.get(1).getStiche() + 1);
-		}
+		} 
+		spieler.get(sieger-1).addStich();
+		
 		return sieger;
 	}
 
