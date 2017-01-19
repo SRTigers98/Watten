@@ -133,7 +133,8 @@ public class WattenManagerImpl implements WattenManager {
 				}
 			}
 			for (Spieler s : spieler) {
-				System.out.println("zum Kdo: " + s.getName() + " " + s.getStiche());
+				s.setPunkte(20);
+				System.out.println("zum Kdo: " + s);
 				kdo.addParameter(s);
 			}
 			v.sende(kdo);

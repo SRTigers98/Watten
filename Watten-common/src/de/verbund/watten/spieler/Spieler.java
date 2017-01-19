@@ -103,4 +103,9 @@ public class Spieler implements Serializable {
 		this.kommtRaus = kommtRaus;
 	}
 
+	@Override
+	public String toString() {
+		return "Spieler [id=" + id + ", name=" + name + ", hand=" + hand + ", stiche=" + stiche + ", punkte=" + punkte
+				+ ", gespielt=" + gespielt + ", kommtRaus=" + kommtRaus + "]";
+	}
 }
