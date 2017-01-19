@@ -39,9 +39,22 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void spieleKarte(int id, Karte karte) {
-		for (Spieler s : spiel.getSpieler()) {
+		int naechsterID = -1;
+		for (int i = 0; i < spiel.getSpieler().size(); i++) {
+			Spieler s = spiel.getSpieler().get(i);
 			if (s.getId() == id) {
 				s.setGespielt(karte);
+				if ((i + 1) == spiel.getSpieler().size()) {
+					naechsterID = spiel.getSpieler().get(0).getId();
+				} else {
+					naechsterID = spiel.getSpieler().get(i + 1).getId();
+				}
+			}
+		}
+		for (Verbindung v : server.getVerbindungen()) {
+			if (v.getId() == naechsterID) {
+				Kommando kdo = Hilfe.getMeldungAmZug();
+				v.sende(kdo);
 			}
 		}
 		boolean alleGespielt = true;
