@@ -105,6 +105,24 @@ public class SpielTest {
 	}
 	
 	@Test
+	public void testRegelnMoeglicherBug(){
+		Spiel spiel = new Spiel();
+		
+		spiel.setFarbe("Blau");
+		spiel.setSchlag("_10");
+		
+		Regelwerk rules = spiel.getRegeln();
+		
+		sp1.setGespielt(new Karte("Blau", "_7"));
+		sp2.setGespielt(new Karte("Blau", "_8"));
+		int i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
+		assertEquals(2, i);
+	}
+	
+	
+	
+	
+	@Test
 	public void testSchlag(){
 		Spiel spiel = new Spiel();
 		spiel.getSpieler();
@@ -157,6 +175,7 @@ public class SpielTest {
 		i = rules.werteAus(sp1.getGespielt(), sp2.getGespielt());
 		assertEquals(1, i);
 	
+
 	}
 	
 	@Test

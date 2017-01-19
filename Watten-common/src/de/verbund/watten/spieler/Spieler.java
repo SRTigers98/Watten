@@ -40,6 +40,7 @@ public class Spieler implements Serializable {
 
 	public void addStich() {
 		stiche++;
+		System.out.println("Stiche wurden erhöht und sind jetzt"+stiche);
 	}
 	
 	public int getId() {
@@ -66,6 +67,7 @@ public class Spieler implements Serializable {
 	}
 
 	public int getStiche() {
+		System.out.println("get Stiche:"+stiche);
 		return stiche;
 	}
 

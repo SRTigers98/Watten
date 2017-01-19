@@ -4,7 +4,7 @@ package de.verbund.watten.konstanten;
  * 
  * Enthält die Konstanten zum Auswahlfenster.
  * 
- * @author Marc
+ * @author Mcscha
  *
  */
 public class AuswahlfensterKonst {
