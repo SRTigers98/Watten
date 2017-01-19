@@ -79,14 +79,14 @@ public class Regelwerk {
 
 		// restl. Farben
 		int value = 20;
-		verteileNiedrigePrio("_7", value);
-		verteileNiedrigePrio("_8", value);
-		verteileNiedrigePrio("_9", value);
-		verteileNiedrigePrio("_10", value);
-		verteileNiedrigePrio("_Unter", value);
-		verteileNiedrigePrio("_Ober", value);
-		verteileNiedrigePrio("_Koenig", value);
-		verteileNiedrigePrio("_Sau", value);
+		value = verteileNiedrigePrio("_7", value);
+		value = verteileNiedrigePrio("_8", value);
+		value = verteileNiedrigePrio("_9", value);
+		value = verteileNiedrigePrio("_10", value);
+		value = verteileNiedrigePrio("_Unter", value);
+		value = verteileNiedrigePrio("_Ober", value);
+		value = verteileNiedrigePrio("_Koenig", value);
+		value = verteileNiedrigePrio("_Sau", value);
 
 	}
 
