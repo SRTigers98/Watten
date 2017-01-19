@@ -74,8 +74,6 @@ public class Spielfenster implements ClientGUI {
 	private JLabel lblKSP1;
 	private JPanel panelTisch;
 	private Meldung meldung;
-	private Spieler sp1;
-	private Spieler sp2;
 	private boolean amZug;
 	private Karte karte1;
 	private Karte karte2;
@@ -973,8 +971,7 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		sp1 = spieler.get(0);
-		sp2 = spieler.get(1);
+		lblZug.setText("Dein Gegner ist am Zug!");
 		lblName1.setText(spieler.get(0).getName());
 		lblName2.setText(spieler.get(1).getName());
 		lblAnzStiche1.setText(Integer.toString(spieler.get(0).getStiche()));
