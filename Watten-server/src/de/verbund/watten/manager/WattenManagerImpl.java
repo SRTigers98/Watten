@@ -57,6 +57,7 @@ public class WattenManagerImpl implements WattenManager {
 				v.sende(kdo);
 			}
 		}
+		sendeKarteAnAlle(id, karte);
 		boolean alleGespielt = true;
 		for (Spieler s : spiel.getSpieler()) {
 			if (s.getGespielt() == null) {
@@ -70,6 +71,18 @@ public class WattenManagerImpl implements WattenManager {
 			} catch (WattenException e) {
 				Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.FEHLER, e.getMessage());
 				server.sendeAnAlle(kdo);
+			}
+		}
+	}
+
+	private void sendeKarteAnAlle(int id, Karte karte) {
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.SENDE_GEGNER_KARTE);
+		kdo.addParameter(id);
+		kdo.addParameter(karte);
+		for (Verbindung v : server.getVerbindungen()) {
+			if (v.getId() != id) {
+				v.sende(kdo);
 			}
 		}
 	}
