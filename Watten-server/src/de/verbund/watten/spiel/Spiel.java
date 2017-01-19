@@ -55,7 +55,7 @@ public class Spiel {
 		}
 	}
 
-	public void werteAus() throws WattenException {
+	public int werteAus() throws WattenException {
 		SpielRunde runde = new SpielRunde(regeln, spieler.get(0), spieler.get(1));
 		runden.add(runde);
 		int sieger = runde.werteAus();
@@ -66,6 +66,7 @@ public class Spiel {
 		} else {
 			spieler.get(1).setStiche(spieler.get(1).getStiche() + 1);
 		}
+		return sieger;
 	}
 
 	public void neueRunde() {

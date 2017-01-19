@@ -125,7 +125,6 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.SENDE_GEGNER_KARTE)) {
 			gegnerKarte(kdo);
 		}
-		// TODO GegnerKarte empfangen
 	}
 
 	private void gegnerKarte(Kommando kdo) {

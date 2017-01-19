@@ -88,6 +88,6 @@ public interface ClientGUI {
 	 * @param Karte,
 	 *            die der Gegner gespielt hat
 	 */
-	public void gibGegnerKarte(int i, Karte karte);
+	public void gibGegnerKarte(int id, Karte karte);
 
 }
