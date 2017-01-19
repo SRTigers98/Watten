@@ -35,10 +35,7 @@ public class Spiel {
 	public void teileAus() {
 		Collections.shuffle(deck);
 		verteileKarten();
-		// regelwerk init
-		// sp1 Schlag
-		// sp2 farbe
-		// Regelwerk erzeugt
+
 	}
 
 	private void verteileKarten() {
