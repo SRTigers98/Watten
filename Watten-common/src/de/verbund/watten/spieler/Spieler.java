@@ -28,7 +28,6 @@ public class Spieler implements Serializable {
 		stiche = 0;
 		punkte = 0;
 		kommtRaus = false;
-		System.out.println("erzeuge neuen spieler (default)");
 	}
 
 	public Spieler(int id, String name) {
@@ -37,14 +36,12 @@ public class Spieler implements Serializable {
 		stiche = 0;
 		punkte = 0;
 		kommtRaus = false;
-		System.out.println("erzeuge neuen spieler");
 
 	}
 
 	public void gewonnen() {
 		stiche++;
 		punkte += 20;
-		System.out.println("Stiche wurden erhöht und sind jetzt " + stiche);
 	}
 
 	public int getId() {
@@ -71,12 +68,10 @@ public class Spieler implements Serializable {
 	}
 
 	public int getStiche() {
-		System.out.println("get Stiche:" + stiche);
 		return stiche;
 	}
 
 	public void setStiche(int stiche) {
-		System.out.println("set stich " + stiche);
 		this.stiche = stiche;
 	}
 
@@ -104,9 +99,4 @@ public class Spieler implements Serializable {
 		this.kommtRaus = kommtRaus;
 	}
 
-	@Override
-	public String toString() {
-		return "Spieler [id=" + id + ", name=" + name + ", hand=" + hand + ", stiche=" + stiche + ", punkte=" + punkte
-				+ ", gespielt=" + gespielt + ", kommtRaus=" + kommtRaus + "]";
-	}
 }

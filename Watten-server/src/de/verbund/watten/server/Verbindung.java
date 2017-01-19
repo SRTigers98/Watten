@@ -78,6 +78,8 @@ public class Verbindung implements Runnable {
 	public void sende(Kommando obj) {
 		try {
 			// Sende zum Client
+			// Reset des Caches
+			out.reset();
 			out.writeObject(obj);
 		} catch (IOException e) {
 			e.printStackTrace();

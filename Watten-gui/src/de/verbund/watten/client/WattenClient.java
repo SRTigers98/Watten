@@ -150,7 +150,6 @@ public class WattenClient implements Runnable {
 		List<Spieler> spieler = new ArrayList<>();
 		for (Serializable p : kdo.getParameter()) {
 			spieler.add((Spieler) p);
-			System.out.println("verteileSpieler: " + p);
 		}
 		clientGUI.gibSpieler(spieler);
 	}
