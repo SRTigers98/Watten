@@ -62,7 +62,7 @@ public class Spiel {
 		if (sieger == 0 || sieger > spieler.size()) {
 			throw new WattenException("Fehler in der Auswertung!");
 		}
-		spieler.get(sieger - 1).addStich();
+		spieler.get(sieger - 1).gewonnen();
 		int siegerID = 0;
 		for (Spieler s : spieler) {
 			if (s.isKommtRaus()) {

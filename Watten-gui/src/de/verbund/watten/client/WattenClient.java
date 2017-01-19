@@ -92,6 +92,7 @@ public class WattenClient implements Runnable {
 				e.printStackTrace();
 			} catch (IOException e) {
 				clientGUI.ausgabe(MeldungKonst.FEHLER, "Server nicht mehr erreichbar!");
+				e.printStackTrace();
 				try {
 					Thread.sleep(3000);
 				} catch (InterruptedException e1) {
@@ -149,9 +150,7 @@ public class WattenClient implements Runnable {
 		List<Spieler> spieler = new ArrayList<>();
 		for (Serializable p : kdo.getParameter()) {
 			spieler.add((Spieler) p);
-		}
-		for (Spieler s : spieler) {
-			System.out.println(s.getName() + ": " + s.getStiche());
+			System.out.println("verteileSpieler: " + p);
 		}
 		clientGUI.gibSpieler(spieler);
 	}
