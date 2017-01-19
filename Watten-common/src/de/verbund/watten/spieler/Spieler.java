@@ -28,6 +28,7 @@ public class Spieler implements Serializable {
 		stiche = 0;
 		punkte = 0;
 		kommtRaus = false;
+		System.out.println("erzeuge neuen spieler (default)");
 	}
 
 	public Spieler(int id, String name) {
@@ -36,6 +37,8 @@ public class Spieler implements Serializable {
 		stiche = 0;
 		punkte = 0;
 		kommtRaus = false;
+		System.out.println("erzeuge neuen spieler");
+
 	}
 
 	public void addStich() {
@@ -72,6 +75,7 @@ public class Spieler implements Serializable {
 	}
 
 	public void setStiche(int stiche) {
+		System.out.println("set stich");
 		this.stiche = stiche;
 	}
 
