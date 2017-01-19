@@ -85,15 +85,19 @@ public class WattenManagerImpl implements WattenManager {
 		kdo.setKommando(KommandoKonst.SENDE_SPIELER);
 		for (Verbindung v : server.getVerbindungen()) {
 			List<Spieler> spieler = new ArrayList<>();
-			spieler.addAll(spiel.getSpieler());
-			Spieler sp = null;
-			for (Spieler s : spieler) {
-				if (v.getId() == s.getId()) {
-					kdo.addParameter(s);
-					sp = s;
+			int index = 0;
+			for (int i = 0; i < spiel.getSpieler().size(); i++) {
+				if (v.getId() == spiel.getSpieler().get(i).getId()) {
+					index = i;
 				}
 			}
-			spieler.remove(sp);
+			for (int i = 0; i < spiel.getSpieler().size(); i++) {
+				spieler.add(spiel.getSpieler().get(index));
+				index++;
+				if (index == spiel.getSpieler().size()) {
+					index = 0;
+				}
+			}
 			for (Spieler s : spieler) {
 				kdo.addParameter(s);
 			}
