@@ -10,6 +10,7 @@ import java.util.List;
 import de.verbund.watten.common.Kommando;
 import de.verbund.watten.manager.WattenManager;
 import de.verbund.watten.manager.WattenManagerImpl;
+import de.verbund.watten.server.start.Serveroutput;
 
 /**
  * 
@@ -21,12 +22,16 @@ import de.verbund.watten.manager.WattenManagerImpl;
 public class WattenServer implements Runnable {
 
 	private WattenManager manager;
+	private Serveroutput output;
 	private boolean ok = true;
 
 	// neu 1:n: Die Liste f�r die Verbindungen
 	private List<Verbindung> verbindungen;
 
-	public WattenServer() {
+	public WattenServer(Serveroutput output) {
+		// Setze Output-GUI
+		this.output = output;
+
 		// Erzeuge Manager
 		manager = new WattenManagerImpl(this);
 
@@ -36,6 +41,8 @@ public class WattenServer implements Runnable {
 		// Erzeuge Thread
 		Thread t = new Thread(this);
 		t.start();
+
+		output.outputNewLine("Server gestartet");
 	}
 
 	public void run() {
@@ -82,6 +89,10 @@ public class WattenServer implements Runnable {
 
 	public List<Verbindung> getVerbindungen() {
 		return verbindungen;
+	}
+
+	public Serveroutput getOutput() {
+		return output;
 	}
 
 }

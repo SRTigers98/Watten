@@ -53,13 +53,13 @@ public class Verbindung implements Runnable {
 					// Die Analyse des Objektes
 					Serializable returnObj = verarbeite(gesendet);
 					// R�ckgabe des Objektes
-					// out.writeObject(returnObj);
-					System.out.println("Connection found");
+					out.writeObject(returnObj);
+					socketServer.getOutput().outputNewLine("Connection found: " + socket.getRemoteSocketAddress());
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (SocketException s) {
 					// TODO
-					System.err.println("Connection reset");
+					socketServer.getOutput().outputNewLine("Connection reset: " + socket.getRemoteSocketAddress());
 					ok = false;
 					socketServer.getManager().entferneSpieler(id);
 					socketServer.getVerbindungen().remove(this);
