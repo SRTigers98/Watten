@@ -415,7 +415,7 @@ public class Spielfenster implements ClientGUI {
 				}
 			}
 			GridBagLayout gbl_panelKarte2 = new GridBagLayout();
-			gbl_panelKarte2.columnWidths = new int[]{834, 1, 0};
+			gbl_panelKarte2.columnWidths = new int[] {0};
 			gbl_panelKarte2.rowHeights = new int[] {220};
 			gbl_panelKarte2.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 			gbl_panelKarte2.rowWeights = new double[]{0.0};
@@ -451,9 +451,9 @@ public class Spielfenster implements ClientGUI {
 				}
 			}
 			GridBagLayout gbl_panelKarte1 = new GridBagLayout();
-			gbl_panelKarte1.columnWidths = new int[]{834, 1, 0};
+			gbl_panelKarte1.columnWidths = new int[] {0};
 			gbl_panelKarte1.rowHeights = new int[] {220};
-			gbl_panelKarte1.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+			gbl_panelKarte1.columnWeights = new double[]{0.0, 0.0};
 			gbl_panelKarte1.rowWeights = new double[]{0.0};
 			panelKarte1.setLayout(gbl_panelKarte1);
 			GridBagConstraints gbc_lblKSP1 = new GridBagConstraints();
@@ -917,6 +917,36 @@ public class Spielfenster implements ClientGUI {
 		return lblZug;
 	}
 
+	private JPanel getPanelAnsageAusgleich() {
+		if (panelAnsageAusgleich == null) {
+			try {
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				Image imgTisch = ImageIO.read(urlTisch);
+				panelAnsageAusgleich = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				if (meldung == null) {
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
+				}
+			}
+			GridBagLayout gbl_panelAnsageAusgleich = new GridBagLayout();
+			gbl_panelAnsageAusgleich.columnWidths = new int[] {50, 20, 50};
+			gbl_panelAnsageAusgleich.rowHeights = new int[]{0};
+			gbl_panelAnsageAusgleich.columnWeights = new double[]{Double.MIN_VALUE};
+			gbl_panelAnsageAusgleich.rowWeights = new double[]{Double.MIN_VALUE};
+			panelAnsageAusgleich.setLayout(gbl_panelAnsageAusgleich);
+		}
+		return panelAnsageAusgleich;
+	}
+	
 	@Override
 	public void setClient(Client client) {
 		this.client = client;
@@ -967,16 +997,4 @@ public class Spielfenster implements ClientGUI {
 	}
 	
 	
-	private JPanel getPanelAnsageAusgleich() {
-		if (panelAnsageAusgleich == null) {
-			panelAnsageAusgleich = new JPanel();
-			GridBagLayout gbl_panelAnsageAusgleich = new GridBagLayout();
-			gbl_panelAnsageAusgleich.columnWidths = new int[] {50, 20, 50};
-			gbl_panelAnsageAusgleich.rowHeights = new int[]{0};
-			gbl_panelAnsageAusgleich.columnWeights = new double[]{Double.MIN_VALUE};
-			gbl_panelAnsageAusgleich.rowWeights = new double[]{Double.MIN_VALUE};
-			panelAnsageAusgleich.setLayout(gbl_panelAnsageAusgleich);
-		}
-		return panelAnsageAusgleich;
-	}
 }
