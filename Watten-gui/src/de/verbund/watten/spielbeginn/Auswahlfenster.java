@@ -74,7 +74,7 @@ public class Auswahlfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Auswahlfenster window = new Auswahlfenster(2, null);
+					Auswahlfenster window = new Auswahlfenster(1, null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -543,7 +543,7 @@ public class Auswahlfenster {
 		if (lblUnter == null) {
 			lblUnter = new JLabel("");
 			try {
-				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/u.png");
+				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/Unter.png");
 				Image img = ImageIO.read(urlLogo);
 				Icon ic = new ImageIcon(img);
 				lblUnter.setIcon(ic);
@@ -559,7 +559,7 @@ public class Auswahlfenster {
 		if (lblOber == null) {
 			lblOber = new JLabel("");
 			try {
-				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/o.png");
+				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/Ober.png");
 				Image img = ImageIO.read(urlLogo);
 				Icon ic = new ImageIcon(img);
 				lblOber.setIcon(ic);
@@ -575,7 +575,7 @@ public class Auswahlfenster {
 		if (lblKoenig == null) {
 			lblKoenig = new JLabel("");
 			try {
-				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/k.png");
+				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/Koenig.png");
 				Image img = ImageIO.read(urlLogo);
 				Icon ic = new ImageIcon(img);
 				lblKoenig.setIcon(ic);
@@ -591,7 +591,7 @@ public class Auswahlfenster {
 		if (lblSau == null) {
 			lblSau = new JLabel("");
 			try {
-				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/s.png");
+				URL urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/icons/Sau.png");
 				Image img = ImageIO.read(urlLogo);
 				Icon ic = new ImageIcon(img);
 				lblSau.setIcon(ic);
