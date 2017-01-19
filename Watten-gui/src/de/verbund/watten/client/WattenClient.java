@@ -123,7 +123,7 @@ public class WattenClient implements Runnable {
 	private void amZug(Kommando kdo) {
 		boolean schlag = false;
 		boolean parameter = false;
-		if (!kdo.getParameter().isEmpty()) {
+		if (kdo.getParameter() != null) {
 			schlag = (boolean) kdo.getParameter().get(0);
 			parameter = true;
 		}
