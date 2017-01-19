@@ -15,14 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
-
 import de.verbund.watten.client.Client;
-import de.verbund.watten.client.ClientDummy;
 import de.verbund.watten.client.ClientImpl;
 import de.verbund.watten.hauptfenster.Spielfenster;
 import de.verbund.watten.konstanten.MeldungKonst;
 import de.verbund.watten.meldungen.Meldung;
-
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -181,6 +178,8 @@ public class Hauptmenue {
 							Client server = new ClientImpl(spiel);
 							// ClientDummy server = new ClientDummy(spiel);
 							server.sendeName(txtName.getText());
+							// server.sendeIP(txtIp.getText());
+							// server.sendePort(txtPort.getText());
 
 							frame.dispose();
 						} else {
