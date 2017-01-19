@@ -1,6 +1,5 @@
 package de.verbund.watten.manager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,9 +100,6 @@ public class WattenManagerImpl implements WattenManager {
 			}
 			for (Spieler s : spieler) {
 				kdo.addParameter(s);
-			}
-			for (Serializable s : kdo.getParameter()) {
-				System.out.println(s);
 			}
 			v.sende(kdo);
 		}
