@@ -14,6 +14,7 @@ import de.verbund.watten.common.Kommando;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.konstanten.KommandoKonst;
 import de.verbund.watten.konstanten.MeldungKonst;
+import de.verbund.watten.spieler.Spieler;
 
 /**
  * 
@@ -110,7 +111,35 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.SENDE_FARBE)) {
 			verteileFarbe(kdo);
 		}
-		// TODO Spieler empfangen
+		if (kdo.getKommando().equals(KommandoKonst.SENDE_SPIELER)) {
+			verteileSpieler(kdo);
+		}
+		if (kdo.getKommando().equals(KommandoKonst.AM_ZUG)) {
+			amZug(kdo);
+		}
+		// TODO GegnerKarte empfangen
+	}
+
+	private void amZug(Kommando kdo) {
+		boolean schlag = false;
+		boolean parameter = false;
+		if (!kdo.getParameter().isEmpty()) {
+			schlag = (boolean) kdo.getParameter().get(0);
+			parameter = true;
+		}
+		if (parameter) {
+			clientGUI.amZug(schlag);
+		} else {
+			clientGUI.amZug();
+		}
+	}
+
+	private void verteileSpieler(Kommando kdo) {
+		List<Spieler> spieler = new ArrayList<>();
+		for (Serializable p : kdo.getParameter()) {
+			spieler.add((Spieler) p);
+		}
+		clientGUI.gibSpieler(spieler);
 	}
 
 	private void verteileFarbe(Kommando kdo) {
