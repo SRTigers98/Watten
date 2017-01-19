@@ -702,7 +702,6 @@ public class Spielfenster implements ClientGUI {
 	private JLabel getLblSchlagWert() {
 		if (lblSchlagWert == null) {
 			lblSchlagWert = new JLabel("");
-			lblSchlagWert.setVerticalAlignment(SwingConstants.BOTTOM);
 		}
 		return lblSchlagWert;
 	}
@@ -803,9 +802,27 @@ public class Spielfenster implements ClientGUI {
 		return null;
 	}
 	
+	@SuppressWarnings("serial")
 	private JPanel getPanelZug() {
 		if (panelZug == null) {
-			panelZug = new JPanel();
+			try {
+				URL urlTisch = getClass().getClassLoader()
+						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				Image imgTisch = ImageIO.read(urlTisch);
+				panelZug = new JPanel() {
+					@Override
+					public void paintComponent(Graphics g) {
+						g.drawImage(imgTisch, 0, 0, null);
+					}
+				};
+			} catch (IOException e1) {
+				if (meldung == null) {
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
+				} else {
+					meldung.terminate();
+					meldung = new Meldung(MeldungKonst.FEHLER, "Hintergrund konnte nicht geladen werden!");
+				}
+			}
 			panelZug.setLayout(new BorderLayout(0, 0));
 			panelZug.add(getLblZug());
 		}
