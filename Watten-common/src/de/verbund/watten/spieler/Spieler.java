@@ -18,7 +18,7 @@ public class Spieler implements Serializable {
 	private int id;
 	private String name;
 	private List<Karte> hand;
-	private Integer stiche;
+	private int stiche;
 	private int punkte;
 	private Karte gespielt;
 	private boolean kommtRaus;
@@ -43,7 +43,7 @@ public class Spieler implements Serializable {
 
 	public void gewonnen() {
 		stiche++;
-		System.out.println("Stiche wurden erhöht und sind jetzt" + stiche);
+		System.out.println("Stiche wurden erhöht und sind jetzt " + stiche);
 	}
 
 	public int getId() {
@@ -69,12 +69,12 @@ public class Spieler implements Serializable {
 		return hand;
 	}
 
-	public Integer getStiche() {
+	public int getStiche() {
 		System.out.println("get Stiche:" + stiche);
 		return stiche;
 	}
 
-	public void setStiche(Integer stiche) {
+	public void setStiche(int stiche) {
 		System.out.println("set stich " + stiche);
 		this.stiche = stiche;
 	}
