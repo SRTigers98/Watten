@@ -969,7 +969,6 @@ public class Spielfenster implements ClientGUI {
 			meldung.terminate();
 			new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);
 		}else if(schlag == false){
-			meldung.terminate();
 			new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
 		}else{
 			if (meldung == null) {
