@@ -653,7 +653,7 @@ public class Spielfenster implements ClientGUI {
 			GridBagConstraints gbc_lblAnsage = new GridBagConstraints();
 			gbc_lblAnsage.anchor = GridBagConstraints.WEST;
 			gbc_lblAnsage.insets = new Insets(0, 0, 5, 5);
-			gbc_lblAnsage.gridx = 0;
+			gbc_lblAnsage.gridx = 1;
 			gbc_lblAnsage.gridy = 0;
 			panelAnsage.add(getLblAnsage(), gbc_lblAnsage);
 			GridBagConstraints gbc_lblSchlag = new GridBagConstraints();
