@@ -29,6 +29,7 @@ public class Spiel {
 
 	public Spiel() {
 		deck = new Kartendeck().getDeck();
+		runden = new ArrayList<>();
 		spieler = new ArrayList<>();
 	}
 

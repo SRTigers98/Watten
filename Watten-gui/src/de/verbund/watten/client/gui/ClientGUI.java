@@ -79,4 +79,15 @@ public interface ClientGUI {
 	 */
 	public void setClient(Client client);
 
+	/**
+	 * 
+	 * Gibt die Karte, die ein Gegener gespielt hat.
+	 * 
+	 * @param ID
+	 *            des Spielers, der die Karte gespielt hat
+	 * @param Karte,
+	 *            die der Gegner gespielt hat
+	 */
+	public void gibGegnerKarte(int i, Karte karte);
+
 }

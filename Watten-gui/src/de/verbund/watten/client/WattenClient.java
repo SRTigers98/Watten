@@ -122,7 +122,14 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.AM_ZUG)) {
 			amZug(kdo);
 		}
+		if (kdo.getKommando().equals(KommandoKonst.SENDE_GEGNER_KARTE)) {
+			gegnerKarte(kdo);
+		}
 		// TODO GegnerKarte empfangen
+	}
+
+	private void gegnerKarte(Kommando kdo) {
+		clientGUI.gibGegnerKarte((int) kdo.getParameter().get(0), (Karte) kdo.getParameter().get(1));
 	}
 
 	private void amZug(Kommando kdo) {
