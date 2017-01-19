@@ -981,7 +981,6 @@ public class Spielfenster implements ClientGUI {
 	}
 	
 	public void amZug(){
-		System.out.println("am Zug");
 		amZug = true;
 		lblZug.setText("Du bist am Zug!");
 	}
