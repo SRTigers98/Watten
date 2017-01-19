@@ -12,6 +12,13 @@ import javax.swing.JFrame;
 
 import de.verbund.watten.server.WattenServer;
 
+/**
+ * 
+ * Die GUI für den Server.
+ * 
+ * @author Benedikt
+ *
+ */
 public class Serveroutput implements ActionListener {
 
 	private JFrame frame;
