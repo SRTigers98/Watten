@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JFrame;
@@ -54,7 +55,7 @@ public class Serveroutput {
 	 * Create the application.
 	 */
 	public Serveroutput() {
-		initialize();
+		initialize();		
 	}
 
 	/**
@@ -110,10 +111,14 @@ public class Serveroutput {
 	}
 
 	public void outputNewLine(String outputLine) {
-		if (textArea.getText().equals("")) {
-			textArea.setText(outputLine);
+		SimpleDateFormat formatter = new SimpleDateFormat("DD/MM/YYYY   HH:mm:ss:   - ");
+		Date date = new Date();
+		String timestamp = formatter.format(date);
+		String tField = new String();
+		if (tField.equals(null)) {
+			textArea.setText(timestamp + outputLine + "\n");
 		} else {
-			textArea.setText(textArea.getText().toString() + "\n" + outputLine);
+			textArea.append(timestamp + outputLine+ "\n");
 		}
 
 	}
