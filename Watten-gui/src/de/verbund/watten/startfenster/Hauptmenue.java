@@ -159,8 +159,9 @@ public class Hauptmenue {
 							txt.append("Sie müssen einen Namen angeben. \n");
 							korrekt = false;
 						}
+
 						/*
-						 * if (IsIP6or4(txtIp.getText())) { if
+						 * if (!IsIP6or4(txtIp.getText())) { if
 						 * (txtIp.getText().isEmpty() ||
 						 * txtIp.getText().equals("")) {
 						 * txt.append("Sie müssen eine IP-Adresse angeben. \n");
@@ -168,6 +169,7 @@ public class Hauptmenue {
 						 * append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n"
 						 * ); } korrekt = false; }
 						 */
+
 						if (txtPort.getText().isEmpty() || txtPort.getText().equals("")) {
 							txt.append("Sie müssen einen Port angeben. \n");
 							korrekt = false;
@@ -229,16 +231,19 @@ public class Hauptmenue {
 			System.out.println(address.getHostAddress());
 			if (address instanceof Inet4Address) {
 				// your IP is IPv4
+				System.out.println("IPv4");
 				return true;
 			} else if (address instanceof Inet6Address) {
 				// your IP is IPv6
+				System.out.println("IPv6");
 				return true;
 			} else {
+				System.out.println("keine IP");
 				return false;
 			}
 
 		} catch (Exception e) {
-
+			System.out.println(e.getMessage());
 			return false;
 
 		}
