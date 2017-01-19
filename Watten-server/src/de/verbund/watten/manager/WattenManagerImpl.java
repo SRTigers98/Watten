@@ -66,8 +66,15 @@ public class WattenManagerImpl implements WattenManager {
 		}
 		if (alleGespielt) {
 			try {
-				spiel.werteAus();
+				int sieger = spiel.werteAus();
 				sendeSpieler();
+				int idSieger = spiel.getSpieler().get(sieger - 1).getId();
+				Kommando kdo = Hilfe.getMeldungAmZug();
+				for (Verbindung v : server.getVerbindungen()) {
+					if (v.getId() == idSieger) {
+						v.sende(kdo);
+					}
+				}
 			} catch (WattenException e) {
 				Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.FEHLER, e.getMessage());
 				server.sendeAnAlle(kdo);
