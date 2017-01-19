@@ -13,7 +13,6 @@ public class Karte implements Serializable {
 
 	private String schlag;
 	private String farbe;
-	private int wert;
 	private String link;
 
 	public Karte() {
@@ -39,14 +38,6 @@ public class Karte implements Serializable {
 
 	public void setFarbe(String farbe) {
 		this.farbe = farbe;
-	}
-
-	public int getWert() {
-		return wert;
-	}
-
-	public void setWert(int wert) {
-		this.wert = wert;
 	}
 
 	public String getLink() {
