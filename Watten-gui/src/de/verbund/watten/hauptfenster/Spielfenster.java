@@ -955,11 +955,11 @@ public class Spielfenster implements ClientGUI {
 	public void gibSpieler(List<Spieler> spieler) {
 		sp1 = spieler.get(0);
 		sp2 = spieler.get(1);
-		lblName1.setText(sp1.getName());
+		lblName1.setText(spieler.get(0).getName());
 		lblName2.setText(sp2.getName());
-		lblAnzStiche1.setText(Integer.toString(sp1.getStiche()));
+		lblAnzStiche1.setText(Integer.toString(spieler.get(0).getStiche()));
 		lblAnzStiche2.setText(Integer.toString(sp2.getStiche()));
-		lblWins1.setText(Integer.toString(sp1.getPunkte()));
+		lblWins1.setText(Integer.toString(spieler.get(0).getPunkte()));
 		lblWins2.setText(Integer.toString(sp2.getPunkte()));
 	}
 
