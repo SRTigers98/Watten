@@ -1,5 +1,6 @@
 package de.verbund.watten.manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.verbund.watten.common.Kommando;
@@ -83,7 +84,8 @@ public class WattenManagerImpl implements WattenManager {
 		Kommando kdo = new Kommando();
 		kdo.setKommando(KommandoKonst.SENDE_SPIELER);
 		for (Verbindung v : server.getVerbindungen()) {
-			List<Spieler> spieler = spiel.getSpieler();
+			List<Spieler> spieler = new ArrayList<>();
+			spieler.addAll(spiel.getSpieler());
 			Spieler sp = null;
 			for (Spieler s : spieler) {
 				if (v.getId() == s.getId()) {
