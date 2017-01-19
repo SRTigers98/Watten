@@ -391,7 +391,7 @@ public class Spielfenster implements ClientGUI {
 
 	private JLabel getLblWins2() {
 		if (lblWins2 == null) {
-			lblWins2 = new JLabel("AnzWins");
+			lblWins2 = new JLabel("");
 			lblWins2.setForeground(Color.WHITE);
 		}
 		return lblWins2;
@@ -407,7 +407,7 @@ public class Spielfenster implements ClientGUI {
 
 	private JLabel getLblWins1() {
 		if (lblWins1 == null) {
-			lblWins1 = new JLabel("AnzWins");
+			lblWins1 = new JLabel("");
 			lblWins1.setForeground(Color.WHITE);
 		}
 		return lblWins1;
@@ -431,7 +431,7 @@ public class Spielfenster implements ClientGUI {
 
 	private JLabel getLblAnzStiche2() {
 		if (lblAnzStiche2 == null) {
-			lblAnzStiche2 = new JLabel("AnzStiche");
+			lblAnzStiche2 = new JLabel("");
 			lblAnzStiche2.setForeground(Color.WHITE);
 		}
 		return lblAnzStiche2;
@@ -439,7 +439,7 @@ public class Spielfenster implements ClientGUI {
 
 	private JLabel getLblAnzStiche1() {
 		if (lblAnzStiche1 == null) {
-			lblAnzStiche1 = new JLabel("AnzStiche");
+			lblAnzStiche1 = new JLabel("");
 			lblAnzStiche1.setForeground(Color.WHITE);
 		}
 		return lblAnzStiche1;
@@ -697,14 +697,14 @@ public class Spielfenster implements ClientGUI {
 	}
 	private JLabel getLblSchlagWert() {
 		if (lblSchlagWert == null) {
-			lblSchlagWert = new JLabel("SchlagWert");
+			lblSchlagWert = new JLabel("");
 			lblSchlagWert.setVerticalAlignment(SwingConstants.BOTTOM);
 		}
 		return lblSchlagWert;
 	}
 	private JLabel getLblFarbeWert() {
 		if (lblFarbeWert == null) {
-			lblFarbeWert = new JLabel("FarbeWert");
+			lblFarbeWert = new JLabel("");
 		}
 		return lblFarbeWert;
 	}
@@ -764,6 +764,40 @@ public class Spielfenster implements ClientGUI {
 		}
 		return null;
 	}
+	
+	private Icon iconHolenFarbe(String farbe){
+		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/spielbeginn/"+farbe+".png");
+		try {
+			Image imageIcon = ImageIO.read(urlIcon);
+			Icon icon = new ImageIcon(imageIcon);
+			return icon;
+		} catch (IOException e) {
+			if (meldung == null) {
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
+			}
+		}
+		return null;
+	}
+	
+	private Icon iconHolenSchlag(String schlag){
+		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/icons/"+schlag+".png");
+		try {
+			Image imageIcon = ImageIO.read(urlIcon);
+			Icon icon = new ImageIcon(imageIcon);
+			return icon;
+		} catch (IOException e) {
+			if (meldung == null) {
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public void setClient(Client client) {
@@ -804,15 +838,11 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSchlag(String schlag) {
-		if(schlag.equals("_Koenig")){
-			lblSchlagWert.setText("König");			
-		}else{
-			lblSchlagWert.setText(schlag.substring(1));			
-		}
+		lblSchlagWert.setIcon(iconHolenSchlag(schlag.substring(1)));
 	}
 
 	@Override
 	public void gibFarbe(String farbe) {
-		lblFarbeWert.setText(farbe);
+		lblFarbeWert.setIcon(iconHolenFarbe(farbe));
 	}
 }
