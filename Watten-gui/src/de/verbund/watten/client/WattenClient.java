@@ -84,7 +84,6 @@ public class WattenClient implements Runnable {
 			// warte auf Input
 			try {
 				// es muss Serialisierbar sein
-				in.reset();
 				Serializable gesendet = (Serializable) in.readObject();
 				// Die Analyse des Objektes
 				verarbeite(gesendet);
