@@ -12,5 +12,8 @@ TODOS für dieses Projekt
 [X] Spielfenster: Nur die Klasse, die als Startklasse des Programmes gedacht ist, sollte die Methode main haben.
 	Zum Testen kann man gerne mal ein main einfügen, danach aber wieder löschen oder auskommentieren, damit ein Dritter weiss, 
 	wo er das Programm starten muss.
+	
+[X] Server Shutdown, sende Message an beide Clients. OnMessage recieved by Client... beende Client	
+	
 		
 Beachte: Wenn eine Aufgabe erledigt ist: pullen, aus [ ] mach [X] und gleich pushen

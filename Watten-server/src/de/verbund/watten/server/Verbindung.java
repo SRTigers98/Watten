@@ -129,7 +129,7 @@ public class Verbindung implements Runnable {
 
 	private void erhalteName(Kommando kdo) {
 		// TODO UUID später
-		id = socketServer.getVerbindungen().size();
+		id = socketServer.holeId();
 		Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
 		// TODO Fehlermeldung, wenn zu viele Spieler
 		socketServer.getManager().addSpieler(spieler);

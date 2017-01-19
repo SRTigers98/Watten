@@ -1,5 +1,6 @@
 package de.verbund.watten.manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.verbund.watten.common.Kommando;
@@ -80,18 +81,23 @@ public class WattenManagerImpl implements WattenManager {
 
 	@Override
 	public void sendeSpieler() {
-		Kommando kdo = new Kommando();
-		kdo.setKommando(KommandoKonst.SENDE_SPIELER);
 		for (Verbindung v : server.getVerbindungen()) {
-			List<Spieler> spieler = spiel.getSpieler();
-			Spieler sp = null;
-			for (Spieler s : spieler) {
-				if (v.getId() == s.getId()) {
-					kdo.addParameter(s);
-					sp = s;
+			Kommando kdo = new Kommando();
+			kdo.setKommando(KommandoKonst.SENDE_SPIELER);
+			List<Spieler> spieler = new ArrayList<>();
+			int index = -1;
+			for (int i = 0; i < spiel.getSpieler().size(); i++) {
+				if (v.getId() == spiel.getSpieler().get(i).getId()) {
+					index = i;
 				}
 			}
-			spieler.remove(sp);
+			for (int i = 0; i < spiel.getSpieler().size(); i++) {
+				spieler.add(spiel.getSpieler().get(index));
+				index++;
+				if (index == spiel.getSpieler().size()) {
+					index = 0;
+				}
+			}
 			for (Spieler s : spieler) {
 				kdo.addParameter(s);
 			}
@@ -103,14 +109,15 @@ public class WattenManagerImpl implements WattenManager {
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
 			// starte Spiel
-			Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS, "Spieler gefunden. Spiel startet.");
-			server.sendeAnAlle(kdo);
+			// Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS,
+			// "Spieler gefunden. Spiel startet.");
+			// server.sendeAnAlle(kdo);
 			spiel.getSpieler().get(0).setKommtRaus(true);
 			sendeSpieler();
 			spiel.teileAus();
 			sendeHandkarten();
 			int id = spiel.getSpieler().get(0).getId();
-			kdo = Hilfe.getMeldungAmZug(true);
+			Kommando kdo = Hilfe.getMeldungAmZug(true);
 			for (Verbindung v : server.getVerbindungen()) {
 				if (v.getId() == id) {
 					v.sende(kdo);

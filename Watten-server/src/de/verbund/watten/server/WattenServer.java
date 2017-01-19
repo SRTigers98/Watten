@@ -24,6 +24,7 @@ public class WattenServer implements Runnable {
 	private WattenManager manager;
 	private Serveroutput output;
 	private boolean ok = true;
+	private int id = 0;
 
 	// neu 1:n: Die Liste f�r die Verbindungen
 	private List<Verbindung> verbindungen;
@@ -93,6 +94,11 @@ public class WattenServer implements Runnable {
 
 	public Serveroutput getOutput() {
 		return output;
+	}
+
+	public int holeId() {
+		id++;
+		return id;
 	}
 
 }
