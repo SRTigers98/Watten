@@ -150,24 +150,24 @@ public class Hauptmenue {
 	private JButton getBtnGo() {
 		if (btnGo == null) {
 			btnGo = new JButton("Go");
-			StringBuffer txt = new StringBuffer();
 			btnGo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					StringBuffer txt = new StringBuffer();
 					boolean korrekt = true;
 					if (e.getSource() == btnGo) {
 						if (txtName.getText().isEmpty() || txtName.getText().equals("")) {
 							txt.append("Sie müssen einen Namen angeben. \n");
 							korrekt = false;
 						}
-						System.out.println(txtIp.getText());
-						if (IsIP6or4(txtIp.getText())) {
-							if (txtIp.getText().isEmpty() || txtIp.getText().equals("")) {
-								txt.append("Sie müssen eine IP-Adresse angeben. \n");
-							} else {
-								txt.append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n");
-							}
-							korrekt = false;
-						}
+						/*
+						 * if (IsIP6or4(txtIp.getText())) { if
+						 * (txtIp.getText().isEmpty() ||
+						 * txtIp.getText().equals("")) {
+						 * txt.append("Sie müssen eine IP-Adresse angeben. \n");
+						 * } else { txt.
+						 * append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n"
+						 * ); } korrekt = false; }
+						 */
 						if (txtPort.getText().isEmpty() || txtPort.getText().equals("")) {
 							txt.append("Sie müssen einen Port angeben. \n");
 							korrekt = false;
@@ -175,9 +175,9 @@ public class Hauptmenue {
 						if (korrekt) {
 							Spielfenster spiel = new Spielfenster(txtName.getText());
 							// Bei fertigen Programm Dummy wieder durch
-							// ClientImpl ersetzten
-							// Client server = new ClientImpl(spiel);
-							ClientDummy server = new ClientDummy(spiel);
+							// ClientImpl ersetzen
+							Client server = new ClientImpl(spiel);
+							// ClientDummy server = new ClientDummy(spiel);
 							server.sendeName(txtName.getText());
 
 							frame.dispose();
@@ -222,11 +222,11 @@ public class Hauptmenue {
 		return txtPort;
 	}
 
-	boolean IsIP6or4(String addr) {
+	static boolean IsIP6or4(String addr) {
 		try {
 			System.out.println(addr);
 			InetAddress address = InetAddress.getByName(addr);
-			System.out.println(address);
+			System.out.println(address.getHostAddress());
 			if (address instanceof Inet4Address) {
 				// your IP is IPv4
 				return true;
@@ -243,4 +243,5 @@ public class Hauptmenue {
 
 		}
 	}
+
 }
