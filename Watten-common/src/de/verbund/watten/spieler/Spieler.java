@@ -41,7 +41,7 @@ public class Spieler implements Serializable {
 
 	}
 
-	public void addStich() {
+	public void gewonnen() {
 		stiche++;
 		System.out.println("Stiche wurden erhöht und sind jetzt" + stiche);
 	}
