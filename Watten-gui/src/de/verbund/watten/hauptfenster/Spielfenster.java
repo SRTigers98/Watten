@@ -616,6 +616,7 @@ public class Spielfenster implements ClientGUI {
 				}
 			}
 			amZug = false;
+			lblZug.setText("Dein Gegner ist am Zug!");
 		} else {
 			if (meldung == null) {
 				meldung = new Meldung(MeldungKonst.HINWEIS, "Du bist nicht dran!");
@@ -854,6 +855,7 @@ public class Spielfenster implements ClientGUI {
 	public void amZug(){
 		System.out.println("am Zug");
 		amZug = true;
+		lblZug.setText("Du bist am Zug!");
 	}
 
 	@Override
