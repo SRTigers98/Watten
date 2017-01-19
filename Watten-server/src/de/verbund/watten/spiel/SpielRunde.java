@@ -35,18 +35,21 @@ public class SpielRunde {
 			k2 = sp1.getGespielt();
 		}
 		int gewinner = regeln.werteAus(k1, k2);
-		if (sp2.isKommtRaus()){
-			if (gewinner == 1){
+		System.out.println("Spieler 1: " + sp1.getGespielt());
+		System.out.println("Spieler 2: " + sp2.getGespielt());
+		System.out.println("Gewinner: " + gewinner);
+		if (sp2.isKommtRaus()) {
+			if (gewinner == 1) {
 				gewinner = 2;
-			}else{
+			} else {
 				gewinner = 1;
 			}
 		}
-		if (gewinner == 1){
+		if (gewinner == 1) {
 			sp1.setKommtRaus(true);
 			sp2.setKommtRaus(false);
-		}else{
-			sp1.setKommtRaus(false);			
+		} else {
+			sp1.setKommtRaus(false);
 			sp2.setKommtRaus(true);
 		}
 		sp1.setGespielt(null);
