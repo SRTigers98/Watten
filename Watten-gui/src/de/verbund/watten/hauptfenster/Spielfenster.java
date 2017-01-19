@@ -433,8 +433,7 @@ public class Spielfenster implements ClientGUI {
 	private JPanel getPanelKarte1() {
 		if (panelKarte1 == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader()
-						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
 				Image imgTisch = ImageIO.read(urlTisch);
 				panelKarte1 = new JPanel() {
 					@Override
@@ -712,8 +711,7 @@ public class Spielfenster implements ClientGUI {
 	private JPanel getPanelAnsage() {
 		if (panelAnsage == null) {
 			try {
-				URL urlTisch = getClass().getClassLoader()
-						.getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
+				URL urlTisch = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld_mitte.png");
 				Image imgTisch = ImageIO.read(urlTisch);
 				panelAnsage = new JPanel() {
 					@Override
@@ -995,6 +993,9 @@ public class Spielfenster implements ClientGUI {
 	public void gibFarbe(String farbe) {
 		lblFarbeWert.setIcon(iconHolenFarbe(farbe));
 	}
-	
-	
+
+	@Override
+	public void gibGegnerKarte(int id, Karte karte) {
+		lblKSP2.setIcon(iconHolen(karte));	
+	}
 }
