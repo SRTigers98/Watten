@@ -7,6 +7,9 @@ import java.awt.Font;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JFrame;
 
@@ -21,7 +24,7 @@ import java.awt.TextField;
  * @author Benedikt
  *
  */
-public class Serveroutput implements ActionListener {
+public class Serveroutput {
 
 	private JFrame frame;
 	TextArea textArea;
@@ -29,6 +32,7 @@ public class Serveroutput implements ActionListener {
 	private TextField textField;
 	private static Serveroutput window;
 	private static WattenServer wattenServer;
+	private Button bPort;
 
 	/**
 	 * Launch the application.
@@ -71,6 +75,7 @@ public class Serveroutput implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				wattenServer.beende();
+				System.exit(0);
 			}
 		});
 
@@ -91,8 +96,17 @@ public class Serveroutput implements ActionListener {
 		textField = new TextField();
 		textField.setBounds(38, 0, 90, 22);
 		frame.getContentPane().add(textField);
+		
+		bPort = new Button("Set Port");
+		bPort.setBounds(129, 0, 70, 22);
+		frame.getContentPane().add(bPort);
 		frame.setVisible(true);
-		textField.addActionListener(this);
+		bPort.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO setze Port (wird im Textfeld eingelesen)				
+			}	
+		});
 	}
 
 	public void outputNewLine(String outputLine) {
@@ -102,12 +116,6 @@ public class Serveroutput implements ActionListener {
 			textArea.setText(textArea.getText().toString() + "\n" + outputLine);
 		}
 
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }
