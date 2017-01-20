@@ -62,6 +62,17 @@ public class Spiel {
 			throw new WattenException("Fehler in der Auswertung!");
 		}
 		spieler.get(sieger - 1).gewonnen();
+		Spieler sp1 = spieler.get(0);
+		Spieler sp2 = spieler.get(1);
+		if (sp1.getStiche() + sp2.getStiche() == 5) {
+			if (sp1.getStiche() > sp2.getStiche()) {
+				sp1.spielGewonnen();
+			} else {
+				sp2.spielGewonnen();
+			}
+			sp1.setStiche(0);
+			sp2.setStiche(0);
+		}
 		int siegerID = 0;
 		for (Spieler s : spieler) {
 			if (s.isKommtRaus()) {

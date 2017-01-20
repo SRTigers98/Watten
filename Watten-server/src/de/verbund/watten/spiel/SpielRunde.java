@@ -51,15 +51,6 @@ public class SpielRunde {
 		}
 		sp1.setGespielt(null);
 		sp2.setGespielt(null);
-		if (sp1.getStiche() + sp2.getStiche() == 5) {
-			if (sp1.getStiche() > sp2.getStiche()) {
-				sp1.spielGewonnen();
-			} else {
-				sp2.spielGewonnen();
-			}
-			sp1.setStiche(0);
-			sp2.setStiche(0);
-		}
 		return sieger;
 	}
 
