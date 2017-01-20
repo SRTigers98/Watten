@@ -72,12 +72,6 @@ public class Spiel {
 		return siegerID;
 	}
 
-	public void neueRunde() {
-		if (runden == null) {
-			runden = new ArrayList<>();
-		}
-		runden.add(new SpielRunde(getRegeln(), spieler.get(0), spieler.get(1)));
-	}
 
 	public Regelwerk getRegeln() {
 		if (regeln == null && schlag != null && farbe != null) {
