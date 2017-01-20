@@ -33,11 +33,11 @@ public class WattenClient implements Runnable {
 	private ClientGUI clientGUI;
 	private boolean ok = true;
 
-	public WattenClient(ClientGUI clientGUI) {
+	public WattenClient(ClientGUI clientGUI, String ip, int port) {
 		// Baue Verbindung zum Server auf
 		this.clientGUI = clientGUI;
 		try {
-			socket = new Socket("192.168.36.90", 4444);
+			socket = new Socket(ip, port);
 			// Erzeuge Ausgabestrom
 			out = new ObjectOutputStream(socket.getOutputStream());
 			// Erzeuge Eingabestrom
@@ -51,10 +51,6 @@ public class WattenClient implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public WattenClient() {
-		this(null);
 	}
 
 	public void sende(Kommando obj) {

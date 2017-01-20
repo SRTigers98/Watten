@@ -10,10 +10,10 @@ public class ClientImpl implements Client {
 	private WattenClient client;
 	private ClientGUI clientGUI;
 
-	public ClientImpl(ClientGUI gui) {
+	public ClientImpl(ClientGUI gui, String ip, int port) {
 		clientGUI = gui;
 		clientGUI.setClient(this);
-		this.client = new WattenClient(clientGUI);
+		this.client = new WattenClient(clientGUI, ip, port);
 	}
 
 	@Override
