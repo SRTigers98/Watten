@@ -175,4 +175,8 @@ public class Verbindung implements Runnable {
 		return neuesSpiel;
 	}
 
+	public void setNeuesSpiel(boolean neuesSpiel) {
+		this.neuesSpiel = neuesSpiel;
+	}
+
 }

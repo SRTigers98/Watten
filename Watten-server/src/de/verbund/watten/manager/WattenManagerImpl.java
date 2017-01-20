@@ -245,6 +245,9 @@ public class WattenManagerImpl implements WattenManager {
 		if (neuesSpiel) {
 			kdo.setReturnWert(true);
 			server.sendeAnAlle(kdo);
+			for (Verbindung v : server.getVerbindungen()) {
+				v.setNeuesSpiel(false);
+			}
 			Spiel newSpiel = new Spiel();
 			spiel.getSpieler().addAll(spiel.getSpieler());
 			spiel = newSpiel;
