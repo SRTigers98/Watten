@@ -1049,6 +1049,7 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void neuesSpiel() {
-		//TODO
+		lblSchlagWert.setIcon(null);
+		lblFarbeWert.setIcon(null);
 	}
 }
