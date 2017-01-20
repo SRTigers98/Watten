@@ -52,7 +52,8 @@ public class WattenServer implements Runnable {
 		// Warte auf Verbindung
 		try {
 			ServerSocket server = new ServerSocket(port);
-			output.outputNewLine("Server gestartet auf Port " + port);
+			output.outputNewLine(
+					"Server gestartet auf Port " + port + " IP: " + InetAddress.getLocalHost().getHostAddress());
 			while (ok) {
 				Socket socket = server.accept();
 				InetAddress adr = socket.getInetAddress();
