@@ -23,5 +23,7 @@ public class KommandoKonst {
 	public static final String AM_ZUG = "amZug";
 	public static final String SENDE_GEGNER_KARTE = "sendeGegnerKarte";
 	public static final String SPIEL_ENDE = "spielEnde";
+	public static final String NEUES_SPIEL = "neuesSpiel";
+	public static final String FEHLER = "fehler";
 
 }

@@ -102,6 +102,13 @@ public interface ClientGUI {
 
 	/**
 	 * 
+	 * Teilt mit, dass ein neues Spiel gestartet wird.
+	 * 
+	 */
+	public void neuesSpiel();
+
+	/**
+	 * 
 	 * Schickt der Server, wenn ein Fehler aufgetreten ist und das Programm
 	 * beendet werden soll.
 	 * 

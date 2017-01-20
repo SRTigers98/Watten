@@ -22,6 +22,7 @@ import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
 import de.verbund.watten.spielbeginn.Auswahlfenster;
 import de.verbund.watten.spieler.Spieler;
+import de.verbund.watten.startfenster.Hauptmenue;
 import de.verbund.watten.konstanten.AuswahlfensterKonst;
 import de.verbund.watten.konstanten.MeldungKonst;
 
@@ -32,6 +33,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
 /**
  * Spielfenster realisiert die Anzeige auf dem einelnen Client
  * Spielfenster übergibt actions des Users an die Clientklasse
@@ -418,7 +420,7 @@ public class Spielfenster implements ClientGUI {
 			GridBagLayout gbl_panelKarte2 = new GridBagLayout();
 			gbl_panelKarte2.columnWidths = new int[] {0};
 			gbl_panelKarte2.rowHeights = new int[] {220};
-			gbl_panelKarte2.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+			gbl_panelKarte2.columnWeights = new double[]{0.0, 0.0};
 			gbl_panelKarte2.rowWeights = new double[]{0.0};
 			panelKarte2.setLayout(gbl_panelKarte2);
 			GridBagConstraints gbc_lblKSP2 = new GridBagConstraints();
@@ -674,7 +676,8 @@ public class Spielfenster implements ClientGUI {
 			Icon iconKarte = lable.getIcon();
 			lable.setIcon(null);
 			if(lblSP1K1.getIcon() == null && lblSP1K2.getIcon() == null && lblSP1K3.getIcon() == null && lblSP1K4.getIcon() == null && lblSP1K5.getIcon() == null){
-				lblSP1K3.setIcon(iconHolenDunkelGruen());
+				FlowLayout flowLayout = (FlowLayout) panelHand1.getLayout();
+				flowLayout.setVgap(200);
 			}
 			lblKSP1.setIcon(iconKarte);
 			if(lable.getName().contains("K1")){
@@ -868,23 +871,6 @@ public class Spielfenster implements ClientGUI {
 		return null;
 	}
 	
-	private Icon iconHolenDunkelGruen(){
-		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
-		try {
-			Image imageIcon = ImageIO.read(urlIcon);
-			Icon icon = new ImageIcon(imageIcon);
-			return icon;
-		} catch (IOException e) {
-			if (meldung == null) {
-				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
-			} else {
-				meldung.terminate();
-				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
-			}
-		}
-		return null;
-	}
-	
 	private Icon iconHolenSchlag(String schlag){
 		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/icons/"+schlag+".png");
 		try {
@@ -1040,12 +1026,35 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K4.setIcon(null);
 		}
 		else if(!(lblSP2K5.getIcon() == null)){
-			lblSP2K5.setIcon(iconHolenDunkelGruen());
+			FlowLayout flowLayout = (FlowLayout) panelHand2.getLayout();
+			flowLayout.setVgap(200);
 		}
 	}
 
 	@Override
 	public void spielEnde(boolean sieger) {
 		new Endfenster(SP1.getName(), SP2.getName(), SP1.getStiche(), SP2.getStiche(), SP1.getPunkte(), SP2.getPunkte(), sieger, client);
+	}
+
+	@Override
+	public void fehler(String message) {
+		if (meldung == null) {
+			meldung = new Meldung(MeldungKonst.FEHLER, message);
+		} else {
+			meldung.terminate();
+			meldung = new Meldung(MeldungKonst.FEHLER, message);
+		}
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		frame.dispose();
+		new Hauptmenue();
+	}
+
+	@Override
+	public void neuesSpiel() {
+		//TODO
 	}
 }

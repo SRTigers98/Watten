@@ -124,6 +124,29 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.SENDE_GEGNER_KARTE)) {
 			gegnerKarte(kdo);
 		}
+		if (kdo.getKommando().equals(KommandoKonst.SPIEL_ENDE)) {
+			spielEnde(kdo);
+		}
+		if (kdo.getKommando().equals(KommandoKonst.FEHLER)) {
+			fehler(kdo);
+		}
+		if (kdo.getKommando().equals(KommandoKonst.NEUES_SPIEL)) {
+			erhalteAntwort(kdo);
+		}
+	}
+
+	private void erhalteAntwort(Kommando kdo) {
+		if ((boolean) kdo.getReturnWert()) {
+			clientGUI.neuesSpiel();
+		}
+	}
+
+	private void fehler(Kommando kdo) {
+		clientGUI.fehler(kdo.getParameter().get(0).toString());
+	}
+
+	private void spielEnde(Kommando kdo) {
+		clientGUI.spielEnde((boolean) kdo.getParameter().get(0));
 	}
 
 	private void gegnerKarte(Kommando kdo) {
