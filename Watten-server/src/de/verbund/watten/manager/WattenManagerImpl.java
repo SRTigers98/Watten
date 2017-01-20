@@ -245,6 +245,15 @@ public class WattenManagerImpl implements WattenManager {
 		if (neuesSpiel) {
 			kdo.setReturnWert(true);
 			server.sendeAnAlle(kdo);
+			Spiel newSpiel = new Spiel();
+			spiel.getSpieler().addAll(spiel.getSpieler());
+			spiel = newSpiel;
+			try {
+				starteSpiel();
+			} catch (WattenException e) {
+				// Kann nicht passieren
+				e.printStackTrace();
+			}
 		}
 	}
 
