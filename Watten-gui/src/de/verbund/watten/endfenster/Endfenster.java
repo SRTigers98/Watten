@@ -21,6 +21,8 @@ import javax.swing.JTextField;
 import de.verbund.watten.client.Client;
 import de.verbund.watten.hauptfenster.Spielfenster;
 import de.verbund.watten.meldungen.Meldung;
+import de.verbund.watten.startfenster.Hauptmenue;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -268,7 +270,7 @@ public class Endfenster {
 			btnNeuesSpiel = new JButton("Neues Spiel");
 			btnNeuesSpiel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					new Spielfenster(playerSelf);
+					client.anfrageNeuesSpiel();
 					frame.dispose();
 				}
 			});
@@ -282,8 +284,7 @@ public class Endfenster {
 			btnHauptmenue.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnHauptmenue) {
-						System.out.println("Höhe:" + frame.getHeight() + "| Breite:" + frame.getWidth());
-						client.anfrageNeuesSpiel();
+						new Hauptmenue();
 						frame.dispose();
 					}
 				}
