@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import de.verbund.watten.client.Client;
 import de.verbund.watten.client.gui.ClientGUI;
+import de.verbund.watten.endfenster.Endfenster;
 import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
 import de.verbund.watten.spielbeginn.Auswahlfenster;
@@ -89,6 +90,8 @@ public class Spielfenster implements ClientGUI {
 	private JPanel panelZug;
 	private JLabel lblZug;
 	private JPanel panelAnsageAusgleich;
+	private Spieler SP1;
+	private Spieler SP2;
 
 	/**
 	 * Create the application.
@@ -971,6 +974,8 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
+		SP1 = spieler.get(0);
+		SP2 = spieler.get(1);
 		lblZug.setText("Dein Gegner ist am Zug!");
 		lblName1.setText(spieler.get(0).getName());
 		lblName2.setText(spieler.get(1).getName());
@@ -1037,5 +1042,10 @@ public class Spielfenster implements ClientGUI {
 		else if(!(lblSP2K5.getIcon() == null)){
 			lblSP2K5.setIcon(iconHolenDunkelGruen());
 		}
+	}
+
+	@Override
+	public void spielEnde(boolean sieger) {
+		new Endfenster(SP1.getName(), SP2.getName(), SP1.getStiche(), SP2.getStiche(), SP1.getPunkte(), SP2.getPunkte(), sieger);
 	}
 }

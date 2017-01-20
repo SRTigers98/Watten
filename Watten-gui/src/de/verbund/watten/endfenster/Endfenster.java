@@ -15,6 +15,8 @@ import java.awt.Insets;
 import java.net.URL;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import de.verbund.watten.client.Client;
 import de.verbund.watten.hauptfenster.Spielfenster;
 import de.verbund.watten.meldungen.Meldung;
 import java.awt.event.ActionListener;
@@ -56,6 +58,7 @@ public class Endfenster {
 	private int sticheOther = 0;
 	private int punkteSelf = 0;
 	private int punkteOther = 0;
+	private Client client;
 
 	/**
 	 * Launch the application.
@@ -64,7 +67,7 @@ public class Endfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Endfenster window = new Endfenster("Max", "Mike", 1, 2, 10, 10, true);
+					Endfenster window = new Endfenster("Max", "Mike", 1, 2, 10, 10, true, null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -96,11 +99,15 @@ public class Endfenster {
 	 *            Anzahl der Punkte des Kontrahenten
 	 * 
 	 * @param gewonnen
-	 *            Angabe ob man selbst gewonnen hat
+	 *            Angabe ob man selbst gewonnen hat <br>
+	 *            true : gewonnen <br>
+	 *            false : verloren
+	 * 
 	 * 
 	 * 
 	 */
-	public Endfenster(String p1, String p2, int stich1, int stich2, int punkte1, int punkte2, boolean gewonnen) {
+	public Endfenster(String p1, String p2, int stich1, int stich2, int punkte1, int punkte2, boolean gewonnen,
+			Client client) {
 		playerSelf = p1;
 		playerOther = p2;
 		sticheSelf = stich1;
@@ -108,6 +115,7 @@ public class Endfenster {
 		punkteSelf = punkte1;
 		punkteOther = punkte2;
 		this.gewonnen = gewonnen;
+		this.client = client;
 
 		initialize();
 	}
@@ -136,13 +144,13 @@ public class Endfenster {
 			lower_panel.setLayout(gbl_lower_panel);
 			GridBagConstraints gbc_btnNeuesSpiel = new GridBagConstraints();
 			gbc_btnNeuesSpiel.gridwidth = 8;
-			gbc_btnNeuesSpiel.insets = new Insets(0, 50, 0, 40);
+			gbc_btnNeuesSpiel.insets = new Insets(0, 800, 50, 150);
 			gbc_btnNeuesSpiel.gridx = 0;
 			gbc_btnNeuesSpiel.gridy = 0;
 			lower_panel.add(getBtnNeuesSpiel(), gbc_btnNeuesSpiel);
 			GridBagConstraints gbc_btnHauptmenue = new GridBagConstraints();
 			gbc_btnHauptmenue.gridwidth = 8;
-			gbc_btnHauptmenue.insets = new Insets(0, 40, 0, 50);
+			gbc_btnHauptmenue.insets = new Insets(0, 150, 50, 800);
 			gbc_btnHauptmenue.gridx = 8;
 			gbc_btnHauptmenue.gridy = 0;
 			lower_panel.add(getBtnHauptmenue(), gbc_btnHauptmenue);
@@ -173,8 +181,9 @@ public class Endfenster {
 			gbc_lblSp1.gridy = 1;
 			upper_panel.add(getLblSp1(), gbc_lblSp1);
 			GridBagConstraints gbc_lblSp2 = new GridBagConstraints();
-			gbc_lblSp2.anchor = GridBagConstraints.EAST;
-			gbc_lblSp2.insets = new Insets(0, 33, 5, 5);
+			gbc_lblSp2.gridwidth = 2;
+			gbc_lblSp2.anchor = GridBagConstraints.WEST;
+			gbc_lblSp2.insets = new Insets(0, 1295, 5, 5);
 			gbc_lblSp2.gridx = 14;
 			gbc_lblSp2.gridy = 1;
 			upper_panel.add(getLblSp2(), gbc_lblSp2);
@@ -186,7 +195,7 @@ public class Endfenster {
 			gbc_lblSticheSp1.gridy = 2;
 			upper_panel.add(getLblSticheSp1(), gbc_lblSticheSp1);
 			GridBagConstraints gbc_lblSticheSp2 = new GridBagConstraints();
-			gbc_lblSticheSp2.insets = new Insets(0, 48, 5, 0);
+			gbc_lblSticheSp2.insets = new Insets(0, 1305, 5, 0);
 			gbc_lblSticheSp2.gridwidth = 3;
 			gbc_lblSticheSp2.gridx = 13;
 			gbc_lblSticheSp2.gridy = 2;
@@ -214,7 +223,7 @@ public class Endfenster {
 			upper_panel.add(getLblPunkteSp1(), gbc_lblPunkteSp1);
 			GridBagConstraints gbc_lblPunkteSp2 = new GridBagConstraints();
 			gbc_lblPunkteSp2.gridwidth = 3;
-			gbc_lblPunkteSp2.insets = new Insets(0, 55, 5, 0);
+			gbc_lblPunkteSp2.insets = new Insets(0, 1310, 5, 0);
 			gbc_lblPunkteSp2.gridx = 13;
 			gbc_lblPunkteSp2.gridy = 4;
 			upper_panel.add(getLblPunkteSp2(), gbc_lblPunkteSp2);
@@ -250,6 +259,15 @@ public class Endfenster {
 	private JButton getBtnHauptmenue() {
 		if (btnHauptmenue == null) {
 			btnHauptmenue = new JButton("Ins Hauptmenü");
+			btnHauptmenue.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (e.getSource() == btnHauptmenue) {
+						System.out.println("Höhe:" + frame.getHeight() + "| Breite:" + frame.getWidth());
+
+						frame.dispose();
+					}
+				}
+			});
 		}
 		return btnHauptmenue;
 	}
@@ -286,6 +304,7 @@ public class Endfenster {
 		if (txtSticheSp1 == null) {
 			txtSticheSp1 = new JTextField();
 			txtSticheSp1.setText("" + sticheSelf);
+			txtSticheSp1.setEditable(false);
 			txtSticheSp1.setColumns(10);
 		}
 		return txtSticheSp1;
@@ -295,6 +314,7 @@ public class Endfenster {
 		if (txtSticheSp2 == null) {
 			txtSticheSp2 = new JTextField();
 			txtSticheSp2.setText("" + sticheOther);
+			txtSticheSp2.setEditable(false);
 			txtSticheSp2.setColumns(10);
 		}
 		return txtSticheSp2;
@@ -318,6 +338,7 @@ public class Endfenster {
 		if (txtPunkteSp1 == null) {
 			txtPunkteSp1 = new JTextField();
 			txtPunkteSp1.setText("" + punkteSelf);
+			txtPunkteSp1.setEditable(false);
 			txtPunkteSp1.setColumns(10);
 		}
 		return txtPunkteSp1;
@@ -327,6 +348,7 @@ public class Endfenster {
 		if (txtPunkteSp2 == null) {
 			txtPunkteSp2 = new JTextField();
 			txtPunkteSp2.setText("" + punkteOther);
+			txtPunkteSp2.setEditable(false);
 			txtPunkteSp2.setColumns(10);
 		}
 		return txtPunkteSp2;
