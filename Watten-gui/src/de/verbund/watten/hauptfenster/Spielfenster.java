@@ -674,9 +674,6 @@ public class Spielfenster implements ClientGUI {
 		if(amZug == true){
 			Icon iconKarte = lable.getIcon();
 			lable.setIcon(null);
-			if(lblSP1K1.getIcon() == null && lblSP1K2.getIcon() == null && lblSP1K3.getIcon() == null && lblSP1K4.getIcon() == null && lblSP1K5.getIcon() == null){
-				//TODO
-			}
 			lblKSP1.setIcon(iconKarte);
 			if(lable.getName().contains("K1")){
 				client.sendeKarte(karte1);
@@ -1024,7 +1021,7 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K4.setIcon(null);
 		}
 		else if(!(lblSP2K5.getIcon() == null)){
-			//TODO
+			lblSP2K5.setIcon(null);
 		}
 	}
 
