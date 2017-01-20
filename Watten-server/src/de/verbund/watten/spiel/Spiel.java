@@ -36,7 +36,6 @@ public class Spiel {
 	public void teileAus() {
 		Collections.shuffle(deck);
 		verteileKarten();
-
 	}
 
 	private void verteileKarten() {
@@ -77,7 +76,6 @@ public class Spiel {
 		}
 		return siegerID;
 	}
-
 
 	public Regelwerk getRegeln() {
 		if (regeln == null && schlag != null && farbe != null) {

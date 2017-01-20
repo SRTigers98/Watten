@@ -22,12 +22,14 @@ public class Spieler implements Serializable {
 	private int punkte;
 	private Karte gespielt;
 	private boolean kommtRaus;
+	private boolean sieger;
 
 	public Spieler() {
 		// default-Konstruktor
 		stiche = 0;
 		punkte = 0;
 		kommtRaus = false;
+		sieger = false;
 	}
 
 	public Spieler(int id, String name) {
@@ -36,7 +38,7 @@ public class Spieler implements Serializable {
 		stiche = 0;
 		punkte = 0;
 		kommtRaus = false;
-
+		sieger = false;
 	}
 
 	public void gewonnen() {
@@ -100,6 +102,14 @@ public class Spieler implements Serializable {
 
 	public void setKommtRaus(boolean kommtRaus) {
 		this.kommtRaus = kommtRaus;
+	}
+
+	public boolean isSieger() {
+		return sieger;
+	}
+
+	public void setSieger(boolean sieger) {
+		this.sieger = sieger;
 	}
 
 }

@@ -163,10 +163,9 @@ public class WattenManagerImpl implements WattenManager {
 	@Override
 	public void starteSpiel() throws WattenException {
 		if (spiel.getSpieler().size() == 2) {
-			// starte Spiel
-			// Kommando kdo = Hilfe.getMeldungKommando(MeldungKonst.HINWEIS,
-			// "Spieler gefunden. Spiel startet.");
-			// server.sendeAnAlle(kdo);
+			for (Spieler s : spiel.getSpieler()) {
+				s.setSieger(false);
+			}
 			spiel.getSpieler().get(0).setKommtRaus(true);
 			sendeSpieler();
 			spiel.teileAus();
