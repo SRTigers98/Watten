@@ -72,7 +72,11 @@ public class WattenManagerImpl implements WattenManager {
 					for (Verbindung v : server.getVerbindungen()) {
 						Kommando kdo2 = new Kommando();
 						kdo2.setKommando(KommandoKonst.SPIEL_ENDE);
-						kdo2.addParameter(true);
+						for (Spieler s : spiel.getSpieler()) {
+							if (v.getId() == s.getId()) {
+								kdo2.addParameter(s.isSieger());
+							}
+						}
 						v.sende(kdo2);
 					}
 				}
