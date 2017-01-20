@@ -67,8 +67,10 @@ public class Spiel {
 		if (sp1.getStiche() + sp2.getStiche() == 5) {
 			if (sp1.getStiche() > sp2.getStiche()) {
 				sp1.spielGewonnen();
+				sp1.setSieger(true);
 			} else {
 				sp2.spielGewonnen();
+				sp2.setSieger(true);
 			}
 		}
 		int siegerID = 0;
