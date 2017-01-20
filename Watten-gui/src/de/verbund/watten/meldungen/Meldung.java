@@ -39,6 +39,7 @@ public class Meldung {
 	private JButton btnOk;
 	private JPanel lower_panel_fehler;
 	private JButton btnSchließen;
+	private JButton btnDismiss;
 
 	/**
 	 * Test Launch der Fenster | Normaler Aufruf über den Kontruktor
@@ -47,7 +48,7 @@ public class Meldung {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Meldung window = new Meldung(3, "Test");
+					Meldung window = new Meldung(2, "Test");
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -102,6 +103,8 @@ public class Meldung {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 300, 200);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().add(getLowerPanelFehler(), BorderLayout.SOUTH);
+		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setVisible(true);
 	}
 
@@ -263,16 +266,21 @@ public class Meldung {
 		if (lower_panel_fehler == null) {
 			lower_panel_fehler = new JPanel();
 			GridBagLayout gbl_lower_panel_fehler = new GridBagLayout();
-			gbl_lower_panel_fehler.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+			gbl_lower_panel_fehler.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0 };
 			gbl_lower_panel_fehler.rowHeights = new int[] { 0, 0 };
 			gbl_lower_panel_fehler.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-					Double.MIN_VALUE };
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 			gbl_lower_panel_fehler.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 			lower_panel_fehler.setLayout(gbl_lower_panel_fehler);
+			GridBagConstraints gbc_btnDismiss = new GridBagConstraints();
+			gbc_btnDismiss.insets = new Insets(0, 50, 0, 25);
+			gbc_btnDismiss.gridx = 0;
+			gbc_btnDismiss.gridy = 0;
+			lower_panel_fehler.add(getBtnDismiss(), gbc_btnDismiss);
 			GridBagConstraints gbc_btnSchließen = new GridBagConstraints();
-			gbc_btnSchließen.gridwidth = 11;
-			gbc_btnSchließen.insets = new Insets(0, 125, 5, 125);
-			gbc_btnSchließen.gridx = 0;
+			gbc_btnSchließen.insets = new Insets(0, 25, 0, 50);
+			gbc_btnSchließen.gridx = 7;
 			gbc_btnSchließen.gridy = 0;
 			lower_panel_fehler.add(getBtnSchließen(), gbc_btnSchließen);
 		}
@@ -285,7 +293,7 @@ public class Meldung {
 			btnSchließen.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnSchließen) {
-						// new Hauptmenue();
+						new Hauptmenue();
 						frame.dispose();
 					}
 				}
@@ -298,4 +306,17 @@ public class Meldung {
 		frame.dispose();
 	}
 
+	private JButton getBtnDismiss() {
+		if (btnDismiss == null) {
+			btnDismiss = new JButton("Dismiss");
+			btnDismiss.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (e.getSource() == btnDismiss) {
+						frame.dispose();
+					}
+				}
+			});
+		}
+		return btnDismiss;
+	}
 }

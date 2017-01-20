@@ -74,8 +74,6 @@ public class Spielfenster implements ClientGUI {
 	private JLabel lblKSP1;
 	private JPanel panelTisch;
 	private Meldung meldung;
-	private Spieler sp1;
-	private Spieler sp2;
 	private boolean amZug;
 	private Karte karte1;
 	private Karte karte2;
@@ -672,6 +670,9 @@ public class Spielfenster implements ClientGUI {
 		if(amZug == true){
 			Icon iconKarte = lable.getIcon();
 			lable.setIcon(null);
+			if(lblSP1K1.getIcon() == null && lblSP1K2.getIcon() == null && lblSP1K3.getIcon() == null && lblSP1K4.getIcon() == null && lblSP1K5.getIcon() == null){
+				lblSP1K3.setIcon(iconHolenDunkelGruen());
+			}
 			lblKSP1.setIcon(iconKarte);
 			if(lable.getName().contains("K1")){
 				client.sendeKarte(karte1);
@@ -864,6 +865,23 @@ public class Spielfenster implements ClientGUI {
 		return null;
 	}
 	
+	private Icon iconHolenDunkelGruen(){
+		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/hauptfenster/watten_spielfeld.png");
+		try {
+			Image imageIcon = ImageIO.read(urlIcon);
+			Icon icon = new ImageIcon(imageIcon);
+			return icon;
+		} catch (IOException e) {
+			if (meldung == null) {
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
+			} else {
+				meldung.terminate();
+				meldung = new Meldung(MeldungKonst.FEHLER, "Handkarten können nicht angezeigt werden!");
+			}
+		}
+		return null;
+	}
+	
 	private Icon iconHolenSchlag(String schlag){
 		URL urlIcon = getClass().getClassLoader().getResource("de/verbund/watten/icons/"+schlag+".png");
 		try {
@@ -953,8 +971,7 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void gibSpieler(List<Spieler> spieler) {
-		sp1 = spieler.get(0);
-		sp2 = spieler.get(1);
+		lblZug.setText("Dein Gegner ist am Zug!");
 		lblName1.setText(spieler.get(0).getName());
 		lblName2.setText(spieler.get(1).getName());
 		lblAnzStiche1.setText(Integer.toString(spieler.get(0).getStiche()));
@@ -1018,7 +1035,7 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K4.setIcon(null);
 		}
 		else if(!(lblSP2K5.getIcon() == null)){
-			lblSP2K5.setIcon(null);
+			lblSP2K5.setIcon(iconHolenDunkelGruen());
 		}
 	}
 }
