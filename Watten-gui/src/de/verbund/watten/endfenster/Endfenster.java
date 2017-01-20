@@ -390,6 +390,11 @@ public class Endfenster {
 			 * "Icon konnte nicht geladen werden!"); frame.dispose(); }
 			 * lblIcon.setSize(1600, 400);
 			 */
+			if (gewonnen) {
+				lblIcon.setText("SIIIIIIIIEG !");
+			} else {
+				lblIcon.setText("NIEDERLAGE !");
+			}
 		}
 		return lblIcon;
 	}
