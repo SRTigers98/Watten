@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.verbund.watten.common.Kommando;
-import de.verbund.watten.exception.WattenRuntimeException;
 import de.verbund.watten.manager.WattenManager;
 import de.verbund.watten.manager.WattenManagerImpl;
 import de.verbund.watten.server.start.Serveroutput;
@@ -62,7 +61,7 @@ public class WattenServer implements Runnable {
 				verbindungen.add(v);
 			}
 		} catch (BindException e) {
-			throw new WattenRuntimeException("Port bereits in Nutzung! Bitte anderen Port eingeben.");
+			output.bindException();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

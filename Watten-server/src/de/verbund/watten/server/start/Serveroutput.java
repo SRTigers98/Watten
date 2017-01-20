@@ -15,7 +15,6 @@ import java.util.Date;
 import javax.swing.JFrame;
 
 import de.verbund.watten.exception.WattenException;
-import de.verbund.watten.exception.WattenRuntimeException;
 import de.verbund.watten.server.WattenServer;
 
 /**
@@ -34,6 +33,7 @@ public class Serveroutput {
 	private static Serveroutput window;
 	private static WattenServer wattenServer;
 	private Button bPort;
+	private Button bShutdown;
 
 	/**
 	 * Launch the application.
@@ -69,7 +69,7 @@ public class Serveroutput {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		Button bShutdown = new Button("Shutdown Server and Close");
+		bShutdown = new Button("Shutdown Server and Close");
 		bShutdown.setFont(new Font("Courier New", Font.PLAIN, 12));
 		bShutdown.setBounds(609, 0, 175, 22);
 		bShutdown.setEnabled(false);
@@ -107,30 +107,25 @@ public class Serveroutput {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO setze Port (wird im Textfeld eingelesen)
-				if (portSetzen(textField.getText())) {
-					bShutdown.setEnabled(true);
-					bPort.setEnabled(false);
-				}
+				portSetzen(textField.getText());
 			}
 		});
 	}
 
-	protected boolean portSetzen(String port) {
+	protected void portSetzen(String port) {
 		try {
 			int portInt = Integer.parseInt(port);
 			if (portInt <= 1024) {
 				throw new WattenException("Bitte Port > 1024 eingeben!");
 			}
+			bShutdown.setEnabled(true);
+			bPort.setEnabled(false);
 			wattenServer = new WattenServer(window, portInt);
-			return true;
 		} catch (NumberFormatException e) {
 			outputNewLine("Bitte eine gültige Zahl eingeben!");
 		} catch (WattenException e) {
 			outputNewLine(e.getMessage());
-		} catch (WattenRuntimeException e) {
-			outputNewLine(e.getMessage());
 		}
-		return false;
 	}
 
 	public void outputNewLine(String outputLine) {
@@ -144,6 +139,12 @@ public class Serveroutput {
 			textArea.append(timestamp + outputLine + "\n");
 		}
 
+	}
+
+	public void bindException() {
+		outputNewLine("Port bereits in Nutzung! Bitte anderen Port eingeben.");
+		bPort.setEnabled(true);
+		bShutdown.setEnabled(false);
 	}
 
 }
