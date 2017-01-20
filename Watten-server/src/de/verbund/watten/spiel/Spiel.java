@@ -70,8 +70,6 @@ public class Spiel {
 			} else {
 				sp2.spielGewonnen();
 			}
-			sp1.setStiche(0);
-			sp2.setStiche(0);
 		}
 		int siegerID = 0;
 		for (Spieler s : spieler) {

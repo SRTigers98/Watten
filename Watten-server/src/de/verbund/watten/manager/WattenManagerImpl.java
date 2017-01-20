@@ -100,7 +100,11 @@ public class WattenManagerImpl implements WattenManager {
 		for (Spieler s : spiel.getSpieler()) {
 			stiche += s.getStiche();
 		}
-		return (stiche == 5);
+		boolean ende = (stiche == 5);
+		for (Spieler s : spiel.getSpieler()) {
+			s.setStiche(0);
+		}
+		return ende;
 	}
 
 	private void sendeKarteAnAlle(int id, Karte karte) {
