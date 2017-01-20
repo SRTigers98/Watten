@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.verbund.watten.common.Kommando;
-import de.verbund.watten.manager.WattenManager;
 import de.verbund.watten.manager.WattenManagerImpl;
 import de.verbund.watten.server.start.Serveroutput;
 
@@ -22,7 +21,7 @@ import de.verbund.watten.server.start.Serveroutput;
  */
 public class WattenServer implements Runnable {
 
-	private WattenManager manager;
+	private WattenManagerImpl manager;
 	private Serveroutput output;
 	private boolean ok = true;
 	private int id = 0;
@@ -90,7 +89,7 @@ public class WattenServer implements Runnable {
 
 	}
 
-	public WattenManager getManager() {
+	public WattenManagerImpl getManager() {
 		return manager;
 	}
 

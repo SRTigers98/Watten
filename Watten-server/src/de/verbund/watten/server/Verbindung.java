@@ -58,7 +58,6 @@ public class Verbindung implements Runnable {
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (SocketException s) {
-					// TODO
 					socketServer.getOutput().outputNewLine("Connection reset: " + socket.getRemoteSocketAddress());
 					ok = false;
 					socketServer.getManager().entferneSpieler(id);
@@ -69,7 +68,6 @@ public class Verbindung implements Runnable {
 			in.close();
 			out.close();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -99,7 +97,13 @@ public class Verbindung implements Runnable {
 			ok = false;
 		}
 		if (kdo.getKommando().equals(KommandoKonst.SENDE_NAME)) {
-			erhalteName(kdo);
+			try {
+				erhalteName(kdo);
+			} catch (WattenException e) {
+				kdo = Hilfe.getMeldungKommando(MeldungKonst.FEHLER, e.getMessage());
+				sende(kdo);
+				socketServer.getVerbindungen().remove(this);
+			}
 		}
 		if (kdo.getKommando().equals(KommandoKonst.SPIELE_KARTE)) {
 			spieleKarte(kdo);
@@ -129,11 +133,12 @@ public class Verbindung implements Runnable {
 		socketServer.getManager().spieleKarte(id, karte);
 	}
 
-	private void erhalteName(Kommando kdo) {
-		// TODO UUID später
+	private void erhalteName(Kommando kdo) throws WattenException {
+		if (socketServer.getManager().getSpiel().getSpieler().size() >= 2) {
+			throw new WattenException("Server ist voll!");
+		}
 		id = socketServer.holeId();
 		Spieler spieler = new Spieler(id, kdo.getParameter().get(0).toString());
-		// TODO Fehlermeldung, wenn zu viele Spieler
 		socketServer.getManager().addSpieler(spieler);
 		try {
 			socketServer.getManager().starteSpiel();

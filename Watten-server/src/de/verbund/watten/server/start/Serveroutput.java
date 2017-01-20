@@ -106,7 +106,6 @@ public class Serveroutput {
 		bPort.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO setze Port (wird im Textfeld eingelesen)
 				portSetzen(textField.getText());
 			}
 		});
