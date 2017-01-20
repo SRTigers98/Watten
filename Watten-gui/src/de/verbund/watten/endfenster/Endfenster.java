@@ -1,6 +1,8 @@
 package de.verbund.watten.endfenster;
 
 import java.awt.EventQueue;
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -67,7 +69,7 @@ public class Endfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Endfenster window = new Endfenster("Max", "Mike", 1, 2, 10, 10, true, null);
+					Endfenster window = new Endfenster("Max", "Mike", 1, 2, 10, 10, false, null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -144,13 +146,13 @@ public class Endfenster {
 			lower_panel.setLayout(gbl_lower_panel);
 			GridBagConstraints gbc_btnNeuesSpiel = new GridBagConstraints();
 			gbc_btnNeuesSpiel.gridwidth = 8;
-			gbc_btnNeuesSpiel.insets = new Insets(0, 800, 50, 150);
+			gbc_btnNeuesSpiel.insets = new Insets(25, 800, 25, 150);
 			gbc_btnNeuesSpiel.gridx = 0;
 			gbc_btnNeuesSpiel.gridy = 0;
 			lower_panel.add(getBtnNeuesSpiel(), gbc_btnNeuesSpiel);
 			GridBagConstraints gbc_btnHauptmenue = new GridBagConstraints();
 			gbc_btnHauptmenue.gridwidth = 8;
-			gbc_btnHauptmenue.insets = new Insets(0, 150, 50, 800);
+			gbc_btnHauptmenue.insets = new Insets(25, 150, 25, 800);
 			gbc_btnHauptmenue.gridx = 8;
 			gbc_btnHauptmenue.gridy = 0;
 			lower_panel.add(getBtnHauptmenue(), gbc_btnHauptmenue);
@@ -160,7 +162,20 @@ public class Endfenster {
 
 	private JPanel getUpper_panel() {
 		if (upper_panel == null) {
+
+			/*
+			 * try { URL urlLogo; if (gewonnen) { urlLogo =
+			 * getClass().getClassLoader().getResource(
+			 * "de/verbund/watten/endfenster/Gewonnen.png"); } else { urlLogo =
+			 * getClass().getClassLoader().getResource(
+			 * "de/verbund/watten/endfenster/Verloren.jpg"); } Image img =
+			 * ImageIO.read(urlLogo); upper_panel = new JPanel() {
+			 * 
+			 * @Override public void paint(Graphics g) { g.drawImage(img, 0, 0,
+			 * null); } }; } catch (Exception e) { upper_panel = new JPanel(); }
+			 */
 			upper_panel = new JPanel();
+
 			GridBagLayout gbl_upper_panel = new GridBagLayout();
 			gbl_upper_panel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 			gbl_upper_panel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
@@ -168,12 +183,14 @@ public class Endfenster {
 					0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE };
 			gbl_upper_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 			upper_panel.setLayout(gbl_upper_panel);
+
 			GridBagConstraints gbc_lblIcon = new GridBagConstraints();
 			gbc_lblIcon.gridwidth = 16;
 			gbc_lblIcon.insets = new Insets(0, 0, 5, 5);
 			gbc_lblIcon.gridx = 0;
 			gbc_lblIcon.gridy = 0;
 			upper_panel.add(getLblIcon(), gbc_lblIcon);
+
 			GridBagConstraints gbc_lblSp1 = new GridBagConstraints();
 			gbc_lblSp1.anchor = GridBagConstraints.WEST;
 			gbc_lblSp1.insets = new Insets(0, 0, 5, 50);
@@ -241,7 +258,9 @@ public class Endfenster {
 			gbc_txtPunkteSp2.gridy = 5;
 			upper_panel.add(getTxtPunkteSp2(), gbc_txtPunkteSp2);
 		}
+		upper_panel.setOpaque(true);
 		return upper_panel;
+
 	}
 
 	private JButton getBtnNeuesSpiel() {
@@ -275,6 +294,7 @@ public class Endfenster {
 	private JLabel getLblSp1() {
 		if (lblSp1 == null) {
 			lblSp1 = new JLabel(playerSelf);
+			lblSp1.setOpaque(true);
 		}
 		return lblSp1;
 	}
@@ -357,20 +377,17 @@ public class Endfenster {
 	private JLabel getLblIcon() {
 		if (lblIcon == null) {
 			lblIcon = new JLabel("Test");
-			try {
-				URL urlLogo;
-				if (gewonnen) {
-					urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/endfenster/Gewonnen.png");
-				} else {
-					urlLogo = getClass().getClassLoader().getResource("de/verbund/watten/endfenster/Verloren.png");
-				}
-				Image img = ImageIO.read(urlLogo);
-				Icon ic = new ImageIcon(img);
-				lblIcon.setIcon(ic);
-			} catch (Exception e) {
-				new Meldung(2, "Icon konnte nicht geladen werden!");
-				frame.dispose();
-			}
+			/*
+			 * try { URL urlLogo; if (gewonnen) { urlLogo =
+			 * getClass().getClassLoader().getResource(
+			 * "de/verbund/watten/endfenster/Gewonnen.png"); } else { urlLogo =
+			 * getClass().getClassLoader().getResource(
+			 * "de/verbund/watten/endfenster/Verloren.jpg"); } Image img =
+			 * ImageIO.read(urlLogo); Icon ic = new ImageIcon(img);
+			 * lblIcon.setIcon(ic); } catch (Exception e) { new Meldung(2,
+			 * "Icon konnte nicht geladen werden!"); frame.dispose(); }
+			 * lblIcon.setSize(1600, 400);
+			 */
 		}
 		return lblIcon;
 	}
