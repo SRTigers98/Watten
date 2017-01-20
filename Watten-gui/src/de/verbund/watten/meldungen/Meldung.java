@@ -103,7 +103,6 @@ public class Meldung {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 300, 200);
 		frame.setLocationRelativeTo(null);
-		frame.getContentPane().add(getLowerPanelFehler(), BorderLayout.SOUTH);
 		frame.getContentPane().add(getUpperPanel(), BorderLayout.CENTER);
 		frame.setVisible(true);
 	}

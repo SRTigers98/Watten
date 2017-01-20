@@ -151,35 +151,39 @@ public class Hauptmenue {
 				public void actionPerformed(ActionEvent e) {
 					StringBuffer txt = new StringBuffer();
 					boolean korrekt = true;
+					int port = 0;
 					if (e.getSource() == btnGo) {
 						if (txtName.getText().isEmpty() || txtName.getText().equals("")) {
 							txt.append("Sie müssen einen Namen angeben. \n");
 							korrekt = false;
 						}
 
-						/*
-						 * if (!IsIP6or4(txtIp.getText())) { if
-						 * (txtIp.getText().isEmpty() ||
-						 * txtIp.getText().equals("")) {
-						 * txt.append("Sie müssen eine IP-Adresse angeben. \n");
-						 * } else { txt.
-						 * append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n"
-						 * ); } korrekt = false; }
-						 */
-
-						if (txtPort.getText().isEmpty() || txtPort.getText().equals("")) {
-							txt.append("Sie müssen einen Port angeben. \n");
+						if (!IsIP6or4(txtIp.getText())) {
+							if (txtIp.getText().isEmpty() || txtIp.getText().equals("")) {
+								txt.append("Sie müssen eine IP-Adresse angeben. \n");
+							} else {
+								txt.append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n");
+							}
 							korrekt = false;
+						}
+						if (!checkPort(txtPort.getText())) {
+							if (txtPort.getText().isEmpty() || txtPort.getText().equals("")) {
+								txt.append("Sie müssen einen Port angeben. \n");
+
+							} else {
+								txt.append("Sie müssen eine Zahl angeben. \n");
+							}
+							korrekt = false;
+						} else {
+							port = Integer.parseInt(txtPort.getText());
 						}
 						if (korrekt) {
 							Spielfenster spiel = new Spielfenster(txtName.getText());
 							// Bei fertigen Programm Dummy wieder durch
 							// ClientImpl ersetzen
-							Client server = new ClientImpl(spiel);
+							Client server = new ClientImpl(spiel, txtIp.getText(), port);
 							// ClientDummy server = new ClientDummy(spiel);
 							server.sendeName(txtName.getText());
-							// server.sendeIP(txtIp.getText());
-							// server.sendePort(txtPort.getText());
 
 							frame.dispose();
 						} else {
@@ -191,6 +195,13 @@ public class Hauptmenue {
 		}
 		return btnGo;
 
+	}
+
+	protected boolean checkPort(String text) {
+		if (text.matches("(\\d)+")) {
+			return true;
+		} else
+			return false;
 	}
 
 	private JLabel getLblIpadresse() {
@@ -230,14 +241,11 @@ public class Hauptmenue {
 			System.out.println(address.getHostAddress());
 			if (address instanceof Inet4Address) {
 				// your IP is IPv4
-				System.out.println("IPv4");
 				return true;
 			} else if (address instanceof Inet6Address) {
 				// your IP is IPv6
-				System.out.println("IPv6");
 				return true;
 			} else {
-				System.out.println("keine IP");
 				return false;
 			}
 
