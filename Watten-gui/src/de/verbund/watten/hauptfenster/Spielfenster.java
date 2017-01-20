@@ -22,6 +22,7 @@ import de.verbund.watten.karten.Karte;
 import de.verbund.watten.meldungen.Meldung;
 import de.verbund.watten.spielbeginn.Auswahlfenster;
 import de.verbund.watten.spieler.Spieler;
+import de.verbund.watten.startfenster.Hauptmenue;
 import de.verbund.watten.konstanten.AuswahlfensterKonst;
 import de.verbund.watten.konstanten.MeldungKonst;
 
@@ -1047,5 +1048,22 @@ public class Spielfenster implements ClientGUI {
 	@Override
 	public void spielEnde(boolean sieger) {
 		new Endfenster(SP1.getName(), SP2.getName(), SP1.getStiche(), SP2.getStiche(), SP1.getPunkte(), SP2.getPunkte(), sieger, client);
+	}
+
+	@Override
+	public void fehler(String message) {
+		if (meldung == null) {
+			meldung = new Meldung(MeldungKonst.FEHLER, message);
+		} else {
+			meldung.terminate();
+			meldung = new Meldung(MeldungKonst.FEHLER, message);
+		}
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		frame.dispose();
+		new Hauptmenue();
 	}
 }
