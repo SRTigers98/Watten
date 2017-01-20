@@ -41,4 +41,11 @@ public interface Client {
 	 */
 	public void sendeFarbe(String farbe);
 
+	/**
+	 * Frägt am Server an, ob ein neues Spiel gestartet werden kann, falls der
+	 * andere Spieler ebenfalls zustimmt.
+	 * 
+	 */
+	public void anfrageNeuesSpiel();
+
 }

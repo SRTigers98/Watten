@@ -55,4 +55,9 @@ public class ClientDummy implements Client {
 		clientGUI.amZug();
 	}
 
+	@Override
+	public void anfrageNeuesSpiel() {
+		// unnötig im Dummy
+	}
+
 }
