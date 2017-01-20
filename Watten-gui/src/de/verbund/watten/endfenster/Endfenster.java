@@ -282,7 +282,7 @@ public class Endfenster {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnHauptmenue) {
 						System.out.println("Höhe:" + frame.getHeight() + "| Breite:" + frame.getWidth());
-
+						client.anfrageNeuesSpiel();
 						frame.dispose();
 					}
 				}
