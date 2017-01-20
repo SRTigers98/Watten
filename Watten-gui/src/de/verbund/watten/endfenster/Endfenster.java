@@ -269,6 +269,7 @@ public class Endfenster {
 			btnNeuesSpiel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					new Spielfenster(playerSelf);
+					frame.dispose();
 				}
 			});
 		}
@@ -282,7 +283,7 @@ public class Endfenster {
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == btnHauptmenue) {
 						System.out.println("Höhe:" + frame.getHeight() + "| Breite:" + frame.getWidth());
-
+						client.anfrageNeuesSpiel();
 						frame.dispose();
 					}
 				}
