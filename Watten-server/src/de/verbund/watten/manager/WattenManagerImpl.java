@@ -231,4 +231,17 @@ public class WattenManagerImpl implements WattenManager {
 		}
 	}
 
+	public void pruefeAnfrage(Kommando kdo) {
+		boolean neuesSpiel = true;
+		for (Verbindung v : server.getVerbindungen()) {
+			if (!v.isNeuesSpiel()) {
+				neuesSpiel = false;
+			}
+		}
+		if (neuesSpiel) {
+			kdo.setReturnWert(true);
+			server.sendeAnAlle(kdo);
+		}
+	}
+
 }

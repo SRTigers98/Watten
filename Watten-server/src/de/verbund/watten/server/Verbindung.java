@@ -28,6 +28,7 @@ public class Verbindung implements Runnable {
 	private Socket socket;
 	private WattenServer socketServer;
 	private boolean ok = true;
+	private boolean neuesSpiel = false;
 
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
@@ -114,8 +115,16 @@ public class Verbindung implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.ANSAGE_FARBE)) {
 			sagAnFarbe(kdo);
 		}
+		if (kdo.getKommando().equals(KommandoKonst.NEUES_SPIEL)) {
+			anfrageNeuesSpiel(kdo);
+		}
 
 		return gesendet;
+	}
+
+	private void anfrageNeuesSpiel(Kommando kdo) {
+		neuesSpiel = true;
+		socketServer.getManager().pruefeAnfrage(kdo);
 	}
 
 	private void sagAnFarbe(Kommando kdo) {
@@ -160,6 +169,10 @@ public class Verbindung implements Runnable {
 
 	public int getId() {
 		return id;
+	}
+
+	public boolean isNeuesSpiel() {
+		return neuesSpiel;
 	}
 
 }
