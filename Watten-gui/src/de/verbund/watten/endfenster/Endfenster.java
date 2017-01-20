@@ -15,7 +15,6 @@ import java.awt.Insets;
 import java.net.URL;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import de.verbund.watten.client.Client;
 import de.verbund.watten.hauptfenster.Spielfenster;
 import de.verbund.watten.meldungen.Meldung;
 import java.awt.event.ActionListener;
@@ -50,7 +49,6 @@ public class Endfenster {
 	private JLabel lblIcon;
 
 	// Variablen zum Füllen der Screens
-	private Client client;
 	private boolean gewonnen = true;
 	private String playerSelf = "Sp1";
 	private String playerOther = "Sp2";
@@ -66,7 +64,7 @@ public class Endfenster {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Endfenster window = new Endfenster(null);
+					Endfenster window = new Endfenster("Max", "Mike", 1, 2, 10, 10, true);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -76,10 +74,41 @@ public class Endfenster {
 	}
 
 	/**
-	 * Create the application.
+	 * Kontruktor der die nötigen Variablen setzt und das entfenster
+	 * initialisiert.
+	 * 
+	 * @param p1
+	 *            Übergabe des eigenen Namens
+	 * 
+	 * @param p2
+	 *            Übergabe des Names vom Kontrahenten
+	 * 
+	 * @param stich1
+	 *            Anzahl der eigenen Stiche.
+	 * 
+	 * @param stich2
+	 *            Anzahl der Stiche des Kontrahenten
+	 * 
+	 * @param punkte1
+	 *            Anzahl der eigenen Punkte
+	 * 
+	 * @param punkte2
+	 *            Anzahl der Punkte des Kontrahenten
+	 * 
+	 * @param gewonnen
+	 *            Angabe ob man selbst gewonnen hat
+	 * 
+	 * 
 	 */
-	public Endfenster(Client client) {
-		this.client = client;
+	public Endfenster(String p1, String p2, int stich1, int stich2, int punkte1, int punkte2, boolean gewonnen) {
+		playerSelf = p1;
+		playerOther = p2;
+		sticheSelf = stich1;
+		sticheOther = stich2;
+		punkteSelf = punkte1;
+		punkteOther = punkte2;
+		this.gewonnen = gewonnen;
+
 		initialize();
 	}
 
@@ -88,17 +117,11 @@ public class Endfenster {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		getData();
-		frame.setBounds(100, 100, 430, 300);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(getLower_panel(), BorderLayout.SOUTH);
 		frame.getContentPane().add(getUpper_panel(), BorderLayout.CENTER);
 		frame.setVisible(true);
-	}
-
-	private void getData() {
-		// TODO Auto-generated method stub
-
 	}
 
 	private JPanel getLower_panel() {
