@@ -22,5 +22,6 @@ public class KommandoKonst {
 	public static final String SENDE_FARBE = "sendeFarbe";
 	public static final String AM_ZUG = "amZug";
 	public static final String SENDE_GEGNER_KARTE = "sendeGegnerKarte";
+	public static final String SPIEL_ENDE = "spielEnde";
 
 }

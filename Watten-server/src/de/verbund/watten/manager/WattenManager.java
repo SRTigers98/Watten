@@ -30,4 +30,6 @@ public interface WattenManager {
 
 	public void entferneSpieler(int id);
 
+	public boolean spielEnde();
+
 }

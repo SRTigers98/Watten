@@ -34,15 +34,15 @@ public class SpielRunde {
 			k1 = sp2.getGespielt();
 			k2 = sp1.getGespielt();
 		}
-		int gewinner = regeln.werteAus(k1, k2);
+		sieger = regeln.werteAus(k1, k2);
 		if (sp2.isKommtRaus()) {
-			if (gewinner == 1) {
-				gewinner = 2;
+			if (sieger == 1) {
+				sieger = 2;
 			} else {
-				gewinner = 1;
+				sieger = 1;
 			}
 		}
-		if (gewinner == 1) {
+		if (sieger == 1) {
 			sp1.setKommtRaus(true);
 			sp2.setKommtRaus(false);
 		} else {
@@ -51,7 +51,14 @@ public class SpielRunde {
 		}
 		sp1.setGespielt(null);
 		sp2.setGespielt(null);
-		return gewinner;
+		if (sp1.getStiche() + sp2.getStiche() == 5) {
+			if (sp1.getStiche() > sp2.getStiche()) {
+				sp1.spielGewonnen();
+			} else {
+				sp2.spielGewonnen();
+			}
+		}
+		return sieger;
 	}
 
 	public Spieler getSp1() {

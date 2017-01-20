@@ -43,6 +43,10 @@ public class Spieler implements Serializable {
 		stiche++;
 	}
 
+	public void spielGewonnen() {
+		punkte++;
+	}
+
 	public int getId() {
 		return id;
 	}
