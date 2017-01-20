@@ -269,6 +269,7 @@ public class Endfenster {
 			btnNeuesSpiel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					new Spielfenster(playerSelf);
+					frame.dispose();
 				}
 			});
 		}
