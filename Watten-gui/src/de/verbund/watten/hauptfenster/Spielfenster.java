@@ -1052,4 +1052,9 @@ public class Spielfenster implements ClientGUI {
 		frame.dispose();
 		new Hauptmenue();
 	}
+
+	@Override
+	public void neuesSpiel() {
+		//TODO
+	}
 }
