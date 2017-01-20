@@ -125,6 +125,8 @@ public class Verbindung implements Runnable {
 	private void anfrageNeuesSpiel(Kommando kdo) {
 		neuesSpiel = true;
 		socketServer.getManager().pruefeAnfrage(kdo);
+		kdo.setReturnWert(false);
+		sende(kdo);
 	}
 
 	private void sagAnFarbe(Kommando kdo) {
