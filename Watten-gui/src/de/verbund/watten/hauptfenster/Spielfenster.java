@@ -1046,6 +1046,6 @@ public class Spielfenster implements ClientGUI {
 
 	@Override
 	public void spielEnde(boolean sieger) {
-		new Endfenster(SP1.getName(), SP2.getName(), SP1.getStiche(), SP2.getStiche(), SP1.getPunkte(), SP2.getPunkte(), sieger);
+		new Endfenster(SP1.getName(), SP2.getName(), SP1.getStiche(), SP2.getStiche(), SP1.getPunkte(), SP2.getPunkte(), sieger, client);
 	}
 }
