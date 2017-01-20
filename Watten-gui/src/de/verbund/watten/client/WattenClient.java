@@ -130,6 +130,15 @@ public class WattenClient implements Runnable {
 		if (kdo.getKommando().equals(KommandoKonst.FEHLER)) {
 			fehler(kdo);
 		}
+		if (kdo.getKommando().equals(KommandoKonst.NEUES_SPIEL)) {
+			erhalteAntwort(kdo);
+		}
+	}
+
+	private void erhalteAntwort(Kommando kdo) {
+		if ((boolean) kdo.getReturnWert()) {
+			clientGUI.neuesSpiel();
+		}
 	}
 
 	private void fehler(Kommando kdo) {
