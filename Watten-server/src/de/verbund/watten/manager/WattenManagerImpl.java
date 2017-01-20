@@ -101,8 +101,10 @@ public class WattenManagerImpl implements WattenManager {
 			stiche += s.getStiche();
 		}
 		boolean ende = (stiche == 5);
-		for (Spieler s : spiel.getSpieler()) {
-			s.setStiche(0);
+		if (ende) {
+			for (Spieler s : spiel.getSpieler()) {
+				s.setStiche(0);
+			}
 		}
 		return ende;
 	}
