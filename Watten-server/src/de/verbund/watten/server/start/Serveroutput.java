@@ -4,19 +4,19 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Label;
 import java.awt.TextArea;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JFrame;
 
+import de.verbund.watten.exception.WattenException;
+import de.verbund.watten.exception.WattenRuntimeException;
 import de.verbund.watten.server.WattenServer;
-import java.awt.Label;
-import java.awt.TextField;
 
 /**
  * 
@@ -28,7 +28,7 @@ import java.awt.TextField;
 public class Serveroutput {
 
 	private JFrame frame;
-	TextArea textArea;
+	private TextArea textArea;
 	private Label lPort;
 	private TextField textField;
 	private static Serveroutput window;
@@ -43,7 +43,7 @@ public class Serveroutput {
 			public void run() {
 				try {
 					window = new Serveroutput();
-					wattenServer = new WattenServer(window);
+					window.outputNewLine("Bitte Port eingeben...");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,7 +55,7 @@ public class Serveroutput {
 	 * Create the application.
 	 */
 	public Serveroutput() {
-		initialize();		
+		initialize();
 	}
 
 	/**
@@ -72,6 +72,7 @@ public class Serveroutput {
 		Button bShutdown = new Button("Shutdown Server and Close");
 		bShutdown.setFont(new Font("Courier New", Font.PLAIN, 12));
 		bShutdown.setBounds(609, 0, 175, 22);
+		bShutdown.setEnabled(false);
 		bShutdown.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -88,16 +89,16 @@ public class Serveroutput {
 
 		textArea.setBounds(0, 22, 784, 339);
 		frame.getContentPane().add(textArea);
-		
+
 		lPort = new Label("Port:");
 		lPort.setFont(new Font("Cordia New", Font.PLAIN, 12));
 		lPort.setBounds(0, 0, 36, 22);
 		frame.getContentPane().add(lPort);
-		
+
 		textField = new TextField();
 		textField.setBounds(38, 0, 90, 22);
 		frame.getContentPane().add(textField);
-		
+
 		bPort = new Button("Set Port");
 		bPort.setBounds(129, 0, 70, 22);
 		frame.getContentPane().add(bPort);
@@ -105,9 +106,31 @@ public class Serveroutput {
 		bPort.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO setze Port (wird im Textfeld eingelesen)				
-			}	
+				// TODO setze Port (wird im Textfeld eingelesen)
+				if (portSetzen(textField.getText())) {
+					bShutdown.setEnabled(true);
+					bPort.setEnabled(false);
+				}
+			}
 		});
+	}
+
+	protected boolean portSetzen(String port) {
+		try {
+			int portInt = Integer.parseInt(port);
+			if (portInt <= 1024) {
+				throw new WattenException("Bitte Port > 1024 eingeben!");
+			}
+			wattenServer = new WattenServer(window, portInt);
+			return true;
+		} catch (NumberFormatException e) {
+			outputNewLine("Bitte eine gültige Zahl eingeben!");
+		} catch (WattenException e) {
+			outputNewLine(e.getMessage());
+		} catch (WattenRuntimeException e) {
+			outputNewLine(e.getMessage());
+		}
+		return false;
 	}
 
 	public void outputNewLine(String outputLine) {
@@ -118,9 +141,9 @@ public class Serveroutput {
 		if (tField.equals(null)) {
 			textArea.setText(timestamp + outputLine + "\n");
 		} else {
-			textArea.append(timestamp + outputLine+ "\n");
+			textArea.append(timestamp + outputLine + "\n");
 		}
 
 	}
-	
+
 }

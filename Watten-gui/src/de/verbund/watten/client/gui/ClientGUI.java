@@ -90,4 +90,14 @@ public interface ClientGUI {
 	 */
 	public void gibGegnerKarte(int id, Karte karte);
 
+	/**
+	 * 
+	 * Teilt das Ende eines Spieles mit und ob man dieses gewonnen oder verloren
+	 * hat.
+	 * 
+	 * @param sieger
+	 *            gibt an, ob man gewonnen hat oder nicht.
+	 */
+	public void spielEnde(boolean sieger);
+
 }

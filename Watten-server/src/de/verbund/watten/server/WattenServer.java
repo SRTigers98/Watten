@@ -1,6 +1,7 @@
 package de.verbund.watten.server;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.verbund.watten.common.Kommando;
+import de.verbund.watten.exception.WattenRuntimeException;
 import de.verbund.watten.manager.WattenManager;
 import de.verbund.watten.manager.WattenManagerImpl;
 import de.verbund.watten.server.start.Serveroutput;
@@ -25,13 +27,17 @@ public class WattenServer implements Runnable {
 	private Serveroutput output;
 	private boolean ok = true;
 	private int id = 0;
+	private int port;
 
 	// neu 1:n: Die Liste f�r die Verbindungen
 	private List<Verbindung> verbindungen;
 
-	public WattenServer(Serveroutput output) {
+	public WattenServer(Serveroutput output, int port) {
 		// Setze Output-GUI
 		this.output = output;
+
+		// Setze Port
+		this.port = port;
 
 		// Erzeuge Manager
 		manager = new WattenManagerImpl(this);
@@ -42,20 +48,21 @@ public class WattenServer implements Runnable {
 		// Erzeuge Thread
 		Thread t = new Thread(this);
 		t.start();
-
-		output.outputNewLine("Server gestartet");
 	}
 
 	public void run() {
 		// Warte auf Verbindung
 		try {
-			ServerSocket server = new ServerSocket(4444);
+			ServerSocket server = new ServerSocket(port);
+			output.outputNewLine("Server gestartet");
 			while (ok) {
 				Socket socket = server.accept();
 				InetAddress adr = socket.getInetAddress();
 				Verbindung v = new Verbindung(socket, this);
 				verbindungen.add(v);
 			}
+		} catch (BindException e) {
+			throw new WattenRuntimeException("Port bereits in Nutzung! Bitte anderen Port eingeben.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
