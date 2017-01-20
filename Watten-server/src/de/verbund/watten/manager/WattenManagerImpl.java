@@ -214,7 +214,11 @@ public class WattenManagerImpl implements WattenManager {
 		kdo = Hilfe.getMeldungAmZug(false);
 		for (int i = 0; i < server.getVerbindungen().size(); i++) {
 			if (server.getVerbindungen().get(i).getId() == id) {
-				server.getVerbindungen().get(i + 1).sende(kdo);
+				if ((i + 1) == server.getVerbindungen().size()) {
+					server.getVerbindungen().get(0).sende(kdo);
+				} else {
+					server.getVerbindungen().get(i + 1).sende(kdo);
+				}
 				break;
 			}
 		}
