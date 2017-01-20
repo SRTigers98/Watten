@@ -47,4 +47,11 @@ public class ClientImpl implements Client {
 		client.sende(kdo);
 	}
 
+	@Override
+	public void anfrageNeuesSpiel() {
+		Kommando kdo = new Kommando();
+		kdo.setKommando(KommandoKonst.NEUES_SPIEL);
+		client.sende(kdo);
+	}
+
 }
