@@ -93,8 +93,6 @@ public class Spielfenster implements ClientGUI {
 	private JPanel panelAnsageAusgleich;
 	private Spieler SP1;
 	private Spieler SP2;
-	private JLabel lblSP2K0;
-	private JLabel lblSP1K0;
 
 	/**
 	 * Create the application.
@@ -207,7 +205,6 @@ public class Spielfenster implements ClientGUI {
 			panelHand2.add(getLblSP2K3());
 			panelHand2.add(getLblSP2K4());
 			panelHand2.add(getLblSP2K5());
-			panelHand2.add(getLblSP2K0());
 		}
 		return panelHand2;
 	}
@@ -321,7 +318,6 @@ public class Spielfenster implements ClientGUI {
 			panelHand1.add(getLblSP1K3());
 			panelHand1.add(getLblSP1K4());
 			panelHand1.add(getLblSP1K5());
-			panelHand1.add(getLblSP1K0());
 		}
 		return panelHand1;
 	}
@@ -532,22 +528,6 @@ public class Spielfenster implements ClientGUI {
 			lblAnzStiche1.setForeground(Color.WHITE);
 		}
 		return lblAnzStiche1;
-	}
-	
-	private JLabel getLblSP2K0() {
-		if (lblSP2K0 == null) {
-			lblSP2K0 = new JLabel("");
-			lblSP2K0.setVisible(false);
-		}
-		return lblSP2K0;
-	}
-	
-	private JLabel getLblSP1K0() {
-		if (lblSP1K0 == null) {
-			lblSP1K0 = new JLabel("");
-			lblSP1K0.setVisible(false);
-		}
-		return lblSP1K0;
 	}
 	
 	private JLabel getLblSP1K1() {
@@ -834,7 +814,6 @@ public class Spielfenster implements ClientGUI {
 			lblSP2K3.setIcon(back);
 			lblSP2K4.setIcon(back);
 			lblSP2K5.setIcon(back);
-			lblSP2K0.setIcon(back);
 			karte1 = handkarten.get(0);
 			lblSP1K1.setIcon(iconHolen(karte1));
 			karte2 = handkarten.get(1);
