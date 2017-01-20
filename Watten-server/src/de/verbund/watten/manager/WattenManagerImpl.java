@@ -141,18 +141,23 @@ public class WattenManagerImpl implements WattenManager {
 					index = i;
 				}
 			}
-			for (int i = 0; i < spiel.getSpieler().size(); i++) {
-				spieler.add(spiel.getSpieler().get(index));
-				index++;
-				if (index == spiel.getSpieler().size()) {
-					index = 0;
-				}
-			}
+			spieler = spielerListeDrehen(spieler, index);
 			for (Spieler s : spieler) {
 				kdo.addParameter(s);
 			}
 			v.sende(kdo);
 		}
+	}
+
+	private List<Spieler> spielerListeDrehen(List<Spieler> spieler, int index) {
+		for (int i = 0; i < spiel.getSpieler().size(); i++) {
+			spieler.add(spiel.getSpieler().get(index));
+			index++;
+			if (index == spiel.getSpieler().size()) {
+				index = 0;
+			}
+		}
+		return spieler;
 	}
 
 	@Override

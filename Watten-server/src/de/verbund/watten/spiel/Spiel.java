@@ -69,6 +69,12 @@ public class Spiel {
 				siegerID = s.getId();
 			}
 		}
+		if (spieler.get(0).getStiche() + spieler.get(1).getStiche() == 5) {
+			List<Spieler> spieler = new ArrayList<>();
+			spieler.add(runden.get(0).getSp2());
+			spieler.add(runden.get(0).getSp1());
+			this.spieler = spieler;
+		}
 		return siegerID;
 	}
 

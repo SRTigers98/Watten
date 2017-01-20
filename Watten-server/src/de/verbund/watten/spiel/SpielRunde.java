@@ -57,6 +57,8 @@ public class SpielRunde {
 			} else {
 				sp2.spielGewonnen();
 			}
+			sp1.setStiche(0);
+			sp2.setStiche(0);
 		}
 		return sieger;
 	}
