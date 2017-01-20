@@ -100,4 +100,14 @@ public interface ClientGUI {
 	 */
 	public void spielEnde(boolean sieger);
 
+	/**
+	 * 
+	 * Schickt der Server, wenn ein Fehler aufgetreten ist und das Programm
+	 * beendet werden soll.
+	 * 
+	 * @param message
+	 *            die Fehlermeldung
+	 */
+	public void fehler(String message);
+
 }
