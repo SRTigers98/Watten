@@ -35,6 +35,10 @@ public class SpielRunde {
 			k2 = sp1.getGespielt();
 		}
 		sieger = regeln.werteAus(k1, k2);
+		// Für Test
+		if (sieger == 0) {
+			return sieger;
+		}
 		if (sp2.isKommtRaus()) {
 			if (sieger == 1) {
 				sieger = 2;

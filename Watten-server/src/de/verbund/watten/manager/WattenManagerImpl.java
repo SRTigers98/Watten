@@ -255,7 +255,7 @@ public class WattenManagerImpl implements WattenManager {
 				v.setNeuesSpiel(false);
 			}
 			Spiel newSpiel = new Spiel();
-			newSpiel.getSpieler().addAll(spiel.getSpieler());
+			newSpiel.getSpieler().addAll(spielerListeDrehen(spiel.getSpieler(), 0));
 			spiel = newSpiel;
 			try {
 				starteSpiel();
