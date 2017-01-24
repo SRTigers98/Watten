@@ -976,7 +976,9 @@ public class Spielfenster implements ClientGUI {
 	@Override
 	public void amZug(boolean schlag) {
 		if(schlag == true){
-			meldung.terminate();
+			if(meldung != null){
+				meldung.terminate();
+			}
 			new Auswahlfenster(AuswahlfensterKonst.SCHLAG_WAHL, client);
 		}else if(schlag == false){
 			new Auswahlfenster(AuswahlfensterKonst.FARBE_WAHL, client);
