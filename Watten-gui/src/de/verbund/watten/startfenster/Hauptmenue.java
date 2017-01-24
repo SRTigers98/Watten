@@ -157,12 +157,11 @@ public class Hauptmenue {
 							txt.append("Sie müssen einen Namen angeben. \n");
 							korrekt = false;
 						}
-
-						if (!IsIP6or4(txtIp.getText())) {
-							if (txtIp.getText().isEmpty() || txtIp.getText().equals("")) {
-								txt.append("Sie müssen eine IP-Adresse angeben. \n");
-							} else {
+						if (txtIp.getText().isEmpty() || txtIp.getText().equals("")) {
+							if (!IsIP6or4(txtIp.getText())) {
 								txt.append("Der eingegebene Text entspricht nicht einer IP_Adresse. \n");
+							} else {
+								txt.append("Sie müssen eine IP-Adresse angeben. \n");
 							}
 							korrekt = false;
 						}

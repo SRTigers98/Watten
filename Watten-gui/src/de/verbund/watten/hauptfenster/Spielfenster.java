@@ -673,8 +673,8 @@ public class Spielfenster implements ClientGUI {
 	private void karteSpielen(JLabel lable){
 		if(amZug == true){
 			Icon iconKarte = lable.getIcon();
-			lable.setIcon(null);
 			lblKSP1.setIcon(iconKarte);
+			lable.setIcon(null);
 			if(lable.getName().contains("K1")){
 				client.sendeKarte(karte1);
 			}
