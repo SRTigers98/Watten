@@ -19,7 +19,7 @@ import de.verbund.watten.server.start.Serveroutput;
  * @author Benjamin
  *
  */
-public class WattenServer implements Runnable {
+public class WattenServer {
 
 	private WattenManagerImpl manager;
 	private Serveroutput output;
@@ -44,7 +44,7 @@ public class WattenServer implements Runnable {
 		verbindungen = new ArrayList<>();
 
 		// Erzeuge Thread
-		Thread t = new Thread(this);
+		Thread t = new Thread(() -> run());
 		t.start();
 	}
 
